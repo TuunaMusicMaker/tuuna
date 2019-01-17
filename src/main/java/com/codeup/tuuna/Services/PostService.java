@@ -1,7 +1,7 @@
 package com.codeup.tuuna.Services;
 
-import com.codeup.codeupblog.Models.Post;
-import com.codeup.codeupblog.Repositories.PostRepository;
+import com.codeup.tuuna.Models.Post;
+import com.codeup.tuuna.Repositories.PostRepository;
 import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
 

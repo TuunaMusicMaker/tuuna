@@ -1,6 +1,6 @@
 package com.codeup.tuuna.Repositories;
 
-import com.codeup.codeupblog.Models.User;
+import com.codeup.tuuna.Models.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Long> {

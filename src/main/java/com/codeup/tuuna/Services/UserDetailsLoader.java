@@ -1,8 +1,8 @@
 package com.codeup.tuuna.Services;
 
-import com.codeup.codeupblog.Models.User;
-import com.codeup.codeupblog.Models.UserWithRoles;
-import com.codeup.codeupblog.Repositories.Users;
+import com.codeup.tuuna.Models.User;
+import com.codeup.tuuna.Models.UserWithRoles;
+import com.codeup.tuuna.Repositories.Users;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

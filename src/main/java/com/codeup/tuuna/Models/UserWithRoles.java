@@ -1,6 +1,6 @@
 package com.codeup.tuuna.Models;
 
-import com.codeup.codeupblog.Models.User;
+import com.codeup.tuuna.Models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,7 +1,7 @@
 package com.codeup.tuuna.Controllers;
 
-import com.codeup.codeupblog.Models.User;
-import com.codeup.codeupblog.Repositories.Users;
+import com.codeup.tuuna.Models.User;
+import com.codeup.tuuna.Repositories.Users;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

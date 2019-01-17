@@ -1,10 +1,10 @@
 package com.codeup.tuuna.Controllers;
 
-import com.codeup.codeupblog.Models.Post;
-import com.codeup.codeupblog.Models.User;
-import com.codeup.codeupblog.Repositories.PostRepository;
-import com.codeup.codeupblog.Repositories.UserRepository;
-import com.codeup.codeupblog.Services.PostService;
+import com.codeup.tuuna.Models.Post;
+import com.codeup.tuuna.Models.User;
+import com.codeup.tuuna.Repositories.PostRepository;
+import com.codeup.tuuna.Repositories.UserRepository;
+import com.codeup.tuuna.Services.PostService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

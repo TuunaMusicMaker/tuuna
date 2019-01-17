@@ -1,6 +1,6 @@
 package com.codeup.tuuna;
 
-import com.codeup.codeupblog.Services.UserDetailsLoader;
+import com.codeup.tuuna.Services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
