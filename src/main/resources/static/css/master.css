@@ -48,3 +48,8 @@ textarea {
 .bluer-back {
     background-color: #243179;
 }
+
+ion-icon {
+    position: relative;
+    top: 2px;
+}
