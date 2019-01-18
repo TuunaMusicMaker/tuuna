@@ -1,30 +1,51 @@
 package com.codeup.tuuna.Models;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
 @Table(name="users")
 public class User {
+
     @Id @GeneratedValue
     private long id;
+
     @Column(nullable = false, unique = true)
     private String username;
+
     @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
+
+    @Column(nullable = false, length = 128)
+
+    @JsonIgnore
     private String password;
+
+    @Column(nullable = false, length = 100)
+    private String phoneNumber;
+
+    @Column (nullable = false)
+    private boolean isAdmin;
+
+    @Column (nullable = false)
+    private boolean isBanned;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Post> posts;
+    @JsonBackReference
+    private List<Song> songs;
 
     public User() { }
 
-    public User(String username, String email, String password, List<Post> posts) {
+    public User(String username, String email, String password, String phoneNumber, boolean isAdmin,
+                boolean isBanned, List<Song> songs) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.posts = posts;
+        this.phoneNumber = phoneNumber;
+        this.isAdmin = isAdmin;
+        this.isBanned = isBanned;
+        this.songs = songs;
     }
 
     public User(User copy) {
@@ -32,6 +53,10 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+        phoneNumber = copy.phoneNumber;
+        isAdmin = copy.isAdmin;
+        isBanned = copy.isBanned;
+        songs = copy.songs;
     }
 
     public long getId() {
@@ -40,6 +65,30 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public void setBanned(boolean banned) {
+        isBanned = banned;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public boolean isBanned() {
+        return isBanned;
     }
 
     public String getUsername() {
@@ -66,11 +115,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Post> getPosts() {
-        return posts;
+    public List<Song> getSongs() {
+        return songs;
     }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
     }
 }
