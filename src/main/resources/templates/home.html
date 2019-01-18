@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Hello</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('Hello!')" />
+<body class="main">
+    <nav th:replace="partials :: navbar" />
     <h1>Hello world!</h1>
+
+    <footer th:replace="partials :: footer" />
+    <script th:replace="partials :: m-script" />
+    <script th:replace="partials :: j-query" />
 </body>
 </html>
