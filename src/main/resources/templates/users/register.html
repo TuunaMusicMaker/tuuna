@@ -43,6 +43,7 @@
 <footer th:replace="partials :: footer" />
 <script th:replace="partials :: m-script" />
 <script th:replace="partials :: j-query" />
+<script th:replace="partials :: i-icons" />
 <script>
     $('#register-form').submit(function() {
         if ($.trim($("#email").val()) === "" || $.trim($("#username").val()) === "" || $.trim($("#password").val()) === "" || $.trim($("#password-confirm").val()) === "" || $.trim($("#password-confirm").val()) !== $.trim($("#password").val())) {
