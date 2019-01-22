@@ -1,15 +1,15 @@
-var synth = new Tone.Synth();
-var start;
-var notesArray = [];
-var lengthsArray = [];
-var timingArray = [];
-var reRecording = 0;
-var recording = false;
+let synth = new Tone.Synth();
+let start;
+let notesArray = [];
+let lengthsArray = [];
+let timingArray = [];
+let reRecording = 0;
+let recording = false;
 synth.toMaster();
 
-function getCurrentTime(){
+function getCurrentTime() {
     if (start !== null) {
-        var delta = Date.now() - start;
+        let delta = Date.now() - start;
         return delta + "";
     }
 
