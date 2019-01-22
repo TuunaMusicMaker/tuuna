@@ -1,5 +1,4 @@
 package com.codeup.tuuna.Controllers;
-
 import com.codeup.tuuna.Models.User;
 import com.codeup.tuuna.Repositories.Users;
 import org.springframework.security.crypto.password.PasswordEncoder;
