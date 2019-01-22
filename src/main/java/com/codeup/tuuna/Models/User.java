@@ -18,7 +18,6 @@ public class User {
     private String email;
 
     @Column(nullable = false, length = 128)
-
     @JsonIgnore
     private String password;
 
@@ -35,10 +34,27 @@ public class User {
     @JsonBackReference
     private List<Song> songs;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonBackReference
+    private List<Comment> comments;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonBackReference
+    private List<Rating> ratings;
+
     public User() { }
 
     public User(String username, String email, String password, String phoneNumber, boolean isAdmin,
-                boolean isBanned, List<Song> songs) {
+                boolean isBanned) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.isAdmin = isAdmin;
+        this.isBanned = isBanned;
+    }
+
+    public User(String username, String email, String password, String phoneNumber, boolean isAdmin, boolean isBanned, List<Song> songs, List<Comment> comments, List<Rating> ratings) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -46,6 +62,8 @@ public class User {
         this.isAdmin = isAdmin;
         this.isBanned = isBanned;
         this.songs = songs;
+        this.comments = comments;
+        this.ratings = ratings;
     }
 
     public User(User copy) {
@@ -122,4 +140,21 @@ public class User {
     public void setSongs(List<Song> songs) {
         this.songs = songs;
     }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
 }

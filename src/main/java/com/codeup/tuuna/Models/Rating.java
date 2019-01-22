@@ -2,7 +2,9 @@ package com.codeup.tuuna.Models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="ratings")
+@Table(name="ratings", uniqueConstraints={
+        @UniqueConstraint(columnNames={"song_id", "user_id"})
+})
 public class Rating {
 
     @Id
@@ -10,17 +12,21 @@ public class Rating {
     private long id;
 
     @Column(nullable = false)
-    private int ratingNumber;
+    private byte ratingNumber;
 
     @ManyToOne @JoinColumn (name = "song_id")
     private Song song;
 
+    @ManyToOne @JoinColumn (name = "user_id")
+    private User user;
+
 
     public Rating() { }
 
-    public Rating(int ratingNumber, Song song) {
+    public Rating(byte ratingNumber, Song song, User user) {
         this.ratingNumber = ratingNumber;
         this.song = song;
+        this.user = user;
     }
 
     public long getId() {
@@ -35,7 +41,7 @@ public class Rating {
         return ratingNumber;
     }
 
-    public void setRatingNumber(int ratingNumber) {
+    public void setRatingNumber(byte ratingNumber) {
         this.ratingNumber = ratingNumber;
     }
 
@@ -46,4 +52,13 @@ public class Rating {
     public void setSong(Song song) {
         this.song = song;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

@@ -1,4 +1,5 @@
 package com.codeup.tuuna.Models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import java.util.List;
@@ -30,6 +31,14 @@ public class Song {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "song")
     private List<Category> categories;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "song")
+    @JsonBackReference
+    private List<Comment> comments;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "song")
+    @JsonBackReference
+    private List<Rating> ratings;
+
     public Song() { }
 
     public Song(String title, String description, String songHash, boolean isFlagged, User user,
@@ -40,6 +49,17 @@ public class Song {
         this.isFlagged = isFlagged;
         this.user = user;
         this.categories = categories;
+    }
+
+    public Song(String title, String description, String songHash, boolean isFlagged, User user, List<Category> categories, List<Comment> comments, List<Rating> ratings) {
+        this.title = title;
+        this.description = description;
+        this.songHash = songHash;
+        this.isFlagged = isFlagged;
+        this.user = user;
+        this.categories = categories;
+        this.comments = comments;
+        this.ratings = ratings;
     }
 
     public void setId(long id) {
@@ -96,4 +116,21 @@ public class Song {
     public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
 }
