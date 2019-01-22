@@ -53,3 +53,32 @@ ion-icon {
     position: relative;
     top: 2px;
 }
+
+.facebook-800 {
+    background-color: #ffb800
+}
+
+.down-for-tonight {
+    background-color: #df2935;
+}
+
+.four-41ed {
+    background-color: #ff441d;
+}
+
+.facebook-800-text {
+    color: #ffb800;
+}
+
+.i-like-paragraphs {
+    white-space: pre-line;
+}
+
+.preview-song {
+    height: 130px;
+    overflow: hidden;
+}
+
+.small-space {
+    height: 35px;
+}

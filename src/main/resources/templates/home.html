@@ -3,7 +3,18 @@
 <head th:replace="partials :: head ('Hello!')" />
 <body class="main">
     <nav th:replace="partials :: navbar" />
-    <h1>Hello world!</h1>
+
+    <div class="container">
+        <div class="card cyan lighten-5">
+            <div class="card-image">
+                <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Hello! Welcome to Tuuna Music Maker!</h3>
+                <p>At Tuuna, we want you to have fun with music composition. As such, we made the ability to share your compositions our top priority! We hope you enjoy our humble music maker, and hope you make something great!</p>
+            </div>
+        </div>
+    </div>
 
     <footer th:replace="partials :: footer" />
     <script th:replace="partials :: m-script" />

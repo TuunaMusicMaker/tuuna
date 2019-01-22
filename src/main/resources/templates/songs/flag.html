@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('Delete a Song')" />
+<body class="main">
+<nav th:replace="partials :: navbar" />
+<div class="container">
+    <div class="card cyan lighten-5">
+        <div class="card-image">
+            <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">
+                Are you sure you wish to flag this song?
+            </h3>
+            <p>Flagging a song will allow an administrator to review the song for any issues. A flagged song is not removed or deleted automatically.</p>
+            <form action="" th:action="@{/songs/{id}/delete(id=${id})}" method="post" th:object="${post}">
+                <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><ion-icon name="thumbs-up"></ion-icon>  Yes</button>
+                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><ion-icon name="thumbs-down"></ion-icon>  No</a>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="partials :: footer" />
+<script th:replace="partials :: m-script" />
+<script th:replace="partials :: j-query" />
+<script th:replace="partials :: i-icons" />
+</body>
+</html>

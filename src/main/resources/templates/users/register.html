@@ -5,6 +5,9 @@
 <nav th:replace="partials :: navbar" />
 <div class="container">
     <div class="card cyan lighten-5">
+        <div class="card-image">
+            <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+        </div>
         <div class="card-content bluer-text">
             <form id="register-form" action="" th:action="@{/register}" method="post">
                 <div class="row">
@@ -35,7 +38,7 @@
                         <span class="helper-text" data-error="Your passwords don't match!" data-success="Fantastic"></span>
                     </div>
                 </div>
-                <button type="submit" id="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back" onClick="empty()">Submit</button>
+                <button type="submit" id="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back" onClick="empty()"><ion-icon name="happy"></ion-icon>  Submit</button>
             </form>
         </div>
     </div>
