@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head ('Edit Post')" />
+<head th:replace="partials :: head ('Create a Song')" />
 <body class="main">
 <nav th:replace="partials :: navbar" />
 <div class="container">
@@ -9,27 +9,21 @@
             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
         </div>
         <div class="card-content">
-            <h3 class="card-title bluer-text">Log In</h3>
-            <div th:if="${param.error}">
-                Invalid Username and Password.
-            </div>
-            <div th:if="${param.logout}">
-                You have been logged out.
-            </div>
-            <form action="" th:action="@{/login}" method="post">
+            <h3 class="card-title bluer-text">Create a Song</h3>
+            <form action="/songs/create" th:action="@{/songs/create}" method="post" th:object="${song}">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="username" name="username" type="text" class="validate" />
-                        <label for="username">Username</label>
+                        <input id="title" name="title" type="text" class="validate" th:field="*{title}"/>
+                        <label for="title">Title</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" name="password" type="password" class="validate" />
-                        <label for="password">Password</label>
+                        <textarea id="description" name="description" class="materialize-textarea" th:field="*{description}" />
+                        <label for="description">Description</label>
                     </div>
                 </div>
-                <button type="submit" value="Log In" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="happy"></ion-icon>  Log In</button>
+                <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="paper-plane"></ion-icon>  Submit</button>
             </form>
         </div>
     </div>
