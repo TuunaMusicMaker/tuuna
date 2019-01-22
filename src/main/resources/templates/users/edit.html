@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head ('Register a New User')" />
+<head th:replace="partials :: head ('Edit User Details')" />
 <body class="main">
 <nav th:replace="partials :: navbar" />
 <div class="container">
@@ -8,29 +8,32 @@
         <div class="card-image">
             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
         </div>
-        <div class="card-content bluer-text">
-            <form id="register-form" action="" th:action="@{/register}" method="post">
+        <div class="card-content">
+            <h3 class="card-title">
+                Edit User Details
+            </h3>
+            <form id="register-form" action="" th:action="@{/users/{id}/edit(id=${id})}" method="post">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="username" name="username" type="text" class="validate" />
+                        <input id="username" name="username" type="text" class="validate" th:field="${username}" />
                         <label for="username">Username</label>
                         <span class="helper-text" data-success="Great"></span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" name="email" type="email" class="validate" />
+                        <input id="email" name="email" type="email" class="validate" th:field="${email}" />
                         <label for="email">Email</label>
                         <span class="helper-text" data-error="Please enter a valid e-mail address" data-success="Excellent"></span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="phone-number" name="phone-number" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="validate" />
-                        <label for="phone-number">Phone Number</label>
-                        <span class="helper-text" data-error="Please enter a valid phone number" data-success="Wonderful"></span>
-                    </div>
+                <<div class="row">
+                <div class="input-field col s12">
+                    <input id="phone-number" name="phone-number" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="validate" />
+                    <label for="phone-number">Phone Number</label>
+                    <span class="helper-text" data-error="Please enter a valid phone number" data-success="Wonderful"></span>
                 </div>
+            </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="password" name="password" type="password" class="validate" />
@@ -57,7 +60,11 @@
 <script>
     $('#register-form').submit(function() {
         if ($.trim($("#phone-number").val()) === "" || $.trim($("#email").val()) === "" || $.trim($("#username").val()) === "" || $.trim($("#password").val()) === "" || $.trim($("#password-confirm").val()) === "" || $.trim($("#password-confirm").val()) !== $.trim($("#password").val())) {
+            $('#submit').addClass('disabled');
             return false;
+        } else {
+            $('#submit').removeClass('disabled');
+            return true;
         }
     });
 
@@ -95,3 +102,4 @@
 </script>
 </body>
 </html>
+
