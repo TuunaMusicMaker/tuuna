@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 @Controller
-public class PostController {
+public class MusicController {
 
     private final PostService postService;
     private final PostRepository postDao;
     private final UserRepository userDao;
 
-    public PostController(PostService postService, PostRepository postDao, UserRepository userDao) {
+    public MusicController(PostService postService, PostRepository postDao, UserRepository userDao) {
         this.postService = postService;
         this.postDao = postDao;
         this.userDao = userDao;
