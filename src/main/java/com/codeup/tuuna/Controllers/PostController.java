@@ -30,6 +30,11 @@ public class PostController {
         return "home";
     }
 
+    @GetMapping("/music")
+    public String music() {
+        return "music";
+    }
+
     @GetMapping("/error")
     public String opps() {
         return "error";
