@@ -13,6 +13,8 @@
             <h3 class="card-title" th:text="${song.title}" />
             <p th:text="${song.description}" class="i-like-paragraphs" />
             <br />
+            <p><span class="down-for-tonight-text"><ion-icon name="heart"></ion-icon> <span th:text="${songLikes}" /></span> <ion-icon name="more"></ion-icon> <span class="eighty-eight-ninety-six"><ion-icon name="heart-dislike"></ion-icon> <span th:text="${songDislikes}" /></span></p>
+            <br />
             <div th:if="${isOwner}">
                 <a class="waves-effect waves-red btn-small facebook-800" th:href="@{/songs/{id}/edit(id=${song.id})}"><ion-icon name="construct"></ion-icon>  Edit</a>
                 <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/delete(id=${song.id})}"><ion-icon name="trash"></ion-icon>  Delete</a>
