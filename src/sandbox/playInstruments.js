@@ -1,4 +1,4 @@
-Tone.Transport.bpm.value = 132;                                                         //song tempo 132
+Tone.Transport.bpm.value = 120;                                                         //song tempo 132
 let instrumentTypes = ['triangle','sine','sawtooth'];
 
 function playNote(instantiatedInstrument,noteValue,noteLength,noteTime){                    //instantiatedInstrument = createInstrument(cInstrument, cVolume)
@@ -55,10 +55,27 @@ function scheduleTiming(timingArray) {
     }
     return outputArray;
 }
+
 function scheduleTimingBars(timingArray) {
     let outputArray = [];
     for (let i = 0; i < timingArray.length; i++) {
         outputArray.push(Tone.Time(timingArray[i]).toBarsBeatsSixteenths())
+    }
+    return outputArray;
+}
+
+function msToBars(timingArray) {                                                        // convert an array of milliseconds into BarsBeatsSixteenths ('0:0:0')
+    let outputArray = [];
+    let sVal;
+    let adjustForZero;
+    let trimmed;
+    let barNotation;
+    let roundedBarNotation;
+    for (let i = 0; i < timingArray.length; i++) {
+        adjustForZero = (timingArray[i]-timingArray[0])/1000;
+        barNotation = Tone.Time(adjustForZero).toBarsBeatsSixteenths();
+        roundedBarNotation = barNotation.substring(0,barNotation.lastIndexOf(':')+4);
+        outputArray.push(roundedBarNotation)
     }
     return outputArray;
 }
@@ -105,3 +122,7 @@ Tone.Transport.start();                                                         
 // setTimeout(() => {
 //     Tone.Transport.stop()
 // }, 21000);
+
+msArray = [1500,2000,3456,4000];
+console.log(msToBars(msArray,.2));
+// console.log(3.648 % 0.5);
