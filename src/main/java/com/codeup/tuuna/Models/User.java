@@ -1,6 +1,8 @@
 package com.codeup.tuuna.Models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,10 +26,12 @@ public class User {
     @Column(nullable = false, length = 100)
     private String phoneNumber;
 
-    @Column (nullable = false)
+    @Column
+    @ColumnDefault("false")
     private boolean isAdmin;
 
-    @Column (nullable = false)
+    @Column
+    @ColumnDefault("false")
     private boolean isBanned;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -44,8 +48,7 @@ public class User {
 
     public User() { }
 
-    public User(String username, String email, String password, String phoneNumber, boolean isAdmin,
-                boolean isBanned) {
+    public User(String username, String email, String password, String phoneNumber, boolean isAdmin, boolean isBanned) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -90,11 +93,11 @@ public class User {
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.isAdmin = admin;
     }
 
     public void setBanned(boolean banned) {
-        isBanned = banned;
+        this.isBanned = banned;
     }
 
     public String getPhoneNumber() {

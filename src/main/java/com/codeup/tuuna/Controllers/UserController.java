@@ -26,12 +26,17 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "password-confirm") String confirm) {
+    public String saveUser(@ModelAttribute User user, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "password-confirm") String confirm, @RequestParam(name = "phone-number") String phoneNumber) {
         if (!password.equals(confirm)) {
             return "redirect:/register";
         }
-        String hash = passwordEncoder.encode(user.getPassword());
+        String hash = passwordEncoder.encode(password);
         user.setPassword(hash);
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setPhoneNumber(phoneNumber);
+        user.setAdmin(false);
+        user.setBanned(false);
         users.save(user);
         return "redirect:/login";
     }
