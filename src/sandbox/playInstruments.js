@@ -35,9 +35,6 @@ function playNotes(noteInstrument,noteVolume,noteValues,noteLengths,noteTimes){
     for (let z = 0; z < countMaxRepeats(noteTimes); z++){
         instrumentInstances.push(createInstrument(noteInstrument, noteVolume))
     }
-    // let instrumentInstance = createInstrument(noteInstrument, noteVolume);
-    // let instrumentInstance1 = createInstrument(noteInstrument, noteVolume);
-    // let instrumentInstances = [instrumentInstance,instrumentInstance1];
     for (let i = 0; i < noteValues.length; ) {
         let j = 0;
         do {
