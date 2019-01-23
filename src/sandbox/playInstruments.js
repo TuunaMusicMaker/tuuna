@@ -1,6 +1,8 @@
 Tone.Transport.bpm.value = 120;                                                         //song tempo 132
 let instrumentTypes = ['triangle','sine','sawtooth'];
 
+
+// PLAYBACK FUNCTIONS---------------------------------------------------------------------------------------------------
 function playNote(instantiatedInstrument,noteValue,noteLength,noteTime){                    //instantiatedInstrument = createInstrument(cInstrument, cVolume)
     Tone.Transport.schedule(function (time) {instantiatedInstrument.triggerAttackRelease(noteValue, noteLength, time)}, noteTime);
 }
@@ -45,7 +47,26 @@ function playNotes(noteInstrument,noteVolume,noteValues,noteLengths,noteTimes){
     }
 }
 
-// CONVERTS LOCAL TIME TO UPTICK TIMING (OPTIONAL TOOL)-----------------------------------------------------------------
+// PACKAGING FUNCTIONS---------------------------------------------------------------------------------------------------
+function songPacking(valuesArray,lengthsArray,timesArray){
+    let outputString = '';
+    outputString += valuesArray.join(',') + '|';
+    outputString += lengthsArray.join(',') + '|';
+    outputString += timesArray.join(',');
+    return outputString;
+}
+
+function songUnpacking(databaseString){
+    let unpackingArrays = databaseString.split('|');
+    let unpackedArrays = [];
+    for ( let i = 0 ; i < unpackingArrays.length ; i++){
+        unpackedArrays.push(unpackingArrays[i].split(','))
+    }
+    return unpackedArrays
+}
+
+
+// OPTIONAL TIME PROCESSING FUNCTIONS-----------------------------------------------------------------------------------
 function scheduleTiming(timingArray) {
     let outputArray = [1],                                                              //song at 120bpm starts at 2 = 1:0:0, otherwise first note is skipped
         currentTime = 1;                                                                //song at 120bpm starts at 2 = 1:0:0, otherwise first note is skipped
@@ -104,3 +125,11 @@ playNotes(instrumentTypes[0],.6,arrayNotes,noteLengths,barTiming);
 // msArray = [1500,2000,3456,4000];
 // console.log(msToBars(msArray));
 // console.log(3.648 % 0.5);
+
+packedString = songPacking(arrayNotes,noteLengths,barTiming);
+console.log(packedString);
+unpackedArrayOfArrays = songUnpacking(packedString);
+console.log(unpackedArrayOfArrays);
+console.log(unpackedArrayOfArrays[0]);
+console.log(unpackedArrayOfArrays[1]);
+console.log(unpackedArrayOfArrays[2]);
