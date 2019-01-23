@@ -1,6 +1,8 @@
 package com.codeup.tuuna.Models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,7 +24,8 @@ public class Song {
     @Column(nullable = false, length = 1200)
     private String songHash;
 
-    @Column(nullable = false)
+    @Column
+    @ColumnDefault("false")
     private boolean isFlagged;
 
     @ManyToOne @JoinColumn (name = "user_id")
@@ -40,6 +43,12 @@ public class Song {
     private List<Rating> ratings;
 
     public Song() { }
+
+    public Song(String title, String description, String songHash) {
+        this.title = title;
+        this.description = description;
+        this.songHash = songHash;
+    }
 
     public Song(String title, String description, String songHash, boolean isFlagged, User user,
                 List<Category> categories) {

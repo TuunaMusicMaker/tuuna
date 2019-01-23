@@ -64,13 +64,22 @@ public class SongController {
         return "songs/create";
     }
 
-    @PostMapping("/posts/create")
-    public String createSong(@ModelAttribute Song song, User user, List<Category> categories) {
-        song.setUser(user);
-        song.setCategories(categories);
-        songDao.save(song);
-        return "redirect:/songs";
-    }
+//    @PostMapping("/songs/create")
+//    public String createSong(@ModelAttribute Song song, User user, @RequestParam(name = "category[]") String category) {
+//        String categories[] = request.getParameterValues("language");
+//
+//        if (languages != null) {
+//            System.out.println("Languages are: ");
+//            for (String lang : languages) {
+//                System.out.println("\t" + lang);
+//            }
+//        }
+//
+//        song.setUser(user);
+//        song.setCategories(categories);
+//        songDao.save(song);
+//        return "redirect:/songs";
+//    }
 
     @PostMapping("/songs/{id}/edit")
     public String editSong(@PathVariable long id, @ModelAttribute Song song) {
