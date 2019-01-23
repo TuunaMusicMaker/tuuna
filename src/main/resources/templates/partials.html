@@ -15,10 +15,10 @@
             <div class="container">
                 <a href="/" class="brand-logo"><img src="../static/img/tuuna2.png" th:src="@{/img/tuuna2.png}" alt="Tuuna" class="big-fish" /></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="/posts" class="bluer-text"><ion-icon name="musical-notes"></ion-icon>  All Songs</a></li>
+                    <li><a href="/songs" class="bluer-text"><ion-icon name="musical-notes"></ion-icon>  All Songs</a></li>
                     <li sec:authorize="!isAuthenticated()"><a href="/login" class="bluer-text"><ion-icon name="log-in"></ion-icon>  Log-In</a></li>
                     <li sec:authorize="!isAuthenticated()"><a href="/register" class="bluer-text"><ion-icon name="person-add"></ion-icon>  Register A New User</a></li>
-                    <li sec:authorize="isAuthenticated()"><a href="/posts/create" class="bluer-text"><ion-icon name="musical-note"></ion-icon>  Create A Song</a></li>
+                    <li sec:authorize="isAuthenticated()"><a href="/songs/create" class="bluer-text"><ion-icon name="musical-note"></ion-icon>  Create A Song</a></li>
                     <li sec:authorize="isAuthenticated()">
                         <form th:action="@{/logout}" th:method="post" id="form1">
                             <a onclick="document.getElementById('form1').submit();" class="bluer-text"><ion-icon name="log-out"></ion-icon>  Log-Out</a>
@@ -39,14 +39,15 @@
                 <div class="col l4 offset-l2 s12">
                     <h5 class="darker-blue-text">Links</h5>
                     <ul>
-                        <li><a class="bluer-text" href="/posts">All Posts</a></li>
-                        <li><a class="bluer-text" href="/roll-dice">Dice Roll Guesser</a></li>
+                        <li><a class="bluer-text" href="/songs"><ion-icon name="musical-notes"></ion-icon>  All Songs</a></li>
+                        <li><a class="bluer-text" href="/about-us"><ion-icon name="school"></ion-icon>  Learn More About Tuuna</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="footer-copyright indigo darken-4">
-            <div class="container bluer-text">
+            <div class="container facebook-800-text-text">
+                Codeup 2019. For educational purposes only.
             </div>
         </div>
     </footer>

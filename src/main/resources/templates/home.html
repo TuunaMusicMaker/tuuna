@@ -14,6 +14,53 @@
                 <p>At Tuuna, we want you to have fun with music composition. As such, we made the ability to share your compositions our top priority! We hope you enjoy our humble music maker, and hope you make something great!</p>
             </div>
         </div>
+        <div class="card cyan lighten-5">
+            <div class="card-image">
+                <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="another colorful bar" />
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">What the heck is Tuuna?</h3>
+                <p>
+                    Tuuna is a hip new way to express yourself with your friends! Using our app, you can create and share music compositions all across the internet! With Tuuna, you never have to worry about downloading and uploading instruments and sounds! Tuuna uses Tone.js to create music that you can create and share right in your favorite web browser! Live out your inner Beethoven and rock on!
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="half-ish">
+                <div class="card cyan lighten-5">
+                    <div class="card-image">
+                        <img src="../static/img/tuuna-bar-3.png" th:src="@{/img/tuuna-bar-3.png}" alt="smaller colorful bar" />
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Top 5 Most Liked Songs!</h3>
+                        <ul>
+                            <li th:each="song : ${likedSongs}">
+                                <a th:href="@{'/songs/' + ${song.id}}">
+                                    <span th:text="${song.title}" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="half-isher">
+                <div class="card cyan lighten-5">
+                    <div class="card-image">
+                        <img src="../static/img/tuuna-bar-3.png" th:src="@{/img/tuuna-bar-3.png}" alt="smaller colorful bar" />
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">5 Most Recent Songs!</h3>
+                        <ul>
+                            <li th:each="song : ${recentSongs}">
+                                <a th:href="@{'/songs/' + ${song.id}}">
+                                    <span th:text="${song.title}" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer th:replace="partials :: footer" />
