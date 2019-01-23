@@ -1,5 +1,6 @@
 let synth = new Tone.Synth();
 let start;
+let startDownTime;
 let notesArray = [];
 let lengthsArray = [];
 let timingArray = [];
@@ -14,39 +15,45 @@ function getCurrentTime() {
     }
 
 }
-$('.key').click(function(){
 
-
-    $(this).animate({
-        height:'20px'
-    });
-
-    $(this).animate({
-        height:'90px'
-    },'fast');
-
+$('#key1').mousedown(function() {
+    synth.triggerAttack('A4');
+    //start timer function
 
 });
 
-$('.red').click(function(){
-    synth.triggerAttackRelease('A4', '8n');
-    console.log(getCurrentTime());
-
-    if (recording === true) {
-        notesArray.push('A4');
-        lengthsArray.push('8n');
-        timingArray.push(getCurrentTime());
-    }
-    // if (recording = true) {
-    //     song[0] = synth.triggerAttackRelease('A4', '8n', parseIntconsole.timeEnd());
-    // console.time()
-    // }
-
-
+$('#key1').mouseup(function() {
+    synth.triggerRelease();
+    //end timer
 
 });
 
-$('.orange').click(function(){
+$('#key1').mouseout(function() {
+    synth.triggerRelease();
+    //end timer
+
+});
+
+
+// $('#key1').click(function(){
+//     synth.triggerAttackRelease('A4', '8n');
+//     console.log(getCurrentTime());
+//
+//     if (recording === true) {
+//         notesArray.push('A4');
+//         lengthsArray.push('8n');
+//         timingArray.push(getCurrentTime());
+//     }
+//     // if (recording = true) {
+//     //     song[0] = synth.triggerAttackRelease('A4', '8n', parseIntconsole.timeEnd());
+//     // console.time()
+//     // }
+//
+//
+
+// });
+
+$('#key2').click(function(){
     synth.triggerAttackRelease('B4', '8n');
     console.log(getCurrentTime());
 
@@ -59,7 +66,7 @@ $('.orange').click(function(){
 });
 
 
-$('.yellow').click(function(){
+$('#key3').click(function(){
     synth.triggerAttackRelease('C4', '8n');
     console.log(getCurrentTime());
 
@@ -72,7 +79,7 @@ $('.yellow').click(function(){
 });
 
 
-$('.green').click(function(){
+$('#key4').click(function(){
     synth.triggerAttackRelease('D4', '8n');
     console.log(getCurrentTime());
 
@@ -83,7 +90,7 @@ $('.green').click(function(){
     }
 });
 
-$('.blue').click(function(){
+$('#key5').click(function(){
     synth.triggerAttackRelease('E4', '8n');
     console.log(getCurrentTime());
 
@@ -95,7 +102,8 @@ $('.blue').click(function(){
 
 });
 
-$('.indigo').click(function(){
+
+$('#key6').click(function(){
     synth.triggerAttackRelease('F4', '8n');
     console.log(getCurrentTime());
 
@@ -107,7 +115,7 @@ $('.indigo').click(function(){
 
 });
 
-$('.violet').click(function(){
+$('#key7').click(function(){
     synth.triggerAttackRelease('G4', '8n');
     console.log(getCurrentTime());
 
