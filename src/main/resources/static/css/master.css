@@ -82,3 +82,14 @@ ion-icon {
 .small-space {
     height: 35px;
 }
+
+.half-ish {
+    float: left;
+    width: 49.5%;
+}
+
+.half-isher {
+    float: left;
+    width: 49.5%;
+    margin-left: 1%;
+}
