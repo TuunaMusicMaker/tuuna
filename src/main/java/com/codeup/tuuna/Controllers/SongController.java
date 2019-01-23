@@ -8,10 +8,7 @@ import com.codeup.tuuna.Repositories.SongRepository;
 import com.codeup.tuuna.Repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -62,7 +59,7 @@ public class SongController {
     }
 
     @GetMapping("/songs/create")
-    public String showCreatePost(Model model) {
+    public String showCreateSong(Model model) {
         model.addAttribute("song", new Song());
         return "songs/create";
     }
@@ -76,21 +73,31 @@ public class SongController {
     }
 
     @PostMapping("/songs/{id}/edit")
-    public String editPost(@PathVariable long id, @ModelAttribute Song song) {
+    public String editSong(@PathVariable long id, @ModelAttribute Song song) {
         songDao.save(song);
         return "redirect:/songs/" + song.getId();
     }
 
     @PostMapping("/songs/{id}/delete")
-    public String deletePost(@PathVariable long id, @ModelAttribute Song song) {
+    public String deleteSong(@PathVariable long id, @ModelAttribute Song song) {
         songDao.delete(id);
         return "redirect:/songs";
     }
 
     @PostMapping("/songs/{id}/rating")
     public String likeSong(@PathVariable long id, @ModelAttribute Song song) {
-
+//        need to finish this method
         return "redirect:/songs";
+    }
+
+    @GetMapping("songs/{id}/song.json")
+    public @ResponseBody String viewSongStringInJSONFormat(@PathVariable long id) {
+        return songDao.findOne(id).getSongHash();
+    }
+
+    @GetMapping("/songs/{id}/ajax")
+    public String viewSongStringWithAjax(@PathVariable long id) {
+        return "songs/ajax";
     }
 
 }
