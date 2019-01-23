@@ -15,25 +15,25 @@
             <form id="register-form" action="" th:action="@{/users/{id}/edit(id=${id})}" method="post">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="username" name="username" type="text" class="validate" th:field="${username}" />
+                        <input id="username" name="username" type="text" class="validate" th:field="${user.username}" />
                         <label for="username">Username</label>
                         <span class="helper-text" data-success="Great"></span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" name="email" type="email" class="validate" th:field="${email}" />
+                        <input id="email" name="email" type="email" class="validate" th:field="${user.email}" />
                         <label for="email">Email</label>
                         <span class="helper-text" data-error="Please enter a valid e-mail address" data-success="Excellent"></span>
                     </div>
                 </div>
-                <<div class="row">
-                <div class="input-field col s12">
-                    <input id="phone-number" name="phone-number" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="validate" />
-                    <label for="phone-number">Phone Number</label>
-                    <span class="helper-text" data-error="Please enter a valid phone number" data-success="Wonderful"></span>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="phone-number" name="phone-number" type="tel" pattern="[0-9]{10}" class="validate" th:field="${user.phoneNumber}" />
+                        <label for="phone-number">Phone Number (No spaces or dashes. Example: 1234567890)</label>
+                        <span class="helper-text" data-error="Please enter a valid phone number" data-success="Wonderful"></span>
+                    </div>
                 </div>
-            </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="password" name="password" type="password" class="validate" />

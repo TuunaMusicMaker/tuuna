@@ -20,46 +20,36 @@
         </div>
         <div class="card-content">
             <div class="row">
-                <div class="col s12">
-                    <ul class="tabs">
-                        <li class="tab col s3"><a href="#test1">User Songs</a></li>
-                        <li class="tab col s3"><a class="active" href="#test2">User Comments</a></li>
-                    </ul>
-                </div>
-                <div id="test1" class="col s12">
-                    <h3 class="card-title">User Songss</h3>
-                    <ul>
-                        <li th:each="song : ${userSongs}">
-                            <a th:href="@{'/songs/' + ${song.id}}">
-                                <div class="card cyan lighten-5">
-                                    <div class="card-image">
-                                        <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="another colorful bar" />
-                                    </div>
-                                    <div class="card-content preview-song">
-                                        <h4 class="card-title" th:text="${song.title}" />
-                                        <p th:text="${song.description}" />
-                                    </div>
-                                    <div class="small-space" />
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div id="test2" class="col s12">
-                    <h3 class="card-title">User Comments</h3>
-                    <ul>
-                        <li th:each="comment : ${userComments}">
+                <div id="test1" class="col s12 bluer-text">
+                    <h3 class="card-title">User Songs</h3>
+                    <div th:each="song : ${userSongs}">
+                        <a th:href="@{'/songs/' + ${song.id}}">
                             <div class="card cyan lighten-5">
                                 <div class="card-image">
-                                    <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="a smaller colorful bar" />
+                                    <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="another colorful bar" />
                                 </div>
-                                <div class="card-content">
-                                    <h5>You said about... "<span th:text="${comment.song.title}" />"</h5>
-                                    <p th:text="${comment.body}" />
+                                <div class="card-content preview-song">
+                                    <h4 class="card-title" th:text="${song.title}" />
+                                    <p th:text="${song.description}" />
                                 </div>
+                                <div class="small-space" />
                             </div>
-                        </li>
-                    </ul>
+                        </a>
+                    </div>
+                </div>
+                <div id="test2" class="col s12">
+                    <h3 class="card-title bluer-text">User Comments</h3>
+                    <div th:each="comment : ${userComments}">
+                        <div class="card cyan lighten-5">
+                            <div class="card-image">
+                                <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="a smaller colorful bar" />
+                            </div>
+                            <div class="card-content">
+                                <h5>You said about... "<span th:text="${comment.song.title}" />"</h5>
+                                <p th:text="${comment.body}" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,10 +59,5 @@
 <script th:replace="partials :: m-script" />
 <script th:replace="partials :: j-query" />
 <script th:replace="partials :: i-icons" />
-<script>
-    $(document).ready(function(){
-        $('.tabs').tabs();
-    });
-</script>
 </body>
 </html>
