@@ -1,5 +1,4 @@
 package com.codeup.tuuna.Services;
-
 import com.codeup.tuuna.Models.User;
 import com.codeup.tuuna.Models.UserWithRoles;
 import com.codeup.tuuna.Repositories.Users;

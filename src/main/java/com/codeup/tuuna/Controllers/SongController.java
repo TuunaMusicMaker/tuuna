@@ -75,15 +75,22 @@ public class SongController {
         return "redirect:/songs";
     }
 
-    @PostMapping("/posts/{id}/edit")
+    @PostMapping("/songs/{id}/edit")
     public String editPost(@PathVariable long id, @ModelAttribute Song song) {
         songDao.save(song);
         return "redirect:/songs/" + song.getId();
     }
 
-    @PostMapping("/posts/{id}/delete")
+    @PostMapping("/songs/{id}/delete")
     public String deletePost(@PathVariable long id, @ModelAttribute Song song) {
         songDao.delete(id);
         return "redirect:/songs";
     }
+
+    @PostMapping("/songs/{id}/rating")
+    public String likeSong(@PathVariable long id, @ModelAttribute Song song) {
+
+        return "redirect:/songs";
+    }
+
 }
