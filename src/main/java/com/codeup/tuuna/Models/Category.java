@@ -17,6 +17,9 @@ public class Category {
 
     public Category() { }
 
+    public Category(String title) {
+        this.title = title;
+    }
     public Category(String title, Song song) {
         this.title = title;
         this.song = song;
