@@ -59,6 +59,14 @@ li.whitekeys:hover{
     background-color: #d8e2ee;
 }
 
+.whitekeypressed{
+    background-color: #d8e2ee;
+}
+
+.blackkeypressed{
+    background-color: #323232;
+}
+
 .blackkeys{
     list-style-type: none;
     width: 40px;
