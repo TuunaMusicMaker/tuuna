@@ -21,23 +21,6 @@
                         <label for="title">Title</label>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <div class="input-field col s12">
-                            <tr>
-                                <td>
-                                    <th:block th:each="category : ${categories}">
-                                        <label>
-                                            <input type="checkbox" name="categories" th:value="${category.category}"/>
-                                            <span th:text="${category.category}"></span>
-                                        </label>
-                                    </th:block>
-                                </td>
-                            </tr>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea id="description" name="description" class="materialize-textarea" th:field="*{description}" />
@@ -49,6 +32,18 @@
                         <input id="songHash" name="songHash" type="hidden" th:field="*{songHash}"/>
                     </div>
                 </div>
+                <div class="row">
+                    <table>
+                        <tr class="center">
+                            <td th:each="category : ${categories}">
+                                <label>
+                                    <input type="checkbox" name="categories" th:value="${category.category}"/>
+                                    <span th:text="${category.category}"></span>
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                 <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="paper-plane"></ion-icon>  Submit</button>
             </form>
 
@@ -59,5 +54,10 @@
 <script th:replace="partials :: m-script" />
 <script th:replace="partials :: j-query" />
 <script th:replace="partials :: i-icons" />
+<script>
+
+
+
+</script>
 </body>
 </html>

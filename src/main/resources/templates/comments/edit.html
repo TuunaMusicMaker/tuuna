@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('Edit a Song')" />
+<body class="main">
+<nav th:replace="partials :: navbar" />
+<div class="container">
+    <div class="card cyan lighten-5">
+        <div class="card-image">
+            <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+        </div>
+        <div class="card-content">
+            <h3 class="card-title bluer-text">Edit your Comment</h3>
+            <form action="" th:action="@{/comments/{id}/edit(id=${comment.id})}" method="post" th:object="${comment}">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="body" name="body" class="materialize-textarea" th:field="*{body}" />
+                        <label for="body">Comment Body</label>
+                    </div>
+                </div>
+                <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="paper-plane"></ion-icon>  Submit</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="partials :: footer" />
+<script th:replace="partials :: m-script" />
+<script th:replace="partials :: j-query" />
+<script th:replace="partials :: i-icons" />
+</body>
+</html>
