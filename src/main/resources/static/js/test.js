@@ -78,24 +78,6 @@ function msToBars(timingLengthArray) {                                          
 }
 
 
-// $('#key1').click(function(){
-//     synth.triggerAttackRelease('A4', '8n');
-//     console.log(getCurrentTime());
-//
-//     if (recording === true) {
-//         notesArray.push('A4');
-//         lengthsArray.push('8n');
-//         timeStampArray.push(getCurrentTime());
-//     }
-//     // if (recording = true) {
-//     //     song[0] = synth.triggerAttackRelease('A4', '8n', parseIntconsole.timeEnd());
-//     // console.time()
-//     // }
-//
-//
-
-// });
-
 
 function getMouseDownTime() {
     if (startMouseDownTime !== null) {
@@ -161,7 +143,7 @@ $('#key1').mouseout(function() {
 
 $('#key2').mousedown(function() {
     synth.triggerAttack('C#3');
-    let startMouseDownTime = Date.now();
+    startMouseDownTime = Date.now();
     $(this).addClass('activekey');
 
     if (recording === true) {
@@ -1016,10 +998,6 @@ $(document).on('click', '#playButton', function(){
     let convertedLengthArray= msToBars(timingLengthsArray);
     let convertedTimeStampArray = msToBars(timeStampArray);
 
-//     console.log(Tone.Time(2.7).toNotation());                                                 //convert seconds into 2n,4n,or 8n (bpm defined on Tone)
-// console.log(Tone.Time('2n').toSeconds());                                                //convert 2n,4n,or 8n into seconds
-// console.log(Tone.Time(2.2).toBarsBeatsSixteenths());                                     //convert seconds into 0:0:0 (bars:Beats:sixteenths)
-// console.log(Tone.Time('4n').toBarsBeatsSixteenths());                                    //convert 2n,4n,or 8n into 0:0:0 (bars:Beats:sixteenths)
     Tone.Transport.clear();
     Tone.Transport.stop();
 
@@ -1030,6 +1008,4 @@ $(document).on('click', '#playButton', function(){
     console.log(msToBars(timingLengthsArray));
 
     console.log(msToBars(timeStampArray));
-    console.log(timeStampArray);
-
 });
