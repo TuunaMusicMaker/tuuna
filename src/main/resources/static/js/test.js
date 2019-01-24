@@ -133,10 +133,16 @@ $('#key1').mousedown(function() {
 
 $('#key1').mouseup(function() {
     synth.triggerRelease();
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
-        $('#key1').removeClass('activekey');
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
     }
+    $('#key1').removeClass('activekey');
+
+
+
 
 });
 
@@ -148,16 +154,18 @@ $('#key1').mouseout(function() {
             timingLengthsArray.push(getMouseDownTime());
         }
     }
+    $('#key1').removeClass('activekey');
 
 
 });
 
 $('#key2').mousedown(function() {
-    synth.triggerAttack('D3');
-    startMouseDownTime = Date.now();
+    synth.triggerAttack('C#3');
+    let startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
 
     if (recording === true) {
-        notesArray.push('D3');
+        notesArray.push('C#3');
         timeStampArray.push(getCurrentTime());
     }
 
@@ -165,11 +173,13 @@ $('#key2').mousedown(function() {
 
 $('#key2').mouseup(function() {
     synth.triggerRelease();
-
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
     }
-    startMouseDownTime = null;
+    $('#key2').removeClass('activekey');
+
 });
 
 $('#key2').mouseout(function() {
@@ -180,14 +190,373 @@ $('#key2').mouseout(function() {
             timingLengthsArray.push(getMouseDownTime());
         }
     }
-
+    $('#key2').removeClass('activekey');
 
 });
 
-
 $('#key3').mousedown(function() {
+    synth.triggerAttack('D3');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('D3');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key3').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key3').removeClass('activekey');
+
+});
+
+$('#key3').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key3').removeClass('activekey');
+
+});
+
+$('#key4').mousedown(function() {
+    synth.triggerAttack('D#3');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('D#3');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key4').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key4').removeClass('activekey');
+
+});
+
+$('#key4').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key4').removeClass('activekey');
+
+});
+
+$('#key5').mousedown(function() {
+    synth.triggerAttack('E3');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('E3');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key5').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key5').removeClass('activekey');
+
+});
+
+$('#key5').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key5').removeClass('activekey');
+
+});
+
+$('#key6').mousedown(function() {
+    synth.triggerAttack('F3');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('F3');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key6').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key6').removeClass('activekey');
+
+});
+
+$('#key6').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key6').removeClass('activekey');
+
+});
+
+$('#key7').mousedown(function() {
+    synth.triggerAttack('F#3');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('F#3');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key7').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key7').removeClass('activekey');
+
+});
+
+$('#key7').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key7').removeClass('activekey');
+
+});
+
+$('#key8').mousedown(function() {
+    synth.triggerAttack('G3');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('G3');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key8').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key8').removeClass('activekey');
+
+});
+
+$('#key8').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key8').removeClass('activekey');
+
+});
+
+$('#key9').mousedown(function() {
+    synth.triggerAttack('G#3');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('G#3');
+        timeStampArray.push(getCurrentTime());
+    }
+});
+
+$('#key9').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key9').removeClass('activekey');
+
+});
+
+$('#key9').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key9').removeClass('activekey');
+
+});
+
+$('#key10').mousedown(function() {
+    synth.triggerAttack('A3');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('A3');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key10').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key10').removeClass('activekey');
+
+});
+
+$('#key10').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key10').removeClass('activekey');
+
+});
+
+$('#key11').mousedown(function() {
+    synth.triggerAttack('A#3');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('A#3');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key11').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key11').removeClass('activekey');
+
+});
+
+$('#key11').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key11').removeClass('activekey');
+
+});
+
+$('#key12').mousedown(function() {
+    synth.triggerAttack('B3');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('B3');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key12').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key12').removeClass('activekey');
+
+});
+
+$('#key12').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key12').removeClass('activekey');
+
+});
+
+$('#key13').mousedown(function() {
     synth.triggerAttack('C4');
     startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
 
     if (recording === true) {
         notesArray.push('C4');
@@ -196,186 +565,425 @@ $('#key3').mousedown(function() {
 
 });
 
-$('#key3').mouseup(function() {
+$('#key13').mouseup(function() {
     synth.triggerRelease();
-    console.log(getMouseDownTime());
 
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
     }
-    startMouseDownTime = null;
-});
-
-$('#key3').mouseout(function() {
-    synth.triggerRelease();
-    console.log(getMouseDownTime());
-
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
-    }
-    startMouseDownTime = null;
+    $('#key13').removeClass('activekey');
 
 });
 
+$('#key13').mouseout(function() {
+    synth.triggerRelease();
 
-$('#key4').mousedown(function() {
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key13').removeClass('activekey');
+
+});
+
+$('#key14').mousedown(function() {
+    synth.triggerAttack('C#4');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('C#4');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key14').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key14').removeClass('activekey');
+
+});
+
+$('#key14').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key14').removeClass('activekey');
+
+});
+
+$('#key15').mousedown(function() {
     synth.triggerAttack('D4');
     startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
 
     if (recording === true) {
         notesArray.push('D4');
-        // timingLengthsArray.push('8n');
         timeStampArray.push(getCurrentTime());
     }
 
 });
 
-$('#key4').mouseup(function() {
+$('#key15').mouseup(function() {
     synth.triggerRelease();
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
     }
-
-    startMouseDownTime = null;
-});
-
-$('#key4').mouseout(function() {
-    synth.triggerRelease();
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
-    }
-
-    startMouseDownTime = null;
+    $('#key15').removeClass('activekey');
 
 });
 
+$('#key15').mouseout(function() {
+    synth.triggerRelease();
 
-$('#key5').mousedown(function() {
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key15').removeClass('activekey');
+
+});
+
+$('#key16').mousedown(function() {
+    synth.triggerAttack('D#4');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('D#4');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key16').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key16').removeClass('activekey');
+
+});
+
+$('#key16').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key16').removeClass('activekey');
+
+});
+
+$('#key17').mousedown(function() {
     synth.triggerAttack('E4');
     startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
 
     if (recording === true) {
         notesArray.push('E4');
-        // timingLengthsArray.push('8n');
         timeStampArray.push(getCurrentTime());
     }
 
 });
 
-$('#key5').mouseup(function() {
+$('#key17').mouseup(function() {
     synth.triggerRelease();
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
     }
-
-    startMouseDownTime = null;
-});
-
-$('#key5').mouseout(function() {
-    synth.triggerRelease();
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
-    }
-
-    startMouseDownTime = null;
+    $('#key17').removeClass('activekey');
 
 });
 
+$('#key17').mouseout(function() {
+    synth.triggerRelease();
 
-$('#key6').mousedown(function() {
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key17').removeClass('activekey');
+
+});
+
+$('#key18').mousedown(function() {
     synth.triggerAttack('F4');
     startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
 
     if (recording === true) {
         notesArray.push('F4');
-        // timingLengthsArray.push('8n');
         timeStampArray.push(getCurrentTime());
     }
 
 });
 
-$('#key6').mouseup(function() {
+$('#key18').mouseup(function() {
     synth.triggerRelease();
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
     }
-
-    startMouseDownTime = null;
-});
-
-$('#key6').mouseout(function() {
-    synth.triggerRelease();
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
-    }
-
-    startMouseDownTime = null;
+    $('#key18').removeClass('activekey');
 
 });
 
+$('#key18').mouseout(function() {
+    synth.triggerRelease();
 
-$('#key7').mousedown(function() {
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key18').removeClass('activekey');
+
+});
+
+$('#key19').mousedown(function() {
+    synth.triggerAttack('F#4');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('F#4');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key19').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key19').removeClass('activekey');
+
+});
+
+$('#key19').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key19').removeClass('activekey');
+
+});
+
+$('#key20').mousedown(function() {
     synth.triggerAttack('G4');
     startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
 
     if (recording === true) {
         notesArray.push('G4');
-        // timingLengthsArray.push('8n');
         timeStampArray.push(getCurrentTime());
     }
 
 });
 
-$('#key7').mouseup(function() {
+$('#key20').mouseup(function() {
     synth.triggerRelease();
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
     }
-
-    startMouseDownTime = null;
-});
-
-$('#key7').mouseout(function() {
-    synth.triggerRelease();
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
-    }
-
-    startMouseDownTime = null;
+    $('#key20').removeClass('activekey');
 
 });
 
+$('#key20').mouseout(function() {
+    synth.triggerRelease();
 
-$('#key8').mousedown(function() {
-    synth.triggerAttack('A5');
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key20').removeClass('activekey');
+
+});
+
+$('#key21').mousedown(function() {
+    synth.triggerAttack('G#4');
     startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
 
     if (recording === true) {
-        notesArray.push('A5');
-        // timingLengthsArray.push('8n');
+        notesArray.push('G#4');
         timeStampArray.push(getCurrentTime());
     }
 
 });
 
-$('#key8').mouseup(function() {
+$('#key21').mouseup(function() {
     synth.triggerRelease();
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
-    }
 
-    startMouseDownTime = null;
-});
-
-$('#key8').mouseout(function() {
-    synth.triggerRelease();
-    if (recording === true) {
-        timingLengthsArray.push(getMouseDownTime());
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
     }
-    startMouseDownTime = null;
+    $('#key21').removeClass('activekey');
 
 });
 
+$('#key21').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key21').removeClass('activekey');
+
+});
+
+$('#key22').mousedown(function() {
+    synth.triggerAttack('A4');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('A4');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key22').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key22').removeClass('activekey');
+
+});
+
+$('#key22').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key22').removeClass('activekey');
+
+});
+
+$('#key23').mousedown(function() {
+    synth.triggerAttack('A#4');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('A#4');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key23').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key23').removeClass('activekey');
+
+});
+
+$('#key23').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key23').removeClass('activekey');
+
+});
+
+$('#key24').mousedown(function() {
+    synth.triggerAttack('B4');
+    startMouseDownTime = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        notesArray.push('B4');
+        timeStampArray.push(getCurrentTime());
+    }
+
+});
+
+$('#key24').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key24').removeClass('activekey');
+
+});
+
+$('#key24').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
+    }
+    $('#key24').removeClass('activekey');
+
+});
 
 $('#recButton').addClass("notRec");
 
