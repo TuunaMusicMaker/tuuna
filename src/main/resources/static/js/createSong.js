@@ -1023,5 +1023,5 @@ $(document).on('click', '#saveButton', function(){
     let packingTimeStampArray = msToBars(timeStampArray);
     let songString = songPacking(notesArray,packingLengthArray,packingTimeStampArray);
     console.log(songString);
-    $("#songHash").html(songString);
+    $("#songHash").val(songString);
 });
