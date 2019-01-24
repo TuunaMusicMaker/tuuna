@@ -80,7 +80,7 @@
                         <tr class="center">
                             <td th:each="category : ${categories}">
                                 <label>
-                                    <input type="checkbox" name="categories" th:value="${category.category}"/>
+                                    <input type="checkbox" name="categories" th:value="${category.id}"/>
                                     <span th:text="${category.category}"></span>
                                 </label>
                             </td>

@@ -34,17 +34,16 @@
 //        this.passwordEncoder = passwordEncoder;
 //    }
 //
-//    private void seedCategories(){
 //
-//        List<Category> categories = Arrays.asList(
-//                new Category("awesome"),
-//                new Category("boring"),
-//                new Category("inspiring"),
-//                new Category("quirky"),
-//                new Category("romantic"),
-//                new Category("spooky"),
-//                new Category("uplifting")
-//        );
+//INSERT INTO categories (category)
+//        VALUES ('Awesome'),
+//        ('Boring'),
+//        ('Inspiring'),
+//        ('Quirky'),
+//        ('Romantic'),
+//        ('Spooky'),
+//        ('Uplifting');
+
 //
 //        categoryDao.saveAll(categories);
 //    }
