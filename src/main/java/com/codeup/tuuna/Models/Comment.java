@@ -1,4 +1,6 @@
 package com.codeup.tuuna.Models;
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,7 +13,8 @@ public class Comment {
     @Column(nullable = false)
     private String body;
 
-    @Column(nullable = false)
+    @Column
+    @ColumnDefault("false")
     private boolean isFlagged;
 
     @ManyToOne @JoinColumn (name = "user_id")
