@@ -31,7 +31,12 @@ public class Song {
     @ManyToOne @JoinColumn (name = "user_id")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "song")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="songs_categories",
+            joinColumns={@JoinColumn(name="song_id")},
+            inverseJoinColumns={@JoinColumn(name="category_id")}
+    )
     private List<Category> categories;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "song")
@@ -118,6 +123,7 @@ public class Song {
     public User getUser() {
         return user;
     }
+
     public List<Category> getCategories() {
         return categories;
     }

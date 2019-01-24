@@ -34,8 +34,7 @@ public class CommentController {
 
     @GetMapping("/comments")
     public String getComments(Model model) {
-//        is this index necessary? Can we make it better by adding info from the song? How to do?
-//        alternative is to only display comments on the song view
+
         model.addAttribute("comments", commentDao.findAll());
         return "comments/index";
     }

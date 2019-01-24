@@ -5,11 +5,15 @@
 <nav th:replace="partials :: navbar" />
 <div class="container">
     <div class="card cyan lighten-5">
+
         <div class="card-image">
             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
         </div>
+
         <div class="card-content">
+
             <h3 class="card-title bluer-text">Create a Song</h3>
+
             <form action="/songs/create" th:action="@{/songs/create}" method="post" th:object="${song}">
                 <div class="row">
                     <div class="input-field col s12">
@@ -17,34 +21,21 @@
                         <label for="title">Title</label>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="awesome" name="category[]" value="awesome"  type="checkbox"/>
-                        <label for="awesome">Awesome</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="boring" name="category[]" value="boring" type="checkbox"/>
-                        <label for="boring">Boring</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="inspiring" name="category[]" value="inspiring" type="checkbox"/>
-                        <label for="inspiring">Inspiring</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="quirky" name="category[]" value="quirky" type="checkbox"/>
-                        <label for="quirky">Quirky</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="romantic" name="category[]" value="romantic" type="checkbox"/>
-                        <label for="romantic">Romantic</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="spooky" name="category[]" value="spooky" type="checkbox"/>
-                        <label for="spooky">Spooky</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="uplifting" name="category[]" value="spooky" type="checkbox"/>
-                        <label for="uplifting">Uplifting</label>
+                        <div class="input-field col s12">
+                            <tr>
+                                <td>
+                                    <th:block th:each="category : ${categories}">
+                                        <label>
+                                            <input type="checkbox" name="categories" th:value="${category.category}"/>
+                                            <span th:text="${category.category}"></span>
+                                        </label>
+                                    </th:block>
+                                </td>
+                            </tr>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -55,12 +46,12 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <!--<input id="songHash" name="songHash" type="text" th:field="*{songHash}"/>-->
                         <input id="songHash" name="songHash" type="hidden" th:field="*{songHash}"/>
                     </div>
                 </div>
                 <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="paper-plane"></ion-icon>  Submit</button>
             </form>
+
         </div>
     </div>
 </div>

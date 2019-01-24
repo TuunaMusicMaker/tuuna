@@ -1,5 +1,6 @@
 package com.codeup.tuuna.Models;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="categories")
@@ -10,19 +11,18 @@ public class Category {
     private long id;
 
     @Column(nullable = false, length = 120)
-    private String title;
+    private String category;
 
-    @ManyToOne @JoinColumn (name = "song_id")
-    private Song song;
+    @ManyToMany(mappedBy = "categories")
+    private List<Song> songs;
 
     public Category() { }
 
-    public Category(String title) {
-        this.title = title;
-    }
-    public Category(String title, Song song) {
-        this.title = title;
-        this.song = song;
+    public Category(String category) { this.category = category; }
+
+    public Category(String category, List<Song> songs) {
+        this.category = category;
+        this.songs = songs;
     }
 
     public long getId() {
@@ -33,20 +33,20 @@ public class Category {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getCategory() {
+        return category;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public Song getSong() {
-        return song;
+    public List<Song> getSongs() {
+        return songs;
     }
 
-    public void setSong(Song song) {
-        this.song = song;
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
     }
 
 
