@@ -55,12 +55,18 @@ public class UserController {
 
     @GetMapping("/users/edit")
     public String showUserEditForm(Model model) {
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        user.setPhoneNumber(user.getPhoneNumber().substring(2));
+        model.addAttribute("user", user);
         return "users/edit";
     }
 
     @PostMapping("/users/edit")
-    public String saverUserUpdate(@ModelAttribute User user, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "password-confirm") String confirm, @RequestParam(name = "phone-number") String phoneNumber) {
+    public String saverUserUpdate(@ModelAttribute User user, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "password-confirm") String confirm, @RequestParam(name = "phoneNumber") String phoneNumber) {
+        if (!password.equals(confirm)) {
+            return "redirect:/users/edit";
+        }
         String hash = passwordEncoder.encode(password);
         phoneNumber = "+1" + phoneNumber;
         user.setPassword(hash);
