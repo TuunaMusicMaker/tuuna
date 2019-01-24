@@ -25,7 +25,7 @@ function playNotes(noteInstrument,noteVolume,noteValues,noteLengths,noteTimes){
 }
 
 function playNote(instantiatedInstrument,noteValue,noteLength,noteTime){                    //instantiatedInstrument = createInstrument(cInstrument, cVolume)
-    Tone.Transport.schedule(function (time) {instantiatedInstrument.triggerAttackRelease(noteValue, noteLength, time)}, noteTime);
+    Tone.Transport.scheduleOnce(function (time) {instantiatedInstrument.triggerAttackRelease(noteValue, noteLength, time)}, noteTime);
 }
 
 function createInstrument(cInstrument, cVolume){
@@ -84,7 +84,14 @@ function getMouseDownTime() {
         let deltaMouse = Date.now() - startMouseDownTime;
         return deltaMouse + "";
     }
+}
 
+function songPacking(valuesArray,lengthsArray,timesArray){
+    let outputString = '';
+    outputString += valuesArray.join(',') + '|';
+    outputString += lengthsArray.join(',') + '|';
+    outputString += timesArray.join(',');
+    return outputString;
 }
 
 // $(document).keydown(function(e) {
@@ -994,6 +1001,7 @@ $('#recButton').click(function(){
     }
 });
 
+
 $(document).on('click', '#playButton', function(){
     let convertedLengthArray= msToBars(timingLengthsArray);
     let convertedTimeStampArray = msToBars(timeStampArray);
@@ -1008,4 +1016,12 @@ $(document).on('click', '#playButton', function(){
     console.log(msToBars(timingLengthsArray));
 
     console.log(msToBars(timeStampArray));
+});
+
+$(document).on('click', '#saveButton', function(){
+    let packingLengthArray= msToBars(timingLengthsArray);
+    let packingTimeStampArray = msToBars(timeStampArray);
+    let songString = songPacking(notesArray,packingLengthArray,packingTimeStampArray);
+    console.log(songString);
+    $("#songHash").html(songString);
 });
