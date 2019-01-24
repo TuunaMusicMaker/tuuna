@@ -11,9 +11,6 @@ public class Rating {
     @GeneratedValue
     private long id;
 
-    @Column(nullable = false)
-    private byte ratingNumber;
-
     @ManyToOne @JoinColumn (name = "song_id")
     private Song song;
 
@@ -23,8 +20,7 @@ public class Rating {
 
     public Rating() { }
 
-    public Rating(byte ratingNumber, Song song, User user) {
-        this.ratingNumber = ratingNumber;
+    public Rating(Song song, User user) {
         this.song = song;
         this.user = user;
     }
@@ -35,14 +31,6 @@ public class Rating {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public int getRatingNumber() {
-        return ratingNumber;
-    }
-
-    public void setRatingNumber(byte ratingNumber) {
-        this.ratingNumber = ratingNumber;
     }
 
     public Song getSong() {

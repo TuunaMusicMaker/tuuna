@@ -33,6 +33,18 @@ a.bluer-text:hover {
     color: #df2935;
 }
 
+a.four-41ed-text {
+    color: #ff441d;
+}
+
+a.four-41ed-text:hover {
+    color: #ffb800;
+}
+
+select {
+    font-family: 'Fira Sans Condensed', 'sans-serif';
+}
+
 button {
     font-family: 'Fira Sans Condensed', 'sans-serif';
 }
@@ -103,4 +115,14 @@ ion-icon {
     float: left;
     width: 49.5%;
     margin-left: 1%;
+}
+
+.dat-fish {
+    position: relative;
+    top: 1px;
+}
+
+.move-it {
+    position: relative;
+    top: 1.2em;
 }

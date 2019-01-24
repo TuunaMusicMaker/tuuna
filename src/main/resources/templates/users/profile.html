@@ -12,44 +12,42 @@
         <div class="card-content">
             <h3 class="card-title">Welcome back, <span th:text="${user.username}" /></h3>
             <p>It's so great to see you again! How have you been?</p>
+            <p>You don't have to go changing to try and please me, but you can change your user details <a href="/users/edit">here</a>.</p>
         </div>
     </div>
-    <div class="card cyan lighten-5">
-        <div class="card-image">
-            <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="another colorful bar" />
-        </div>
-        <div class="card-content">
-            <div class="row">
-                <div id="test1" class="col s12 bluer-text">
-                    <h3 class="card-title">User Songs</h3>
-                    <div th:each="song : ${userSongs}">
-                        <a th:href="@{'/songs/' + ${song.id}}">
-                            <div class="card cyan lighten-5">
-                                <div class="card-image">
-                                    <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="another colorful bar" />
-                                </div>
-                                <div class="card-content preview-song">
-                                    <h4 class="card-title" th:text="${song.title}" />
-                                    <p th:text="${song.description}" />
-                                </div>
-                                <div class="small-space" />
-                            </div>
-                        </a>
-                    </div>
+
+    <div class="row">
+        <div class="half-ish">
+            <div class="card cyan lighten-5">
+                <div class="card-image">
+                    <img src="../static/img/tuuna-bar-3.png" th:src="@{/img/tuuna-bar-3.png}" alt="smaller colorful bar" />
                 </div>
-                <div id="test2" class="col s12">
-                    <h3 class="card-title bluer-text">User Comments</h3>
-                    <div th:each="comment : ${userComments}">
-                        <div class="card cyan lighten-5">
-                            <div class="card-image">
-                                <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="a smaller colorful bar" />
-                            </div>
-                            <div class="card-content">
-                                <h5>You said about... "<span th:text="${comment.song.title}" />"</h5>
-                                <p th:text="${comment.body}" />
-                            </div>
-                        </div>
-                    </div>
+                <div class="card-content">
+                    <h3 class="card-title">User Songs</h3>
+                    <ul>
+                        <li th:each="song : ${userSongs}">
+                            <a th:href="@{'/songs/' + ${song.id}}">
+                                <span th:text="${song.title}" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="half-isher">
+            <div class="card cyan lighten-5">
+                <div class="card-image">
+                    <img src="../static/img/tuuna-bar-3.png" th:src="@{/img/tuuna-bar-3.png}" alt="smaller colorful bar" />
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">User Comments</h3>
+                    <ul>
+                        <li th:each="comment : ${userComments}">
+                            <a th:href="@{'/songs/' + ${comment.song.id}}">
+                                You said: "<span th:text="${comment.body}" />" about <span th:text="${comment.song.title}" />.
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

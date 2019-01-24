@@ -12,7 +12,8 @@
             <h3 class="card-title">
                 Edit User Details
             </h3>
-            <form id="register-form" action="" th:action="@{/users/{id}/edit(id=${id})}" method="post">
+            <form id="register-form" action="" th:action="@{/users/edit}" method="post" th:object="${user}">
+                <input id="id" name="id" type="hidden" th:field="${user.id}" />
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="username" name="username" type="text" class="validate" th:field="${user.username}" />
@@ -29,8 +30,8 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="phone-number" name="phone-number" type="tel" pattern="[0-9]{10}" class="validate" th:field="${user.phoneNumber}" />
-                        <label for="phone-number">Phone Number (No spaces or dashes. Example: 1234567890)</label>
+                        <input id="phoneNumber" name="phoneNumber" type="tel" pattern="[0-9]{10}" class="validate" th:field="${user.phoneNumber}" />
+                        <label for="phoneNumber">Phone Number (No spaces or dashes. Example: 1234567890)</label>
                         <span class="helper-text" data-error="Please enter a valid phone number" data-success="Wonderful"></span>
                     </div>
                 </div>
@@ -59,12 +60,8 @@
 <script th:replace="partials :: i-icons" />
 <script>
     $('#register-form').submit(function() {
-        if ($.trim($("#phone-number").val()) === "" || $.trim($("#email").val()) === "" || $.trim($("#username").val()) === "" || $.trim($("#password").val()) === "" || $.trim($("#password-confirm").val()) === "" || $.trim($("#password-confirm").val()) !== $.trim($("#password").val())) {
-            $('#submit').addClass('disabled');
+        if ($.trim($("#phoneNumber").val()) === "" || $.trim($("#email").val()) === "" || $.trim($("#username").val()) === "" || $.trim($("#password").val()) === "" || $.trim($("#password-confirm").val()) === "" || $.trim($("#password-confirm").val()) !== $.trim($("#password").val())) {
             return false;
-        } else {
-            $('#submit').removeClass('disabled');
-            return true;
         }
     });
 

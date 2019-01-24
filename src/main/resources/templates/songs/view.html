@@ -23,7 +23,6 @@
                 <div th:if="${!hasRated}">
                     <form action="" th:action="@{/songs/{id}/rating(id=${song.id})}" method="post" th:object="${rating}">
                         <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="heart"></ion-icon>  Like</button>
-                        <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="heart-dislike"></ion-icon>  Dislike</button>
                     </form>
                 </div>
                 <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/flag(id=${song.id})}"><ion-icon name="flag"></ion-icon>  Flag This Song</a>
