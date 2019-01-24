@@ -42,6 +42,7 @@ public class UserController {
             return "redirect:/register";
         }
         String hash = passwordEncoder.encode(password);
+        phoneNumber = "+1" + phoneNumber;
         user.setPassword(hash);
         user.setUsername(username);
         user.setEmail(email);
@@ -61,6 +62,7 @@ public class UserController {
     @PostMapping("/users/edit")
     public String saverUserUpdate(@ModelAttribute User user, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "password-confirm") String confirm, @RequestParam(name = "phone-number") String phoneNumber) {
         String hash = passwordEncoder.encode(password);
+        phoneNumber = "+1" + phoneNumber;
         user.setPassword(hash);
         user.setUsername(username);
         user.setEmail(email);
