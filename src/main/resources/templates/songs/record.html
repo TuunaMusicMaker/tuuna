@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('Record a Song')" />
+<body class="main">
+<nav th:replace="partials :: navbar" />
+<form th:action="@{/songs/create}" method="get" th:object="${songHash}">
+    <input id="songHash" name="songHash" type="hidden" th:field="*{songHash}"/>
+    <br />
+    <input type="submit" />
+</form>
+<footer th:replace="partials :: footer" />
+<script th:replace="partials :: m-script" />
+<script th:replace="partials :: j-query" />
+<script th:replace="partials :: i-icons" />
+</body>
+</html>

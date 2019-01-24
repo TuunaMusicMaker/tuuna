@@ -4,6 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CategoryRespository extends CrudRepository<Category, Long> {
-    void saveAll(List<Category> categories);
+public interface CategoriesRepository extends CrudRepository<Category, Long> {
 }
