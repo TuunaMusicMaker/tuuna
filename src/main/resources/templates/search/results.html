@@ -4,33 +4,29 @@
 <body class="main">
 <nav th:replace="partials :: navbar" />
 <div class="container">
-    <div class="card cyan lighten-5">
+    <div class="card bluer-back facebook-800-text">
         <div class="card-image">
             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
         </div>
         <div class="card-content">
-            <h3 class="card-title bluer-text">Look at what we found!</h3>
-            <table class="bluer-text">
-                <tr>
-                    <th>Song Title</th>
-                    <th>User</th>
-                    <th>Categories</th>
-                    <th>Number of Likes</th>
-                </tr>
-                <a th:each="song : ${searchResults}" th:href="@{'/songs/' + ${song.id}}">
-                    <tr>
-                        <td th:text="${song.title}" />
-                        <td th:text="${song.user.username}" />
-                        <td>
-                            <span th:each="category : ${song.categories}" th:text="${category.category}, " />
-                        </td>
-                        <td th:text="${#lists.size(song.ratings)}" />
-                    </tr>
-                </a>
-            </table>
+            <h3 class="card-title">Look at what we found!</h3>
         </div>
     </div>
-</div>
+        <div th:each="song : ${searchResults}" >
+            <a th:href="@{'/songs/' + ${song.id}}">
+                <div class="card cyan lighten-5">
+                    <div class="card-image">
+                        <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="colorful bar" />
+                    </div>
+                    <div class="card-content preview-song">
+                        <h4 class="card-title" th:text="${song.title}" />
+                        <p th:text="${song.description}" />
+                    </div>
+                    <div class="small-space" />
+                </div>
+            </a>
+        </div>
+    </div>
 <footer th:replace="partials :: footer" />
 <script th:replace="partials :: m-script" />
 <script th:replace="partials :: j-query" />

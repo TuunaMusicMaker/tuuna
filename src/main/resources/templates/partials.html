@@ -16,7 +16,7 @@
                 <a href="/" class="brand-logo dat-fish"><img src="../static/img/tuuna2.png" th:src="@{/img/tuuna2.png}" alt="Tuuna" class="big-fish" /></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/songs" class="bluer-text"><ion-icon name="musical-notes"></ion-icon>  All Songs</a></li>
-                    <li><a href="/search" class="bluer-text"><ion-icon name="search"></ion-icon>  Search</a></li>
+                    <li><a href="/search" class="bluer-text"><ion-icon name="search"></ion-icon>  Advanced Search</a></li>
                     <li sec:authorize="!isAuthenticated()"><a href="/login" class="bluer-text"><ion-icon name="ios-log-in"></ion-icon>  Log-In</a></li>
                     <li sec:authorize="!isAuthenticated()"><a href="/register" class="bluer-text"><ion-icon name="person-add"></ion-icon>  Register A New User</a></li>
                     <li sec:authorize="isAuthenticated()"><a href="/songs/create" class="bluer-text"><ion-icon name="musical-note"></ion-icon>  Create A Song</a></li>
