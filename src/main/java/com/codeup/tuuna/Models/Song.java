@@ -1,6 +1,4 @@
 package com.codeup.tuuna.Models;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -20,7 +18,6 @@ public class Song {
     @Column(nullable = false)
     private String description;
 
-    @JsonManagedReference
     @Column(nullable = false, length = 1200)
     private String songHash;
 
@@ -40,11 +37,9 @@ public class Song {
     private List<Category> categories;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "song")
-    @JsonBackReference
     private List<Comment> comments;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "song")
-    @JsonBackReference
     private List<Rating> ratings;
 
     public Song() { }

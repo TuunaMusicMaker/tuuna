@@ -121,16 +121,4 @@ public class SongController {
 //        need to finish this method
         return "redirect:/songs";
     }
-
-    @GetMapping("songs/{id}/song.json")
-    public @ResponseBody String viewSongStringInJSONFormat(@PathVariable long id) {
-        return songDao.findOne(id).getSongHash();
-    }
-
-    @GetMapping("/songs/{id}/ajax")
-    public String viewSongStringWithAjax(@PathVariable long id) {
-        return "songs/ajax";
-    }
-
-
 }
