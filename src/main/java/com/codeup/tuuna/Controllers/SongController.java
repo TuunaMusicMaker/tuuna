@@ -49,6 +49,7 @@ public class SongController {
         if (!(user instanceof AnonymousAuthenticationToken)) {
             currentUserName = user.getName();
         }
+
 //        String owner = songDao.findOne(id).getUser().getUsername();
 //        boolean isOwner = (user.equals(owner));
 //
