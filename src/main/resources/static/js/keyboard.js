@@ -110,15 +110,14 @@ function songPacking(valuesArray,lengthsArray,timesArray){
 
 let octave = 4;
 
-test => {
-
-}
 
 const keys = [];
 let prevKey = 0;
 
+//Notes object
 const Notes = {
-    // https://github.com/stuartmemo/qwerty-hancock
+
+    //Object inside the Notes object
     keyboard: {
         // Lower octave.
         a: 'Clq',
@@ -145,10 +144,20 @@ const Notes = {
     },
 };
 
-let instrument = Notes.keyboard;
+let NotesOnKeyboard = Notes.keyboard;
+
+function keyToNotes(key) {
+    const note = NotesOnKeyboard[key];
+    if (!note){
+        return;
+    }
+
+    return Tone.Frequency(note).toNote();
+
+}
 
 const keyToNote = key => {
-    const note = instrument[ key ];
+    const note = NotesOnKeyboard[ key ];
     if ( !note ) {
         return;
     }
@@ -165,6 +174,7 @@ const onKeyDown = (() => {
 
     return synth => {
         document.removeEventListener( 'keydown', listener );
+        startMouseDownTime = Date.now();
 
         listener = event => {
             const { key } = event;
@@ -214,16 +224,19 @@ const onKeyUp = (() => {
         };
 
         document.addEventListener( 'keyup', listener );
+        if (recording === true) {
+            timingLengthsArray.push(getMouseDownTime());
+        }
     };
 })();
 
-// Octave controls.
-document.addEventListener( 'keydown', event => {
-    // Decrease octave range (min: 0).
-    if ( event.key === 'z' ) { octave = Math.max( octave - 1, 0 ); }
-    // Increase octave range (max: 10).
-    if ( event.key === 'x' ) { octave = Math.min( octave + 1, 9 ); }
-});
+// // Octave controls.
+// document.addEventListener( 'keydown', event => {
+//     // Decrease octave range (min: 0).
+//     if ( event.key === 'z' ) { octave = Math.max( octave - 1, 0 ); }
+//     // Increase octave range (max: 10).
+//     if ( event.key === 'x' ) { octave = Math.min( octave + 1, 9 ); }
+// });
 
 // Init.
 (() => {
