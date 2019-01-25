@@ -3,22 +3,22 @@ Tuuna Music Maker is a web-application that allows registered users to create so
 
 ### Site Navigation Milestones
 
-| Page | Page Load | All Content Loads |
-| ---- | --------- | ------------- |
-| Home Page | [X] | [X] |
-| About Us | [X] | [ ] |
-| Register | [X] | [X] |
-| Login | [X] | [X] |
-| Edit User Profile | [X] | [X] |
-| Admin Ban User | [ ] | [ ] |
-| Profile | [X] | [ ] |
-| View Song | [X] | [ ] |
-| Create Song | [X] | [X] |
-| Index of Songs | [X] | [ ] |
-| Flag User | [ ] | [ ] |
-| Edit Song | [ ] | [ ] |
-| Delete Song | [ ] | [ ] |
-| Search Index | [X] | [X] |
-| Search Results | [X] | [X] |
-| Edit Comment | [ ] | [ ] |
-| Delete Comment | [ ] | [ ] |
+| Page | Page Load | All Content Loads | Link Present |
+| ---- | --------- | ------------- | ------------ |
+| Home Page | [X] | [X] | [X] |
+| About Us | [X] | [ ] | [X] |
+| Register | [X] | [X] | [X] |
+| Login | [X] | [X] | [X] |
+| Edit User Profile | [X] | [X] | [X] |
+| Admin Ban User | [ ] | [ ] | [ ] |
+| Profile | [X] | [ ] | [X] |
+| View Song | [X] | [ ] | [X] |
+| Create Song | [X] | [X] | [X] |
+| Index of Songs | [X] | [X] | [X] |
+| Flag User | [ ] | [ ] | [ ] |
+| Edit Song | [ ] | [ ] | [ ] |
+| Delete Song | [X] | [X] | [ ] |
+| Search Index | [X] | [X] | [X] |
+| Search Results | [X] | [X] | [X] |
+| Edit Comment | [ ] | [ ] | [ ] |
+| Delete Comment | [] | [] | [ ] |
