@@ -32,7 +32,7 @@
                         <img src="../static/img/tuuna-bar-3.png" th:src="@{/img/tuuna-bar-3.png}" alt="smaller colorful bar" />
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Top 5 Most Liked Songs!</h3>
+                        <h3 class="card-title">Most Liked Songs!</h3>
                         <ul>
                             <li th:each="song : ${likedSongs}">
                                 <a th:href="@{'/songs/' + ${song.id}}">
@@ -49,7 +49,7 @@
                         <img src="../static/img/tuuna-bar-3.png" th:src="@{/img/tuuna-bar-3.png}" alt="smaller colorful bar" />
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">5 Most Recent Songs!</h3>
+                        <h3 class="card-title">Most Recent Songs!</h3>
                         <ul>
                             <li th:each="song : ${recentSongs}">
                                 <a th:href="@{'/songs/' + ${song.id}}">
