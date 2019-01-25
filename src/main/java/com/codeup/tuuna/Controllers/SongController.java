@@ -1,8 +1,5 @@
 package com.codeup.tuuna.Controllers;
-import com.codeup.tuuna.Models.Category;
-import com.codeup.tuuna.Models.Comment;
-import com.codeup.tuuna.Models.Song;
-import com.codeup.tuuna.Models.User;
+import com.codeup.tuuna.Models.*;
 import com.codeup.tuuna.Repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -44,6 +41,12 @@ public class SongController {
     @GetMapping("/songs/{id}")
     public String getSong(@PathVariable long id, Model model) {
 
+//        String user = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        String owner = songDao.findOne(id).getUser().getUsername();
+//        boolean isOwner = (user.equals(owner));
+//
+//
+//        model.addAttribute("isOwner", isOwner);
         model.addAttribute("username", songDao.findOne(id).getUser().getUsername());
         model.addAttribute("song", songDao.findOne(id));
         model.addAttribute("id", id);
