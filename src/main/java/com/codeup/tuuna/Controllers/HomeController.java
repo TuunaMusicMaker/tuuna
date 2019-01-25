@@ -38,7 +38,11 @@ public class HomeController {
         List<Song> recentSongs = Lists.newArrayList(songDao.findAll());
         if (recentSongs.size() > 0) {
             Collections.reverse(recentSongs);
-            recentSongs = recentSongs.subList(0, 5);
+            if (recentSongs.size() < 5) {
+                recentSongs = recentSongs.subList(0, recentSongs.size());
+            } else {
+                recentSongs = recentSongs.subList(0, 5);
+            }
             model.addAttribute("recentSongs", recentSongs);
         }
         return "home";

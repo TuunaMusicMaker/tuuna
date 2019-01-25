@@ -63,49 +63,29 @@ public class SongController {
 
     @GetMapping("/songs/create")
     public String showCreateSong(Model model) {
-        model.addAttribute("song", new Song());
-//        List<Category> categories = Arrays.asList(
-//                new Category("awesome"),
-//                new Category("boring"),
-//                new Category("inspiring"),
-//                new Category("quirky"),
-//                new Category("romantic"),
-//                new Category("spooky"),
-//                new Category("uplifting")
-//        );
-        model.addAttribute("categories", categoryDao.findAll());
 
+        model.addAttribute("song", new Song());
+        model.addAttribute("categories", categoryDao.findAll());
         return "songs/create";
     }
 
     @PostMapping("/songs/create")
-    public String createSong(@ModelAttribute Song song, @ModelAttribute Category category,
-                            @RequestParam(value = "categories", required = false) String[] categories,
+    public String createSong(@ModelAttribute Song song,
+                            @RequestParam(value = "categories", required = false)
+                                    List<Category> categories,
                             @RequestParam(name = "title") String title,
                             @RequestParam(name = "description") String description,
-                            @RequestParam(value = "songHash") String songHash,
-                             BindingResult bindingResult) {
+                            @RequestParam(value = "songHash") String songHash) {
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (categories != null) {
-//            Category category = null;
-            for (int i = 0; i < categories.length; i++) {
-
-                if (categories[i] != null) {
-                    category = new Category();
-                    category.setCategory(categories[i]);
-                    song.getCategories().add(category);
-                }
-            }
-            for (int i = 0; i < song.getCategories().size(); i++) {
-                System.out.println(song.getCategories().get(i));
+                    song.setCategories(categories);
             }
             song.setUser(user);
             song.setTitle(title);
             song.setDescription(description);
             song.setSongHash(songHash);
             songDao.save(song);
-        }
         return "redirect:/users/profile";
     }
 
