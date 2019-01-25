@@ -1,11 +1,15 @@
 package com.codeup.tuuna.Controllers;
 import com.codeup.tuuna.Models.*;
 import com.codeup.tuuna.Repositories.*;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,13 +44,17 @@ public class SongController {
 
     @GetMapping("/songs/{id}")
     public String getSong(@PathVariable long id, Model model) {
-
-//        String user = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String currentUserName = "";
+        Authentication user = SecurityContextHolder.getContext().getAuthentication();
+        if (!(user instanceof AnonymousAuthenticationToken)) {
+            currentUserName = user.getName();
+        }
 //        String owner = songDao.findOne(id).getUser().getUsername();
 //        boolean isOwner = (user.equals(owner));
 //
 //
 //        model.addAttribute("isOwner", isOwner);
+        model.addAttribute("currentUsername", currentUserName);
         model.addAttribute("username", songDao.findOne(id).getUser().getUsername());
         model.addAttribute("song", songDao.findOne(id));
         model.addAttribute("id", id);
