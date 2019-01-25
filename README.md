@@ -5,20 +5,20 @@ Tuuna Music Maker is a web-application that allows registered users to create so
 
 | Page | Page Load | All Content Loads | Link Present |
 | ---- | --------- | ------------- | ------------ |
-| Home Page | [X] | [X] | [X] |
+| ~~Home Page~~ | [X] | [X] | [X] |
 | About Us | [X] | [ ] | [X] |
-| Register | [X] | [X] | [X] |
-| Login | [X] | [X] | [X] |
+| ~~Register~~ | [X] | [X] | [X] |
+| ~~Login~~ | [X] | [X] | [X] |
 | Edit User Profile | [X] | [X] | [X] |
 | Admin Ban User | [ ] | [ ] | [ ] |
 | Profile | [X] | [ ] | [X] |
 | View Song | [X] | [ ] | [X] |
-| Create Song | [X] | [X] | [X] |
-| Index of Songs | [X] | [X] | [X] |
+| ~~Create Song~~ | [X] | [X] | [X] |
+| ~~Index of Songs~~ | [X] | [X] | [X] |
 | Flag User | [ ] | [ ] | [ ] |
 | Edit Song | [X] | [X] | [ ] |
 | Delete Song | [X] | [X] | [ ] |
-| Search Index | [X] | [X] | [X] |
-| Search Results | [X] | [X] | [X] |
+| ~~Search Index~~ | [X] | [X] | [X] |
+| ~~Search Results~~ | [X] | [X] | [X] |
 | Edit Comment | [ ] | [ ] | [ ] |
 | Delete Comment | [ ] | [ ] | [ ] |
