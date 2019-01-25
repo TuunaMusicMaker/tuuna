@@ -16,7 +16,7 @@ Tuuna Music Maker is a web-application that allows registered users to create so
 | Create Song | [X] | [X] | [X] |
 | Index of Songs | [X] | [X] | [X] |
 | Flag User | [ ] | [ ] | [ ] |
-| Edit Song | [X] | [ ] | [ ] |
+| Edit Song | [ X ] | [ X ] | [ ] |
 | Delete Song | [X] | [X] | [ ] |
 | Search Index | [X] | [X] | [X] |
 | Search Results | [X] | [X] | [X] |
