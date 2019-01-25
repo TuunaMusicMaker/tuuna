@@ -58,13 +58,6 @@ public class SongController {
         return "songs/view";
     }
 
-    @GetMapping("/songs/{id}/edit")
-    public String showEditSong(@PathVariable long id, Model model) {
-        model.addAttribute("id", id);
-        model.addAttribute("song", songDao.findOne(id));
-        return "songs/create";
-    }
-
     @GetMapping("/songs/create")
     public String showCreateSong(Model model) {
 
@@ -104,14 +97,34 @@ public class SongController {
         return "redirect:/songs/" + song.getId();
     }
 
-    @PostMapping("/songs/{id}/edit")
-    public String editSong(@PathVariable long id, @ModelAttribute Song song) {
-        songDao.save(song);
-        return "redirect:/songs/" + song.getId();
+    @GetMapping("/songs/{id}/edit")
+    public String showEditSong(@PathVariable long id, Model model) {
+        model.addAttribute("id", id);
+        model.addAttribute("song", songDao.findOne(id));
+        return "songs/edit";
     }
 
+    @PostMapping("/songs/{id}/edit")
+    public String editSong(@PathVariable long id, @ModelAttribute Song song, @RequestParam(name = "title") String title,
+                           @RequestParam(name = "description") String description) {
+
+        song.setUser(songDao.findOne(id).getUser());
+        song.setTitle(title);
+        song.setDescription(description);
+        song.setSongHash(songDao.findOne(id).getSongHash());
+        songDao.save(song);
+        return "redirect:/songs/" + id;
+    }
+
+    @GetMapping("/songs/{id}/delete")
+    public String showDeleteSong(@PathVariable long id, Model model) {
+        model.addAttribute("id", id);
+        return "songs/delete";
+    }
     @PostMapping("/songs/{id}/delete")
     public String deleteSong(@PathVariable long id, @ModelAttribute Song song) {
+        List<Category> categories = songDao.findOne(id).getCategories();
+        songDao.findOne(id).getCategories().removeAll(categories);
         songDao.delete(id);
         return "redirect:/songs";
     }
