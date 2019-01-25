@@ -3,6 +3,6 @@ Tuuna Music Maker is a web-application that allows registered users to create so
 
 ### Site Navigation Milestones
 
-Page | Page Load | All Content Loads |
----- | --------- | ------------- |
-Home Page | [X] | [X] |
+| Page | Page Load | All Content Loads |
+| ---- | --------- | ------------- |
+| Home Page | [X] | [X] |
