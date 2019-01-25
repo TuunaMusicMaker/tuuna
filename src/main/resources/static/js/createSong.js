@@ -1025,3 +1025,14 @@ $(document).on('click', '#saveButton', function(){
     console.log(songString);
     $("#songHash").val(songString);
 });
+
+// calls our RESTful API on the view song page and saves the songHash variable in the javascript to
+// allow it to be unpacked and played
+$(document).on('click', '#playButton', function(){
+    const request = $.ajax({'url': 'songs/' + ${id} + '/song.json'});
+    request.done(function (songHash) {
+        let retrievedSong = songHash;
+        // insert unpacking code (and potentially playback code) here
+    });
+
+});
