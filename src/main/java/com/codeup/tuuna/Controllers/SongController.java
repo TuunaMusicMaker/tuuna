@@ -70,7 +70,7 @@ public class SongController {
     }
 
     @PostMapping("/songs/create")
-    public String createSong(@ModelAttribute Song song, @ModelAttribute Category category,
+    public String createSong(@ModelAttribute Song song,
                             @RequestParam(value = "categories", required = false)
                                     List<Category> categories,
                             @RequestParam(name = "title") String title,
