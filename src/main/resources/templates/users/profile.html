@@ -3,8 +3,8 @@
 <head th:replace="partials :: head ('Viewing Profile')" />
 <body class="main">
 <nav th:replace="partials :: navbar" />
-
-<div class="container">
+<header></header>
+<main class="container">
     <div class="card cyan lighten-5">
         <div class="card-image">
             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-</div>
+</main>
 <footer th:replace="partials :: footer" />
 <script th:replace="partials :: m-script" />
 <script th:replace="partials :: j-query" />
