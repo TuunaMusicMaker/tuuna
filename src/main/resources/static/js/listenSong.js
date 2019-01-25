@@ -1,4 +1,7 @@
-let retrievedSongString;
+let synth = new Tone.Synth();
+synth.toMaster();
+let instrumentTypes = ['triangle','sine','sawtooth'];
+let retrievedSongArrays;
 
 function playNotes(noteInstrument,noteVolume,noteValues,noteLengths,noteTimes){
     let instrumentInstances = [];
@@ -56,9 +59,13 @@ function songUnpacking(databaseString){
 
 $(document).ready(function(){
     let retrievedSongString = $('#songHash').val();
-    console.log(retrievedSongString);
+    retrievedSongArrays = songUnpacking(retrievedSongString);
 });
 
 $(document).on('click', '#playbackButton', function(){
-    console.log(retrievedSongString);
+    Tone.Transport.clear();
+    Tone.Transport.stop();
+    Tone.Transport.start();
+    console.log(retrievedSongArrays);
+    playNotes(instrumentTypes[0],0.8,retrievedSongArrays[0],retrievedSongArrays[1],retrievedSongArrays[2])
 });
