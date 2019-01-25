@@ -98,7 +98,7 @@ public class HomeController {
 
     @GetMapping("/search")
     public String getSearchForm() {
-        return "/search/index";
+        return "search/index";
     }
 
     @PostMapping("/search")
