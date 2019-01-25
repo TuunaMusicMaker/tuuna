@@ -4,7 +4,8 @@
 <body class="main">
 <nav th:replace="partials :: navbar" />
 <script th:replace="partials :: j-query" />
-<div class="container">
+<header></header>
+<main class="container">
     <div class="card cyan lighten-5">
         <div class="card-image">
             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
@@ -15,10 +16,10 @@
             <p th:text="${song.description}" class="i-like-paragraphs" />
 
             <input id="songHash" name="songHash" type="hidden" th:value="${songHash}"/>
-            <button id="playbackButton">Play</button>
+            <button id="playbackButton" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="play"></ion-icon>  Play</button>
 
             <br />
-            <p><span class="down-for-tonight-text"><ion-icon name="heart"></ion-icon> <span th:text="${songLikes}" /></span> <ion-icon name="more"></ion-icon> <span class="eighty-eight-ninety-six"><ion-icon name="heart-dislike"></ion-icon> <span th:text="${songDislikes}" /></span></p>
+            <p><span class="down-for-tonight-text"><ion-icon name="heart"></ion-icon> <span th:text="${songLikes}" /></span></p>
             <br />
             <!--<div th:if="${isOwner}">-->
                 <!--<a class="waves-effect waves-red btn-small facebook-800" th:href="@{/songs/{id}/edit(id=${song.id})}"><ion-icon name="construct"></ion-icon>  Edit</a>-->
@@ -42,7 +43,7 @@
         </div>
         <div class="card-content">
             <h3 class="card-title">Leave a Comment</h3>
-            <p>Let everyone know what you think about "<span class="card-title" th:text="${song.title}" />!"</p>
+            <p>Let everyone know what you think about "<span th:text="${song.title}" />!"</p>
         </div>
     </div>
 
@@ -70,7 +71,7 @@
         </div>
         <div class="card-content">
             <h3 class="card-title">Viewing All Comments</h3>
-            <p>Here is what some of our users have to say about "<span class="card-title" th:text="${song.title}" />!"</p>
+            <p>Here is what some of our users have to say about "<span th:text="${song.title}" />!"</p>
         </div>
     </div>
 
@@ -92,7 +93,7 @@
             </div>
         </div>
     </div>
-</div>
+</main>
 <script type="text/javascript" th:src="@{/js/listenSong.js}"></script>
 <footer th:replace="partials :: footer" />
 <script th:replace="partials :: m-script" />
