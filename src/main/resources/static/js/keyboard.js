@@ -1,9 +1,11 @@
 let synth = new Tone.Synth();
 let start;
-let startMouseDownTime;
+let startMouseDownTime = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 let notesArray = [];
-let timingLengthsArray = [];
-let timeStampArray = [];
+let triggeredArray = [false, false, false];
+
+let timingLengthsArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+let timeStampArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 let reRecording = 0;
 let recording = false;
 let instrumentTypes = ['triangle','sine','sawtooth'];
@@ -79,11 +81,13 @@ function msToBars(timingLengthArray) {                                          
 
 
 
-function getMouseDownTime() {
-    if (startMouseDownTime !== null) {
-        let deltaMouse = Date.now() - startMouseDownTime;
+function getMouseDownTime(keyValue) {
+    // if (startMouseDownTime[keyValue] !== null) {
+        console.log(startMouseDownTime[keyValue]);
+        let deltaMouse = Date.now() - startMouseDownTime[keyValue];
+        console.log(deltaMouse);
         return deltaMouse + "";
-    }
+    // }
 }
 
 function songPacking(valuesArray,lengthsArray,timesArray){
@@ -94,158 +98,227 @@ function songPacking(valuesArray,lengthsArray,timesArray){
     return outputString;
 }
 
-// $(document).keydown(function(e) {
-//     if (e.originalEvent.keyCode === 81) {
-//         $('#key1').addClass('whitekeypressed');
-//         synth.triggerAttack('A4');
-//     }
-// });
-//
-// $(document).keyup(function(e) {
-//     if (e.originalEvent.keyCode === 81) {
-//         $('#key1').removeClass('whitekeypressed');
-//         synth.triggerRelease();
-//     }
-// });
-
-let octave = 4;
-
-test => {
-
-}
-
-const keys = [];
-let prevKey = 0;
-
-const Notes = {
-    // https://github.com/stuartmemo/qwerty-hancock
-    keyboard: {
-        // Lower octave.
-        a: 'Clq',
-        w: 'C#l',
-        s: 'Dl',
-        e: 'D#l',
-        d: 'El',
-        f: 'Fl',
-        t: 'F#l',
-        g: 'Gl',
-        y: 'G#l',
-        h: 'Al',
-        u: 'A#l',
-        j: 'Bl',
-        // Upper octave.
-        k: 'Cu',
-        o: 'C#u',
-        l: 'Du',
-        p: 'D#u',
-        ';': 'Eu',
-        "'": 'Fu',
-        ']': 'F#u',
-        '\\': 'Gu',
-    },
-};
-
-let instrument = Notes.keyboard;
-
-const keyToNote = key => {
-    const note = instrument[ key ];
-    if ( !note ) {
-        return;
+$(document).keydown(function(e) {
+    if (e.originalEvent.keyCode === 81 && triggeredArray[0] === false) {
+            startMouseDownTime[0] = Date.now();
+            $('#key1').addClass('whitekeypressed');
+            synth.triggerAttack('C3');
+            triggeredArray[0] = true;
+            if (recording === true) {
+                timeStampArray[0].push(getCurrentTime())
+            }
     }
 
-    return Tone.Frequency(
-        note
-            .replace( 'l', octave )
-            .replace( 'u', octave + 1 )
-    ).toNote();
-};
-
-const onKeyDown = (() => {
-    let listener;
-
-    return synth => {
-        document.removeEventListener( 'keydown', listener );
-
-        listener = event => {
-            const { key } = event;
-
-            // Only trigger once per keydown event.
-            if ( !keys[ key ] ) {
-                keys[ key ] = true;
-
-                const note = keyToNote( key );
-                if ( note ) {
-                    synth.triggerAttack( note );
-                    prevKey = key;
-                }
-            }
-        };
-
-        document.addEventListener( 'keydown', listener );
-    };
-})();
-
-const onKeyUp = (() => {
-    let listener;
-    let prev;
-
-    return synth => {
-        // Clean-up.
-        if ( prev ) {
-            prev.triggerRelease();
-        }
-
-        document.removeEventListener( 'keyup', listener );
-
-        prev = synth;
-        listener = event => {
-            const { key } = event;
-            if ( keys[ key ] ) {
-                keys[ key ] = false;
-
-                const note = keyToNote( key );
-                if ( synth instanceof Tone.PolySynth ) {
-                    synth.triggerRelease( note );
-                } else if ( note && key === prevKey ) {
-                    // Trigger release if this is the previous note played.
-                    synth.triggerRelease();
-                }
-            }
-        };
-
-        document.addEventListener( 'keyup', listener );
-    };
-})();
-
-// Octave controls.
-document.addEventListener( 'keydown', event => {
-    // Decrease octave range (min: 0).
-    if ( event.key === 'z' ) { octave = Math.max( octave - 1, 0 ); }
-    // Increase octave range (max: 10).
-    if ( event.key === 'x' ) { octave = Math.min( octave + 1, 9 ); }
 });
 
-// Init.
-(() => {
-    const synth = new Tone.PolySynth( 10 );
-    synth.toMaster();
+$(document).keyup(function(e) {
+    if (e.originalEvent.keyCode === 81) {
+        $('#key1').removeClass('whitekeypressed');
+        if (recording === true) {
+            timingLengthsArray[0].push(getMouseDownTime(0));
+        }
+        triggeredArray[0] = false;
+    }
+        synth.triggerRelease('C3');
+});
 
-    onKeyDown( synth );
-    onKeyUp( synth );
-})();
+$(document).keydown(function(e) {
+    if (e.originalEvent.keyCode === 87 && triggeredArray[1] === false) {
+        startMouseDownTime[0] = Date.now();
+        $('#key2').addClass('blackkeypressed');
+        synth.triggerAttack('C#3');
+        triggeredArray[1] = true;
+        if (recording === true) {
+            timeStampArray[1].push(getCurrentTime())
+        }
+    }
+
+});
+
+$(document).keyup(function(e) {
+    if (e.originalEvent.keyCode === 87) {
+        $('#key2').removeClass('blackkeypressed');
+        if (recording === true) {
+            timingLengthsArray[1].push(getMouseDownTime(0));
+        }
+        triggeredArray[1] = false;
+    }
+    synth.triggerRelease('C#3');
+});
+
+$(document).keydown(function(e) {
+    if (e.originalEvent.keyCode === 69 && triggeredArray[2] === false) {
+        startMouseDownTime[0] = Date.now();
+        $('#key3').addClass('whitekeypressed');
+        synth.triggerAttack('D3');
+        triggeredArray[2] = true;
+        if (recording === true) {
+            timeStampArray[2].push(getCurrentTime())
+        }
+    }
+
+});
+
+$(document).keyup(function(e) {
+    if (e.originalEvent.keyCode === 69) {
+        $('#key3').removeClass('whitekeypressed');
+        if (recording === true) {
+            timingLengthsArray[2].push(getMouseDownTime(0));
+        }
+        triggeredArray[2] = false;
+    }
+    synth.triggerRelease('D3');
+});
+
+
+
+
+// let octave = 4;
+//
+//
+// const keys = [];
+// let prevKey = 0;
+//
+// //Notes object
+// const Notes = {
+//
+//     //Object inside the Notes object
+//     keyboard: {
+//         // Lower octave.
+//         a: 'Clq',
+//         w: 'C#l',
+//         s: 'Dl',
+//         e: 'D#l',
+//         d: 'El',
+//         f: 'Fl',
+//         t: 'F#l',
+//         g: 'Gl',
+//         y: 'G#l',
+//         h: 'Al',
+//         u: 'A#l',
+//         j: 'Bl',
+//         // Upper octave.
+//         k: 'Cu',
+//         o: 'C#u',
+//         l: 'Du',
+//         p: 'D#u',
+//         ';': 'Eu',
+//         "'": 'Fu',
+//         ']': 'F#u',
+//         '\\': 'Gu',
+//     },
+// };
+//
+// let NotesOnKeyboard = Notes.keyboard;
+//
+// function keyToNotes(key) {
+//     const note = NotesOnKeyboard[key];
+//     if (!note){
+//         return;
+//     }
+//
+//     return Tone.Frequency(note).toNote();
+//
+// }
+//
+// const keyToNote = key => {
+//     const note = NotesOnKeyboard[ key ];
+//     if ( !note ) {
+//         return;
+//     }
+//
+//     return Tone.Frequency(
+//         note
+//             .replace( 'l', octave )
+//             .replace( 'u', octave + 1 )
+//     ).toNote();
+// };
+//
+// const onKeyDown = (() => {
+//     let listener;
+//
+//     return synth => {
+//         document.removeEventListener( 'keydown', listener );
+//
+//         listener = event => {
+//             const { key } = event;
+//
+//             // Only trigger once per keydown event.
+//             if ( !keys[ key ] ) {
+//                 startMouseDownTime = Date.now();
+//                 keys[ key ] = true;
+//
+//                 const note = keyToNote( key );
+//                 if ( note ) {
+//                     synth.triggerAttack( note );
+//                     prevKey = key;
+//                 }
+//             }
+//         };
+//
+//         document.addEventListener( 'keydown', listener );
+//     };
+// })();
+//
+// const onKeyUp = (() => {
+//     let listener;
+//     let prev;
+//
+//
+//     return synth => {
+//         // Clean-up.
+//
+//         if ( prev ) {
+//             prev.triggerRelease();
+//         }
+//
+//         document.removeEventListener( 'keyup', listener );
+//
+//         prev = synth;
+//         listener = event => {
+//
+//
+//             const { key } = event;
+//             if ( keys[ key ] ) {
+//                 keys[ key ] = false;
+//                 if (recording === true) {
+//                     timingLengthsArray.push(getMouseDownTime());
+//                 }
+//
+//                 const note = keyToNote( key );
+//                 if ( synth instanceof Tone.PolySynth ) {
+//                     synth.triggerRelease( note );
+//                 } else if ( note && key === prevKey ) {
+//                     // Trigger release if this is the previous note played.
+//                     synth.triggerRelease();
+//                 }
+//             }
+//         };
+//
+//         document.addEventListener( 'keyup', listener );
+//     };
+// })();
+//
+// // Init.
+// (() => {
+//     const synth = new Tone.PolySynth( 10 );
+//     synth.toMaster();
+//
+//     onKeyDown( synth );
+//     onKeyUp( synth );
+// })();
 
 
 
 
 $('#key1').mousedown(function() {
     synth.triggerAttack('C3');
-    startMouseDownTime = Date.now();
+    startMouseDownTime[0] = Date.now();
     $(this).addClass('activekey');
 
     if (recording === true) {
-        notesArray.push('C3');
-        timeStampArray.push(getCurrentTime());
-    }
+            timeStampArray[0].push(getCurrentTime())
+        }
 
 });
 
@@ -254,14 +327,10 @@ $('#key1').mouseup(function() {
 
     if($(this).hasClass('activekey')) {
         if (recording === true) {
-            timingLengthsArray.push(getMouseDownTime());
+            timingLengthsArray[0].push(getMouseDownTime(0));
         }
     }
     $('#key1').removeClass('activekey');
-
-
-
-
 });
 
 $('#key1').mouseout(function() {
@@ -269,11 +338,791 @@ $('#key1').mouseout(function() {
 
     if($(this).hasClass('activekey')) {
         if (recording === true) {
-            timingLengthsArray.push(getMouseDownTime());
+            timingLengthsArray[0].push(getMouseDownTime(0));
         }
     }
     $('#key1').removeClass('activekey');
 
+});
+
+$('#key2').mousedown(function() {
+    synth.triggerAttack('C#3');
+    startMouseDownTime[1] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+            timeStampArray[1].push(getCurrentTime())
+        }
+});
+
+$('#key2').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[1].push(getMouseDownTime(1));
+        }
+    }
+    $('#key2').removeClass('activekey');
+});
+
+$('#key2').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[1].push(getMouseDownTime(1));
+        }
+    }
+    $('#key2').removeClass('activekey');
+
+});
+
+$('#key3').mousedown(function() {
+    synth.triggerAttack('D3');
+    startMouseDownTime[2] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+            timeStampArray[2].push(getCurrentTime())
+        }
+
+});
+
+$('#key3').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[2].push(getMouseDownTime(2));
+        }
+    }
+    $('#key3').removeClass('activekey');
+});
+
+$('#key3').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[2].push(getMouseDownTime(2));
+        }
+    }
+    $('#key3').removeClass('activekey');
+
+});
+
+$('#key4').mousedown(function() {
+    synth.triggerAttack('D#3');
+    startMouseDownTime[3] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[3].push(getCurrentTime())
+    }
+
+});
+
+$('#key4').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[3].push(getMouseDownTime(3));
+        }
+    }
+    $('#key4').removeClass('activekey');
+});
+
+$('#key4').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[3].push(getMouseDownTime(3));
+        }
+    }
+    $('#key4').removeClass('activekey');
+
+});
+
+$('#key5').mousedown(function() {
+    synth.triggerAttack('E3');
+    startMouseDownTime[4] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[4].push(getCurrentTime())
+    }
+
+});
+
+$('#key5').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[4].push(getMouseDownTime(4));
+        }
+    }
+    $('#key5').removeClass('activekey');
+});
+
+$('#key5').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[4].push(getMouseDownTime(4));
+        }
+    }
+    $('#key5').removeClass('activekey');
+
+});
+
+$('#key6').mousedown(function() {
+    synth.triggerAttack('F3');
+    startMouseDownTime[5] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[5].push(getCurrentTime())
+    }
+
+});
+
+$('#key6').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[5].push(getMouseDownTime(5));
+        }
+    }
+    $('#key6').removeClass('activekey');
+});
+
+$('#key6').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[5].push(getMouseDownTime(5));
+        }
+    }
+    $('#key6').removeClass('activekey');
+
+});
+
+$('#key7').mousedown(function() {
+    synth.triggerAttack('F#3');
+    startMouseDownTime[6] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[6].push(getCurrentTime())
+    }
+
+});
+
+$('#key7').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[6].push(getMouseDownTime(6));
+        }
+    }
+    $('#key7').removeClass('activekey');
+});
+
+$('#key7').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[6].push(getMouseDownTime(6));
+        }
+    }
+    $('#key7').removeClass('activekey');
+
+});
+
+$('#key8').mousedown(function() {
+    synth.triggerAttack('G3');
+    startMouseDownTime[7] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[7].push(getCurrentTime())
+    }
+
+});
+
+$('#key8').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[7].push(getMouseDownTime(7));
+        }
+    }
+    $('#key8').removeClass('activekey');
+});
+
+$('#key8').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[7].push(getMouseDownTime(7));
+        }
+    }
+    $('#key8').removeClass('activekey');
+
+});
+
+$('#key9').mousedown(function() {
+    synth.triggerAttack('G#3');
+    startMouseDownTime[8] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[8].push(getCurrentTime())
+    }
+
+});
+
+$('#key9').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[8].push(getMouseDownTime(8));
+        }
+    }
+    $('#key9').removeClass('activekey');
+});
+
+$('#key9').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[8].push(getMouseDownTime(8));
+        }
+    }
+    $('#key9').removeClass('activekey');
+
+});
+
+$('#key10').mousedown(function() {
+    synth.triggerAttack('A3');
+    startMouseDownTime[9] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[9].push(getCurrentTime())
+    }
+
+});
+
+$('#key10').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[9].push(getMouseDownTime(9));
+        }
+    }
+    $('#key10').removeClass('activekey');
+});
+
+$('#key10').mouseout(function() {
+    synth.triggerRelease();
+
+    if ($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[9].push(getMouseDownTime(9));
+        }
+    }
+    $('#key10').removeClass('activekey');
+
+});
+
+$('#key11').mousedown(function() {
+    synth.triggerAttack('A#3');
+    startMouseDownTime[10] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[10].push(getCurrentTime())
+    }
+
+});
+
+$('#key11').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[10].push(getMouseDownTime(10));
+        }
+    }
+    $('#key11').removeClass('activekey');
+});
+
+$('#key11').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[10].push(getMouseDownTime(10));
+        }
+    }
+    $('#key11').removeClass('activekey');
+
+});
+
+$('#key12').mousedown(function() {
+    synth.triggerAttack('B3');
+    startMouseDownTime[11] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[11].push(getCurrentTime())
+    }
+
+});
+
+$('#key12').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[11].push(getMouseDownTime(11));
+        }
+    }
+    $('#key12').removeClass('activekey');
+});
+
+$('#key12').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[11].push(getMouseDownTime(11));
+        }
+    }
+    $('#key12').removeClass('activekey');
+
+});
+
+$('#key13').mousedown(function() {
+    synth.triggerAttack('C4');
+    startMouseDownTime[12] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[12].push(getCurrentTime())
+    }
+
+});
+
+$('#key13').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[12].push(getMouseDownTime(12));
+        }
+    }
+    $('#key13').removeClass('activekey');
+});
+
+$('#key13').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[12].push(getMouseDownTime(12));
+        }
+    }
+    $('#key13').removeClass('activekey');
+
+});
+
+$('#key14').mousedown(function() {
+    synth.triggerAttack('C#4');
+    startMouseDownTime[13] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[13].push(getCurrentTime())
+    }
+
+});
+
+$('#key14').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[13].push(getMouseDownTime(13));
+        }
+    }
+    $('#key14').removeClass('activekey');
+});
+
+$('#key14').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[13].push(getMouseDownTime(13));
+        }
+    }
+    $('#key14').removeClass('activekey');
+
+});
+
+$('#key15').mousedown(function() {
+    synth.triggerAttack('D4');
+    startMouseDownTime[14] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[14].push(getCurrentTime())
+    }
+
+});
+
+$('#key15').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[14].push(getMouseDownTime(14));
+        }
+    }
+    $('#key15').removeClass('activekey');
+});
+
+$('#key15').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[14].push(getMouseDownTime(14));
+        }
+    }
+    $('#key15').removeClass('activekey');
+
+});
+
+$('#key16').mousedown(function() {
+    synth.triggerAttack('D#4');
+    startMouseDownTime[15] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[15].push(getCurrentTime())
+    }
+
+});
+
+$('#key16').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[15].push(getMouseDownTime(15));
+        }
+    }
+    $('#key16').removeClass('activekey');
+});
+
+$('#key16').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[15].push(getMouseDownTime(15));
+        }
+    }
+    $('#key16').removeClass('activekey');
+
+});
+
+$('#key17').mousedown(function() {
+    synth.triggerAttack('E4');
+    startMouseDownTime[16] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[16].push(getCurrentTime())
+    }
+
+});
+
+$('#key17').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[16].push(getMouseDownTime(16));
+        }
+    }
+    $('#key17').removeClass('activekey');
+});
+
+$('#key17').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[16].push(getMouseDownTime(16));
+        }
+    }
+    $('#key17').removeClass('activekey');
+
+});
+
+$('#key18').mousedown(function() {
+    synth.triggerAttack('F4');
+    startMouseDownTime[17] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[17].push(getCurrentTime())
+    }
+
+});
+
+$('#key18').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[17].push(getMouseDownTime(17));
+        }
+    }
+    $('#key18').removeClass('activekey');
+});
+
+$('#key18').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[17].push(getMouseDownTime(17));
+        }
+    }
+    $('#key18').removeClass('activekey');
+
+});
+
+$('#key19').mousedown(function() {
+    synth.triggerAttack('F#4');
+    startMouseDownTime[18] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[18].push(getCurrentTime())
+    }
+
+});
+
+$('#key19').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[18].push(getMouseDownTime(18));
+        }
+    }
+    $('#key19').removeClass('activekey');
+});
+
+$('#key19').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[18].push(getMouseDownTime(18));
+        }
+    }
+    $('#key19').removeClass('activekey');
+
+});
+
+$('#key20').mousedown(function() {
+    synth.triggerAttack('G4');
+    startMouseDownTime[19] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[19].push(getCurrentTime())
+    }
+
+});
+
+$('#key20').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[19].push(getMouseDownTime(19));
+        }
+    }
+    $('#key20').removeClass('activekey');
+});
+
+$('#key20').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[19].push(getMouseDownTime(19));
+        }
+    }
+    $('#key20').removeClass('activekey');
+
+});
+
+$('#key21').mousedown(function() {
+    synth.triggerAttack('G#4');
+    startMouseDownTime[20] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[20].push(getCurrentTime())
+    }
+
+});
+
+$('#key21').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[20].push(getMouseDownTime(20));
+        }
+    }
+    $('#key21').removeClass('activekey');
+});
+
+$('#key21').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[20].push(getMouseDownTime(20));
+        }
+    }
+    $('#key21').removeClass('activekey');
+
+});
+
+$('#key22').mousedown(function() {
+    synth.triggerAttack('A4');
+    startMouseDownTime[21] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[21].push(getCurrentTime())
+    }
+
+});
+
+$('#key22').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[21].push(getMouseDownTime(21));
+        }
+    }
+    $('#key22').removeClass('activekey');
+});
+
+$('#key22').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[21].push(getMouseDownTime(21));
+        }
+    }
+    $('#key22').removeClass('activekey');
+
+});
+
+$('#key23').mousedown(function() {
+    synth.triggerAttack('A#4');
+    startMouseDownTime[22] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[22].push(getCurrentTime())
+    }
+
+});
+
+$('#key23').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[22].push(getMouseDownTime(22));
+        }
+    }
+    $('#key23').removeClass('activekey');
+});
+
+$('#key23').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[22].push(getMouseDownTime(22));
+        }
+    }
+    $('#key23').removeClass('activekey');
+
+});
+
+$('#key24').mousedown(function() {
+    synth.triggerAttack('B4');
+    startMouseDownTime[23] = Date.now();
+    $(this).addClass('activekey');
+
+    if (recording === true) {
+        timeStampArray[23].push(getCurrentTime())
+    }
+
+});
+
+$('#key24').mouseup(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[23].push(getMouseDownTime(23));
+        }
+    }
+    $('#key24').removeClass('activekey');
+});
+
+$('#key24').mouseout(function() {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[23].push(getMouseDownTime(23));
+        }
+    }
+    $('#key24').removeClass('activekey');
 
 });
 
@@ -286,9 +1135,8 @@ $('#recButton').click(function(){
         $('#recButton').removeClass("notRec");
         $('#recButton').addClass("Rec");
         if (reRecording === 1) {
-            notesArray = [];
-            timingLengthsArray = [];
-            timeStampArray = [];
+            let timingLengthsArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+            let timeStampArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
         }
         recording = true;
 
@@ -316,10 +1164,12 @@ $(document).on('click', '#playButton', function(){
     Tone.Transport.start();
     playNotes(instrumentTypes[0],.8,notesArray,convertedLengthArray,convertedTimeStampArray);
 
-    console.log(notesArray);
-    console.log(msToBars(timingLengthsArray));
-
-    console.log(msToBars(timeStampArray));
+    console.log(timingLengthsArray);
+    console.log(timeStampArray);
+    // console.log(notesArray);
+    // console.log(msToBars(timingLengthsArray));
+    //
+    // console.log(msToBars(timeStampArray));
 });
 
 $(document).on('click', '#saveButton', function(){
