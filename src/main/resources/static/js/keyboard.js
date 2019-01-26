@@ -119,7 +119,7 @@ $(document).keyup(function(e) {
         }
         triggeredArray[0] = false;
     }
-        synth.triggerRelease('C3');
+        synth.triggerRelease();
 });
 
 $(document).keydown(function(e) {
@@ -143,7 +143,7 @@ $(document).keyup(function(e) {
         }
         triggeredArray[1] = false;
     }
-    synth.triggerRelease('C#3');
+    synth.triggerRelease();
 });
 
 $(document).keydown(function(e) {
@@ -167,7 +167,7 @@ $(document).keyup(function(e) {
         }
         triggeredArray[2] = false;
     }
-    synth.triggerRelease('D3');
+    synth.triggerRelease();
 });
 
 
@@ -185,27 +185,27 @@ $(document).keyup(function(e) {
 //     //Object inside the Notes object
 //     keyboard: {
 //         // Lower octave.
-//         a: 'Clq',
-//         w: 'C#l',
-//         s: 'Dl',
-//         e: 'D#l',
-//         d: 'El',
-//         f: 'Fl',
-//         t: 'F#l',
-//         g: 'Gl',
-//         y: 'G#l',
-//         h: 'Al',
-//         u: 'A#l',
-//         j: 'Bl',
+//         a: 'C3',
+//         w: 'C#3',
+//         s: 'D3',
+//         e: 'D#3',
+//         d: 'E3',
+//         f: 'F3',
+//         t: 'F#3',
+//         g: 'G3',
+//         y: 'G#3',
+//         h: 'A3',
+//         u: 'A#3',
+//         j: 'B3',
 //         // Upper octave.
-//         k: 'Cu',
-//         o: 'C#u',
-//         l: 'Du',
-//         p: 'D#u',
-//         ';': 'Eu',
-//         "'": 'Fu',
-//         ']': 'F#u',
-//         '\\': 'Gu',
+//         k: 'C4',
+//         o: 'C#4',
+//         l: 'D4',
+//         p: 'D#4',
+//         ';': 'E4',
+//         "'": 'F4',
+//         ']': 'F#4',
+//         '\\': 'G4',
 //     },
 // };
 //
