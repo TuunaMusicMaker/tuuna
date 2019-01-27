@@ -2,8 +2,6 @@ let synth = new Tone.Synth();
 let start;
 let startMouseDownTime = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 let notesArray = [];
-let triggeredArray = [false, false, false];
-
 let timingLengthsArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 let timeStampArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 let reRecording = 0;
@@ -83,9 +81,7 @@ function msToBars(timingLengthArray) {                                          
 
 function getMouseDownTime(keyValue) {
     // if (startMouseDownTime[keyValue] !== null) {
-        console.log(startMouseDownTime[keyValue]);
         let deltaMouse = Date.now() - startMouseDownTime[keyValue];
-        console.log(deltaMouse);
         return deltaMouse + "";
     // }
 }
@@ -98,129 +94,56 @@ function songPacking(valuesArray,lengthsArray,timesArray){
     return outputString;
 }
 
-$(document).keydown(function(e) {
-    if (e.originalEvent.keyCode === 81 && triggeredArray[0] === false) {
-            startMouseDownTime[0] = Date.now();
-            $('#key1').addClass('whitekeypressed');
-            synth.triggerAttack('C3');
-            triggeredArray[0] = true;
-            if (recording === true) {
-                timeStampArray[0].push(getCurrentTime())
-            }
-    }
-
-});
-
-$(document).keyup(function(e) {
-    if (e.originalEvent.keyCode === 81) {
-        $('#key1').removeClass('whitekeypressed');
-        if (recording === true) {
-            timingLengthsArray[0].push(getMouseDownTime(0));
-        }
-        triggeredArray[0] = false;
-    }
-        synth.triggerRelease();
-});
-
-$(document).keydown(function(e) {
-    if (e.originalEvent.keyCode === 87 && triggeredArray[1] === false) {
-        startMouseDownTime[0] = Date.now();
-        $('#key2').addClass('blackkeypressed');
-        synth.triggerAttack('C#3');
-        triggeredArray[1] = true;
-        if (recording === true) {
-            timeStampArray[1].push(getCurrentTime())
-        }
-    }
-
-});
-
-$(document).keyup(function(e) {
-    if (e.originalEvent.keyCode === 87) {
-        $('#key2').removeClass('blackkeypressed');
-        if (recording === true) {
-            timingLengthsArray[1].push(getMouseDownTime(0));
-        }
-        triggeredArray[1] = false;
-    }
-    synth.triggerRelease();
-});
-
-$(document).keydown(function(e) {
-    if (e.originalEvent.keyCode === 69 && triggeredArray[2] === false) {
-        startMouseDownTime[0] = Date.now();
-        $('#key3').addClass('whitekeypressed');
-        synth.triggerAttack('D3');
-        triggeredArray[2] = true;
-        if (recording === true) {
-            timeStampArray[2].push(getCurrentTime())
-        }
-    }
-
-});
-
-$(document).keyup(function(e) {
-    if (e.originalEvent.keyCode === 69) {
-        $('#key3').removeClass('whitekeypressed');
-        if (recording === true) {
-            timingLengthsArray[2].push(getMouseDownTime(0));
-        }
-        triggeredArray[2] = false;
-    }
-    synth.triggerRelease();
-});
-
-
-
-
 // let octave = 4;
-//
-//
-// const keys = [];
-// let prevKey = 0;
-//
-// //Notes object
-// const Notes = {
-//
-//     //Object inside the Notes object
-//     keyboard: {
-//         // Lower octave.
-//         a: 'C3',
-//         w: 'C#3',
-//         s: 'D3',
-//         e: 'D#3',
-//         d: 'E3',
-//         f: 'F3',
-//         t: 'F#3',
-//         g: 'G3',
-//         y: 'G#3',
-//         h: 'A3',
-//         u: 'A#3',
-//         j: 'B3',
-//         // Upper octave.
-//         k: 'C4',
-//         o: 'C#4',
-//         l: 'D4',
-//         p: 'D#4',
-//         ';': 'E4',
-//         "'": 'F4',
-//         ']': 'F#4',
-//         '\\': 'G4',
-//     },
-// };
-//
-// let NotesOnKeyboard = Notes.keyboard;
-//
-// function keyToNotes(key) {
-//     const note = NotesOnKeyboard[key];
-//     if (!note){
-//         return;
-//     }
-//
-//     return Tone.Frequency(note).toNote();
-//
-// }
-//
+const keys = [];
+let prevKey = 0;
+
+//Notes object
+const Notes = {
+
+    //Object inside the Notes object
+    keyboard: {
+        // Lower octave.
+        q: 'C3',
+        '2': 'C#3',
+        w: 'D3',
+        '3': 'D#3',
+        e: 'E3',
+        '4': 'F3',
+        r: 'F#3',
+        '5': 'G3',
+        t: 'G#3',
+        '6': 'A3',
+        y: 'A#3',
+        '7': 'B3',
+        // Upper octave.
+        u: 'C4',
+        '8': 'C#4',
+        i: 'D4',
+        '9': 'D#4',
+        o: 'E4',
+        "0": 'F4',
+        p: 'F#4',
+        '-': 'G4',
+        '[': 'G#4',
+        '=': 'A4',
+        ']': 'A#4',
+        '\\': 'B4',
+    },
+};
+
+let NotesOnKeyboard = Notes.keyboard;
+
+function keyToNotes(key) {
+    const note = NotesOnKeyboard[key];
+    if (!note){
+        return;
+    }
+
+    return Tone.Frequency(note).toNote();
+
+}
+
 // const keyToNote = key => {
 //     const note = NotesOnKeyboard[ key ];
 //     if ( !note ) {
@@ -233,80 +156,255 @@ $(document).keyup(function(e) {
 //             .replace( 'u', octave + 1 )
 //     ).toNote();
 // };
-//
-// const onKeyDown = (() => {
-//     let listener;
-//
-//     return synth => {
-//         document.removeEventListener( 'keydown', listener );
-//
-//         listener = event => {
-//             const { key } = event;
-//
-//             // Only trigger once per keydown event.
-//             if ( !keys[ key ] ) {
-//                 startMouseDownTime = Date.now();
-//                 keys[ key ] = true;
-//
-//                 const note = keyToNote( key );
-//                 if ( note ) {
-//                     synth.triggerAttack( note );
-//                     prevKey = key;
-//                 }
-//             }
-//         };
-//
-//         document.addEventListener( 'keydown', listener );
-//     };
-// })();
-//
-// const onKeyUp = (() => {
-//     let listener;
-//     let prev;
-//
-//
-//     return synth => {
-//         // Clean-up.
-//
-//         if ( prev ) {
-//             prev.triggerRelease();
-//         }
-//
-//         document.removeEventListener( 'keyup', listener );
-//
-//         prev = synth;
-//         listener = event => {
-//
-//
-//             const { key } = event;
-//             if ( keys[ key ] ) {
-//                 keys[ key ] = false;
-//                 if (recording === true) {
-//                     timingLengthsArray.push(getMouseDownTime());
-//                 }
-//
-//                 const note = keyToNote( key );
-//                 if ( synth instanceof Tone.PolySynth ) {
-//                     synth.triggerRelease( note );
-//                 } else if ( note && key === prevKey ) {
-//                     // Trigger release if this is the previous note played.
-//                     synth.triggerRelease();
-//                 }
-//             }
-//         };
-//
-//         document.addEventListener( 'keyup', listener );
-//     };
-// })();
-//
-// // Init.
-// (() => {
-//     const synth = new Tone.PolySynth( 10 );
-//     synth.toMaster();
-//
-//     onKeyDown( synth );
-//     onKeyUp( synth );
-// })();
+
+const onKeyDown = (() => {
+    let listener;
+
+    return synth => {
+        document.removeEventListener( 'keydown', listener );
+
+        listener = event => {
+            const { key } = event;
+
+            // Only trigger once per keydown event.
+            if ( !keys[ key ] ) {
+                // startMouseDownTime[0] = Date.now();
+                keys[ key ] = true;
+
+                const note = keyToNotes( key );
+                if ( note ) {
+                    if (recording === true) {
+                        switch (note) {
+                            case 'C3':
+                                startMouseDownTime[0] = Date.now();
+                                timeStampArray[0].push(getCurrentTime());
+                                break;
+                            case 'C#3':
+                                startMouseDownTime[1] = Date.now();
+                                timeStampArray[1].push(getCurrentTime());
+                                break;
+                            case 'D3':
+                                startMouseDownTime[2] = Date.now();
+                                timeStampArray[2].push(getCurrentTime());
+                                break;
+                            case 'D#3':
+                                startMouseDownTime[3] = Date.now();
+                                timeStampArray[3].push(getCurrentTime());
+                                break;
+                            case 'E3':
+                                startMouseDownTime[4] = Date.now();
+                                timeStampArray[4].push(getCurrentTime());
+                                break;
+                            case 'F3':
+                                startMouseDownTime[5] = Date.now();
+                                timeStampArray[5].push(getCurrentTime());
+                                break;
+                            case 'F#3':
+                                startMouseDownTime[6] = Date.now();
+                                timeStampArray[6].push(getCurrentTime());
+                                break;
+                            case 'G3':
+                                startMouseDownTime[7] = Date.now();
+                                timeStampArray[7].push(getCurrentTime());
+                                break;
+                            case 'G#3':
+                                startMouseDownTime[8] = Date.now();
+                                timeStampArray[8].push(getCurrentTime());
+                                break;
+                            case 'A3':
+                                startMouseDownTime[9] = Date.now();
+                                timeStampArray[9].push(getCurrentTime());
+                                break;
+                            case 'A#3':
+                                startMouseDownTime[10] = Date.now();
+                                timeStampArray[10].push(getCurrentTime());
+                                break;
+                            case 'B3':
+                                startMouseDownTime[11] = Date.now();
+                                timeStampArray[11].push(getCurrentTime());
+                                break;
+                            case 'C4':
+                                startMouseDownTime[12] = Date.now();
+                                timeStampArray[12].push(getCurrentTime());
+                                break;
+                            case 'C#4':
+                                startMouseDownTime[13] = Date.now();
+                                timeStampArray[13].push(getCurrentTime());
+                                break;
+                            case 'D4':
+                                startMouseDownTime[14] = Date.now();
+                                timeStampArray[14].push(getCurrentTime());
+                                break;
+                            case 'D#4':
+                                startMouseDownTime[15] = Date.now();
+                                timeStampArray[15].push(getCurrentTime());
+                                break;
+                            case 'E4':
+                                startMouseDownTime[16] = Date.now();
+                                timeStampArray[16].push(getCurrentTime());
+                                break;
+                            case 'F4':
+                                startMouseDownTime[17] = Date.now();
+                                timeStampArray[17].push(getCurrentTime());
+                                break;
+                            case 'F#4':
+                                startMouseDownTime[18] = Date.now();
+                                timeStampArray[18].push(getCurrentTime());
+                                break;
+                            case 'G4':
+                                startMouseDownTime[19] = Date.now();
+                                timeStampArray[19].push(getCurrentTime());
+                                break;
+                            case 'G#4':
+                                startMouseDownTime[20] = Date.now();
+                                timeStampArray[20].push(getCurrentTime());
+                                break;
+                            case 'A4':
+                                startMouseDownTime[21] = Date.now();
+                                timeStampArray[21].push(getCurrentTime());
+                                break;
+                            case 'A#4':
+                                startMouseDownTime[22] = Date.now();
+                                timeStampArray[0].push(getCurrentTime());
+                                break;
+                            case 'B4':
+                                startMouseDownTime[23] = Date.now();
+                                timeStampArray[23].push(getCurrentTime());
+                                break;
+                        }
+                    }
+                    synth.triggerAttack( note );
+                    prevKey = key;
+                }
+            }
+        };
+
+        document.addEventListener( 'keydown', listener );
+    };
+})();
+
+const onKeyUp = (() => {
+    let listener;
+    let prev;
+
+
+    return synth => {
+
+        if ( prev ) {
+            prev.triggerRelease();
+        }
+
+        document.removeEventListener( 'keyup', listener );
+
+        prev = synth;
+        listener = event => {
+
+
+            const { key } = event;
+            if ( keys[ key ] ) {
+                keys[ key ] = false;
+                // if (recording === true) {
+                //     timingLengthsArray[0].push(getMouseDownTime(0));
+                // }
+
+                const note = keyToNotes( key );
+                if ( synth instanceof Tone.PolySynth ) {
+                    synth.triggerRelease( note );
+                    if (recording === true) {
+                        switch (note) {
+                            case 'C3':
+                                timingLengthsArray[0].push(getMouseDownTime(0));
+                                break;
+                            case 'C#3':
+                                timingLengthsArray[1].push(getMouseDownTime(1));
+                                break;
+                            case 'D3':
+                                timingLengthsArray[2].push(getMouseDownTime(2));
+                                break;
+                            case 'D#3':
+                                timingLengthsArray[3].push(getMouseDownTime(3));
+                                break;
+                            case 'E3':
+                                timingLengthsArray[4].push(getMouseDownTime(4));
+                                break;
+                            case 'F3':
+                                timingLengthsArray[5].push(getMouseDownTime(5));
+                                break;
+                            case 'F#3':
+                                timingLengthsArray[6].push(getMouseDownTime(6));
+                                break;
+                            case 'G3':
+                                timingLengthsArray[7].push(getMouseDownTime(7));
+                                break;
+                            case 'G#3':
+                                timingLengthsArray[8].push(getMouseDownTime(8));
+                                break;
+                            case 'A3':
+                                timingLengthsArray[9].push(getMouseDownTime(9));
+                                break;
+                            case 'A#3':
+                                timingLengthsArray[10].push(getMouseDownTime(10));
+                                break;
+                            case 'B3':
+                                timingLengthsArray[11].push(getMouseDownTime(11));
+                                break;
+                            case 'C4':
+                                timingLengthsArray[12].push(getMouseDownTime(12));
+                                break;
+                            case 'C#4':
+                                timingLengthsArray[13].push(getMouseDownTime(13));
+                                break;
+                            case 'D4':
+                                timingLengthsArray[14].push(getMouseDownTime(14));
+                                break;
+                            case 'D#4':
+                                timingLengthsArray[15].push(getMouseDownTime(15));
+                                break;
+                            case 'E4':
+                                timingLengthsArray[16].push(getMouseDownTime(16));
+                                break;
+                            case 'F4':
+                                timingLengthsArray[17].push(getMouseDownTime(17));
+                                break;
+                            case 'F#4':
+                                timingLengthsArray[18].push(getMouseDownTime(18));
+                                break;
+                            case 'G4':
+                                timingLengthsArray[19].push(getMouseDownTime(19));
+                                break;
+                            case 'G#4':
+                                timingLengthsArray[20].push(getMouseDownTime(20));
+                                break;
+                            case 'A4':
+                                timingLengthsArray[21].push(getMouseDownTime(21));
+                                break;
+                            case 'A#4':
+                                timingLengthsArray[22].push(getMouseDownTime(22));
+                                break;
+                            case 'B4':
+                                timingLengthsArray[23].push(getMouseDownTime(23));
+                                break;
+                        }
+                    }
+                } else if ( note && key === prevKey ) {
+                    // Trigger release if this is the previous note played.
+                    synth.triggerRelease();
+                }
+            }
+        };
+
+        document.addEventListener( 'keyup', listener );
+    };
+})();
+
+// Init.
+(() => {
+    const synth = new Tone.PolySynth( 10 );
+    synth.toMaster();
+
+    onKeyDown( synth );
+    onKeyUp( synth );
+})();
 
 
 
@@ -331,6 +429,7 @@ $('#key1').mouseup(function() {
         }
     }
     $('#key1').removeClass('activekey');
+
 });
 
 $('#key1').mouseout(function() {
@@ -350,6 +449,7 @@ $('#key2').mousedown(function() {
     startMouseDownTime[1] = Date.now();
     $(this).addClass('activekey');
 
+
     if (recording === true) {
             timeStampArray[1].push(getCurrentTime())
         }
@@ -364,6 +464,7 @@ $('#key2').mouseup(function() {
         }
     }
     $('#key2').removeClass('activekey');
+
 });
 
 $('#key2').mouseout(function() {
@@ -1135,8 +1236,8 @@ $('#recButton').click(function(){
         $('#recButton').removeClass("notRec");
         $('#recButton').addClass("Rec");
         if (reRecording === 1) {
-            let timingLengthsArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
-            let timeStampArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+            timingLengthsArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+            timeStampArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
         }
         recording = true;
 
@@ -1179,3 +1280,27 @@ $(document).on('click', '#saveButton', function(){
     console.log(songString);
     $("#songHash").val(songString);
 });
+
+// $(document).keydown(function(e) {
+//     if (e.originalEvent.keyCode === 81 && triggeredArray[0] === false) {
+//             startMouseDownTime[0] = Date.now();
+//             $('#key1').addClass('whitekeypressed');
+//             synth.triggerAttack('C3');
+//             triggeredArray[0] = true;
+//             if (recording === true) {
+//                 timeStampArray[0].push(getCurrentTime())
+//             }
+//     }
+//
+// });
+//
+// $(document).keyup(function(e) {
+//     if (e.originalEvent.keyCode === 81) {
+//         $('#key1').removeClass('whitekeypressed');
+//         if (recording === true) {
+//             timingLengthsArray[0].push(getMouseDownTime(0));
+//         }
+//         triggeredArray[0] = false;
+//     }
+//         synth.triggerRelease('C3');
+// });
