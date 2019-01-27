@@ -60,11 +60,11 @@ li.whitekeys:hover{
 }
 
 .whitekeypressed{
-    background-color: #d8e2ee;
+    background-color: #fffbd3;
 }
 
 .blackkeypressed{
-    background-color: #323232;
+    background-color: #fffbd3;
 }
 
 .blackkeys{
