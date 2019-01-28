@@ -62,8 +62,7 @@ function countMaxRepeats(array){
 
 function getCurrentTime() {
     if (start !== null) {
-        let delta = Date.now() - start;
-        return delta + "";
+        return Date.now() - start;
     }
 }
 
