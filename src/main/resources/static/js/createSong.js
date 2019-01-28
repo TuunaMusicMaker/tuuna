@@ -203,105 +203,223 @@ const onKeyDown = (() => {
 
                 const note = keyToNotes( key );
                 if ( note ) {
-                    if (recording === true) {
-                        switch (note) {
-                            case 'C3':
+                    switch (note) {
+                        case 'C3':
+                            $(document).ready(function () {
+                                $('#key1').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[0] = Date.now();
                                 timeStampArray[0].push(getCurrentTime());
-                                break;
-                            case 'C#3':
+                            }
+                            break;
+                        case 'C#3':
+                            $(document).ready(function () {
+                                $('#key2').addClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[1] = Date.now();
                                 timeStampArray[1].push(getCurrentTime());
-                                break;
-                            case 'D3':
+                            }
+                            break;
+                        case 'D3':
+                            $(document).ready(function () {
+                                $('#key3').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[2] = Date.now();
                                 timeStampArray[2].push(getCurrentTime());
-                                break;
-                            case 'D#3':
+                            }
+                            break;
+                        case 'D#3':
+                            $(document).ready(function () {
+                                $('#key4').addClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[3] = Date.now();
                                 timeStampArray[3].push(getCurrentTime());
-                                break;
-                            case 'E3':
+                            }
+                            break;
+                        case 'E3':
+                            $(document).ready(function () {
+                                $('#key5').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[4] = Date.now();
                                 timeStampArray[4].push(getCurrentTime());
-                                break;
-                            case 'F3':
+                            }
+                            break;
+                        case 'F3':
+                            $(document).ready(function () {
+                                $('#key6').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[5] = Date.now();
                                 timeStampArray[5].push(getCurrentTime());
-                                break;
-                            case 'F#3':
+                            }
+                            break;
+                        case 'F#3':
+                            $(document).ready(function () {
+                                $('#key7').addClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[6] = Date.now();
-                                timeStampArray[6].push(getCurrentTime());
-                                break;
-                            case 'G3':
+                            }
+                            timeStampArray[6].push(getCurrentTime());
+                            break;
+                        case 'G3':
+                            $(document).ready(function () {
+                                $('#key8').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[7] = Date.now();
                                 timeStampArray[7].push(getCurrentTime());
-                                break;
-                            case 'G#3':
+                            }
+                            break;
+                        case 'G#3':
+                            $(document).ready(function () {
+                                $('#key9').addClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[8] = Date.now();
                                 timeStampArray[8].push(getCurrentTime());
-                                break;
-                            case 'A3':
+                            }
+                            break;
+                        case 'A3':
+                            $(document).ready(function () {
+                                $('#key10').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[9] = Date.now();
                                 timeStampArray[9].push(getCurrentTime());
-                                break;
-                            case 'A#3':
+                            }
+                            break;
+                        case 'A#3':
+                            $(document).ready(function () {
+                                $('#key11').addClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[10] = Date.now();
                                 timeStampArray[10].push(getCurrentTime());
-                                break;
-                            case 'B3':
+                            }
+                            break;
+                        case 'B3':
+                            $(document).ready(function () {
+                                $('#key12').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[11] = Date.now();
                                 timeStampArray[11].push(getCurrentTime());
-                                break;
-                            case 'C4':
+                            }
+                            break;
+                        case 'C4':
+                            $(document).ready(function () {
+                                $('#key13').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[12] = Date.now();
                                 timeStampArray[12].push(getCurrentTime());
-                                break;
-                            case 'C#4':
+                            }
+                            break;
+                        case 'C#4':
+                            $(document).ready(function () {
+                                $('#key14').addClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[13] = Date.now();
                                 timeStampArray[13].push(getCurrentTime());
-                                break;
-                            case 'D4':
+                            }
+                            break;
+                        case 'D4':
+                            $(document).ready(function () {
+                                $('#key15').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[14] = Date.now();
                                 timeStampArray[14].push(getCurrentTime());
-                                break;
-                            case 'D#4':
+                            }
+                            break;
+                        case 'D#4':
+                            $(document).ready(function () {
+                                $('#key16').addClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[15] = Date.now();
                                 timeStampArray[15].push(getCurrentTime());
-                                break;
-                            case 'E4':
+                            }
+                            break;
+                        case 'E4':
+                            $(document).ready(function () {
+                                $('#key17').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[16] = Date.now();
                                 timeStampArray[16].push(getCurrentTime());
-                                break;
-                            case 'F4':
+                            }
+                            break;
+                        case 'F4':
+                            $(document).ready(function () {
+                                $('#key18').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[17] = Date.now();
                                 timeStampArray[17].push(getCurrentTime());
-                                break;
-                            case 'F#4':
+                            }
+                            break;
+                        case 'F#4':
+                            $(document).ready(function () {
+                                $('#key19').addClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[18] = Date.now();
                                 timeStampArray[18].push(getCurrentTime());
-                                break;
-                            case 'G4':
+                            }
+                            break;
+                        case 'G4':
+                            $(document).ready(function () {
+                                $('#key20').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[19] = Date.now();
                                 timeStampArray[19].push(getCurrentTime());
-                                break;
-                            case 'G#4':
+                            }
+                            break;
+                        case 'G#4':
+                            $(document).ready(function () {
+                                $('#key21').addClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[20] = Date.now();
                                 timeStampArray[20].push(getCurrentTime());
-                                break;
-                            case 'A4':
+                            }
+                            break;
+                        case 'A4':
+                            $(document).ready(function () {
+                                $('#key22').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[21] = Date.now();
                                 timeStampArray[21].push(getCurrentTime());
-                                break;
-                            case 'A#4':
+                            }
+                            break;
+                        case 'A#4':
+                            $(document).ready(function () {
+                                $('#key23').addClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[22] = Date.now();
-                                timeStampArray[0].push(getCurrentTime());
-                                break;
-                            case 'B4':
+                                timeStampArray[22].push(getCurrentTime());
+                            }
+                            break;
+                        case 'B4':
+                            $(document).ready(function () {
+                                $('#key24').addClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 startMouseDownTime[23] = Date.now();
                                 timeStampArray[23].push(getCurrentTime());
-                                break;
-                        }
+                            }
+                            break;
                     }
                     synth.triggerAttack( note );
                     prevKey = key;
@@ -340,81 +458,199 @@ const onKeyUp = (() => {
                 const note = keyToNotes( key );
                 if ( synth instanceof Tone.PolySynth ) {
                     synth.triggerRelease( note );
-                    if (recording === true) {
-                        switch (note) {
-                            case 'C3':
+                    switch (note) {
+                        case 'C3':
+                            $(document).ready(function () {
+                                $('#key1').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[0].push(getMouseDownTime(0));
-                                break;
-                            case 'C#3':
+                            }
+                            break;
+                        case 'C#3':
+                            $(document).ready(function () {
+                                $('#key2').removeClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[1].push(getMouseDownTime(1));
-                                break;
-                            case 'D3':
+                            }
+                            break;
+                        case 'D3':
+                            $(document).ready(function () {
+                                $('#key3').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[2].push(getMouseDownTime(2));
-                                break;
-                            case 'D#3':
+                            }
+                            break;
+                        case 'D#3':
+                            $(document).ready(function () {
+                                $('#key4').removeClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[3].push(getMouseDownTime(3));
-                                break;
-                            case 'E3':
+                            }
+                            break;
+                        case 'E3':
+                            $(document).ready(function () {
+                                $('#key5').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[4].push(getMouseDownTime(4));
-                                break;
-                            case 'F3':
+                            }
+                            break;
+                        case 'F3':
+                            $(document).ready(function () {
+                                $('#key6').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[5].push(getMouseDownTime(5));
-                                break;
-                            case 'F#3':
+                            }
+                            break;
+                        case 'F#3':
+                            $(document).ready(function () {
+                                $('#key7').removeClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[6].push(getMouseDownTime(6));
-                                break;
-                            case 'G3':
+                            }
+                            break;
+                        case 'G3':
+                            $(document).ready(function () {
+                                $('#key8').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[7].push(getMouseDownTime(7));
-                                break;
-                            case 'G#3':
+                            }
+                            break;
+                        case 'G#3':
+                            $(document).ready(function () {
+                                $('#key9').removeClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[8].push(getMouseDownTime(8));
-                                break;
-                            case 'A3':
+                            }
+                            break;
+                        case 'A3':
+                            $(document).ready(function () {
+                                $('#key10').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[9].push(getMouseDownTime(9));
-                                break;
-                            case 'A#3':
+                            }
+                            break;
+                        case 'A#3':
+                            $(document).ready(function () {
+                                $('#key11').removeClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[10].push(getMouseDownTime(10));
-                                break;
-                            case 'B3':
+                            }
+                            break;
+                        case 'B3':
+                            $(document).ready(function () {
+                                $('#key12').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[11].push(getMouseDownTime(11));
-                                break;
-                            case 'C4':
+                            }
+                            break;
+                        case 'C4':
+                            $(document).ready(function () {
+                                $('#key13').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[12].push(getMouseDownTime(12));
-                                break;
-                            case 'C#4':
+                            }
+                            break;
+                        case 'C#4':
+                            $(document).ready(function () {
+                                $('#key14').removeClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[13].push(getMouseDownTime(13));
-                                break;
-                            case 'D4':
+                            }
+                            break;
+                        case 'D4':
+                            $(document).ready(function () {
+                                $('#key15').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[14].push(getMouseDownTime(14));
-                                break;
-                            case 'D#4':
+                            }
+                            break;
+                        case 'D#4':
+                            $(document).ready(function () {
+                                $('#key16').removeClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[15].push(getMouseDownTime(15));
-                                break;
-                            case 'E4':
+                            }
+                            break;
+                        case 'E4':
+                            $(document).ready(function () {
+                                $('#key17').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[16].push(getMouseDownTime(16));
-                                break;
-                            case 'F4':
+                            }
+                            break;
+                        case 'F4':
+                            $(document).ready(function () {
+                                $('#key18').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[17].push(getMouseDownTime(17));
-                                break;
-                            case 'F#4':
+                            }
+                            break;
+                        case 'F#4':
+                            $(document).ready(function () {
+                                $('#key19').removeClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[18].push(getMouseDownTime(18));
-                                break;
-                            case 'G4':
+                            }
+                            break;
+                        case 'G4':
+                            $(document).ready(function () {
+                                $('#key20').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[19].push(getMouseDownTime(19));
-                                break;
-                            case 'G#4':
+                            }
+                            break;
+                        case 'G#4':
+                            $(document).ready(function () {
+                                $('#key21').removeClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[20].push(getMouseDownTime(20));
-                                break;
-                            case 'A4':
+                            }
+                            break;
+                        case 'A4':
+                            $(document).ready(function () {
+                                $('#key22').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[21].push(getMouseDownTime(21));
-                                break;
-                            case 'A#4':
+                            }
+                            break;
+                        case 'A#4':
+                            $(document).ready(function () {
+                                $('#key23').removeClass('blackkeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[22].push(getMouseDownTime(22));
-                                break;
-                            case 'B4':
+                            }
+                            break;
+                        case 'B4':
+                            $(document).ready(function () {
+                                $('#key24').removeClass('whitekeypressed');
+                            });
+                            if(recording === true) {
                                 timingLengthsArray[23].push(getMouseDownTime(23));
-                                break;
-                        }
+                            }
+                            break;
                     }
                 } else if ( note && key === prevKey ) {
                     // Trigger release if this is the previous note played.
@@ -426,7 +662,6 @@ const onKeyUp = (() => {
         document.addEventListener( 'keyup', listener );
     };
 })();
-
 // Init.
 (() => {
     const synth = new Tone.PolySynth( 10 );
