@@ -13,8 +13,8 @@
             <h3 class="card-title">
                 Are you sure you wish to ban this user?
             </h3>
-            <p>Once you ban a user, there's no going back. This is a permanent action.</p>
-            <form action="" th:action="@{/admin/{id}/ban(id=${id})}" method="post" th:object="${user}">
+            <p>Once a user is banned, they can no longer access the website through their account. Once this action is done, it will not be possible to un-ban them.</p>
+            <form action="" th:action="@{/admin/{id}/ban-user(id=${id})}" method="post" th:object="${user}">
                 <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><ion-icon name="thumbs-up"></ion-icon>  Yes</button>
                 <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/users/{id}(id=${id})}"><ion-icon name="thumbs-down"></ion-icon>  No</a>
             </form>

@@ -7,6 +7,7 @@ import com.codeup.tuuna.Repositories.RatingRepository;
 import com.codeup.tuuna.Repositories.SongRepository;
 import com.codeup.tuuna.Repositories.UserRepository;
 import com.google.common.collect.Lists;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +38,12 @@ public class HomeController {
 
     @GetMapping("/")
     public String homePage(Model model) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (user.isBanned()) {
+                return "redirect:/you-got-banned";
+            }
+        }
         List<Song> recentSongs = Lists.newArrayList(songDao.findAll());
         if (recentSongs.size() > 0) {
             Collections.reverse(recentSongs);
@@ -93,11 +100,23 @@ public class HomeController {
 
     @GetMapping("/about-us")
     public String aboutUs() {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (user.isBanned()) {
+                return "redirect:/you-got-banned";
+            }
+        }
         return "about-us";
     }
 
     @GetMapping("/search")
     public String getSearchForm() {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (user.isBanned()) {
+                return "redirect:/you-got-banned";
+            }
+        }
         return "search/index";
     }
 
@@ -166,6 +185,12 @@ public class HomeController {
 
     @GetMapping("/search/results")
     public String showResults(@ModelAttribute (name = "searchResults") ArrayList<Song> searchResults) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (user.isBanned()) {
+                return "redirect:/you-got-banned";
+            }
+        }
         return "search/results";
     }
 }

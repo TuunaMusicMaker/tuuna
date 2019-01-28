@@ -136,3 +136,29 @@ body {
 main {
     flex: 1 0 auto;
 }
+
+.darkness {
+    background-color: #231f20;
+    color: #889696;
+}
+
+a.darkness-link {
+    color: #889696;
+}
+
+a.darkness-link:hover {
+    color: #df2935;
+}
+
+.darkness-font {
+    color: #231f20;
+}
+
+.bad-main {
+    font-family: 'Fira Sans Condensed', sans-serif;
+    background-color: #231f20;
+}
+
+.anger-fish {
+    max-height: 64px;
+}

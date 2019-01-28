@@ -34,6 +34,9 @@ public class UserController {
 
     @GetMapping("/register")
     public String showSignupForm(Model model){
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            return "redirect:/";
+        }
         model.addAttribute("user", new User());
         return "users/register";
     }
@@ -58,7 +61,9 @@ public class UserController {
     @GetMapping("/users/edit")
     public String showUserEditForm(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+        if (user.isBanned()) {
+            return "redirect:/you-got-banned";
+        }
         user.setPhoneNumber(user.getPhoneNumber().substring(2));
         model.addAttribute("user", user);
         return "users/edit";
@@ -90,6 +95,9 @@ public class UserController {
     @GetMapping("/users/profile")
     public String getProfilePage(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user.isBanned()) {
+            return "redirect:/you-got-banned";
+        }
         List<Song> userSongs = songs.findAllByUserId(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         List<Comment> userComments = comments.findAllByUserId(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
@@ -102,6 +110,9 @@ public class UserController {
     public String getOtherProfiles(@PathVariable long id, Model model) {
         if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (currentUser.isBanned()) {
+                return "redirect:/you-got-banned";
+            }
             if (currentUser.getId() == id) {
                 return "redirect:/users/profile";
             } else {
