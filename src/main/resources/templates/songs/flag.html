@@ -14,7 +14,7 @@
                 Are you sure you wish to flag this song?
             </h3>
             <p>Flagging a song will allow an administrator to review the song for any issues. A flagged song is not removed or deleted automatically.</p>
-            <form action="" th:action="@{/songs/{id}/delete(id=${id})}" method="post" th:object="${song}">
+            <form action="" th:action="@{/songs/{id}/flag(id=${id})}" method="post" th:object="${song}">
                 <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><ion-icon name="thumbs-up"></ion-icon>  Yes</button>
                 <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><ion-icon name="thumbs-down"></ion-icon>  No</a>
             </form>

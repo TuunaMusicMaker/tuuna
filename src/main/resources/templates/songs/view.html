@@ -26,14 +26,14 @@
                 <a class="waves-effect waves-red btn-small facebook-800" th:href="@{/songs/{id}/edit(id=${song.id})}"><ion-icon name="construct"></ion-icon>  Edit</a>
                 <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/delete(id=${song.id})}"><ion-icon name="trash"></ion-icon>  Delete</a>
             </div>
-            <!--<div th:if="${!currentUsername == username}">-->
-                <!--<div th:if="${!hasRated}">-->
-                    <!--<form action="" th:action="@{/songs/{id}/rating(id=${song.id})}" method="post" th:object="${rating}">-->
-                        <!--<button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="heart"></ion-icon>  Like</button>-->
-                    <!--</form>-->
-                <!--</div>-->
-                <!--<a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/flag(id=${song.id})}"><ion-icon name="flag"></ion-icon>  Flag This Song</a>-->
-            <!--</div>-->
+            <div th:if="${!currentUsername == username}">
+                <div th:if="${!hasRated}">
+                    <form action="" th:action="@{/songs/{id}/rating(id=${song.id})}" method="post" th:object="${rating}">
+                        <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="heart"></ion-icon>  Like</button>
+                    </form>
+                </div>
+                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/flag(id=${song.id})}"><ion-icon name="flag"></ion-icon>  Flag This Song</a>
+            </div>
 
         </div>
     </div>

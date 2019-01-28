@@ -129,9 +129,17 @@ public class SongController {
         return "redirect:/songs";
     }
 
-    @GetMapping("")
-    public String flagUser() {
-        return "";
+    @GetMapping("songs/{id}/flag")
+    public String flagSongConfirm(@PathVariable long id, Model model) {
+        model.addAttribute("song", songDao.findOne(id));
+        model.addAttribute("id", id);
+        return "songs/flag";
+    }
+
+    @PostMapping("songs/{id}/flag")
+    public String flagSong(@PathVariable long id) {
+        songDao.findOne(id).setFlagged(true);
+        return "songs/flag";
     }
 
     @PostMapping("songs/{id}/comment")
