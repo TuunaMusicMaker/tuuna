@@ -10,12 +10,12 @@ Tuuna Music Maker is a web-application that allows registered users to create so
 | ~~Register~~ | [X] | [X] | [X] |
 | ~~Login~~ | [X] | [X] | [X] |
 | ~~Edit User Profile~~ | [X] | [X] | [X] |
-| Admin Ban User | [ ] | [ ] | [ ] |
+| Admin Ban User | [X] | [X] | [-] |
 | ~~Profile~~ | [X] | [X] | [X] |
 | View Song | [X] | [ ] | [X] |
 | ~~Create Song~~ | [X] | [X] | [X] |
 | ~~Index of Songs~~ | [X] | [X] | [X] |
-| Flag Song | [ ] | [ ] | [ ] |
+| Flag Song | [X] | [ ] | [ ] |
 | Edit Song | [X] | [X] | [ ] |
 | Delete Song | [X] | [X] | [ ] |
 | ~~Search Index~~ | [X] | [X] | [X] |
@@ -23,3 +23,4 @@ Tuuna Music Maker is a web-application that allows registered users to create so
 | Create Comment | [X] | [X] | [X] |
 | Edit Comment | [ ] | [ ] | [ ] |
 | Delete Comment | [ ] | [ ] | [ ] |
+| Admin See Flagged Items | [ ] | [ ] | [ ] |
