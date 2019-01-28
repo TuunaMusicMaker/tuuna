@@ -31,22 +31,7 @@
         </div>
     </nav>
 
-    <nav th:fragment="banned-navbar" class="darkness">
-        <div class="nav-wrapper">
-            <div class="container">
-                <a href="/" class="brand-logo"><img src="../static/img/anger_fish.png" th:src="@{/img/anger_fish.png}" alt="anger fish" class="anger-fish" /></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li sec:authorize="isAuthenticated()">
-                        <form th:action="@{/logout}" th:method="post" id="form1">
-                            <a class="darkness-link" onclick="document.getElementById('form1').submit();"><ion-icon name="ios-log-out"></ion-icon>  Log-Out</a>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <footer th:fragment="footer" class="page-footer colorado-e3">
+    <footer th:fragment="blue-footer" class="page-footer colorado-e3">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
@@ -70,7 +55,22 @@
         </div>
     </footer>
 
-    <footer th:fragment="banned-footer" class="page-footer darkness">
+    <nav th:fragment="banned-navbar" class="darkness">
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="/" class="brand-logo"><img src="../static/img/anger_fish.png" th:src="@{/img/anger_fish.png}" alt="anger fish" class="anger-fish" /></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li sec:authorize="isAuthenticated()">
+                        <form th:action="@{/logout}" th:method="post" id="form1">
+                            <a class="darkness-link" onclick="document.getElementById('form1').submit();"><ion-icon name="ios-log-out"></ion-icon>  Log-Out</a>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <footer th:fragment="banned-foot" class="page-footer darkness">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
