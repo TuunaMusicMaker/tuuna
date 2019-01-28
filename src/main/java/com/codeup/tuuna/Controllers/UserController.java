@@ -13,10 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -99,5 +96,23 @@ public class UserController {
         model.addAttribute("userSongs", userSongs);
         model.addAttribute("userComments", userComments);
         return "users/profile";
+    }
+
+    @GetMapping("/users/{id}")
+    public String getOtherProfiles(@PathVariable long id, Model model) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (currentUser.getId() == id) {
+                return "redirect:/users/profile";
+            } else {
+                model.addAttribute("currentUser", currentUser);
+                model.addAttribute("isAdmin", currentUser.isAdmin());
+                model.addAttribute("user", users.findOne(id));
+                model.addAttribute("userIsAdmin", users.findOne(id).isAdmin());
+                model.addAttribute("id", id);
+                return "users/other-profile";
+            }
+        }
+        return "redirect:/";
     }
 }

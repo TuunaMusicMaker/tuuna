@@ -10,9 +10,16 @@
             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
         </div>
         <div class="card-content">
-            <h3 class="card-title">Welcome back, <span th:text="${user.username}" /></h3>
-            <p>It's so great to see you again! How have you been?</p>
-            <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/users/edit}"><ion-icon name="ios-body"></ion-icon>  Edit Profile</a>
+            <h3 class="card-title">You're looking at <span th:text="${user.username}" />'s profile</h3>
+            <p>Below you can see their posts and comments!</p>
+            <br />
+            <div th:if="${isAdmin}" class="row">
+                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/admin/{id}/ban-user(id=${id})}"><ion-icon name="close"></ion-icon>  Ban This User</a>
+
+                <a th:if="${!userIsAdmin}" class="waves-effect waves-teal btn-small bluer-back" th:href="@{/admin/{id}/promote(id=${id})}"><ion-icon name="close"></ion-icon>  Promote This User</a>
+
+                <a th:if="${userIsAdmin}" class="waves-effect waves-red btn-small four-41ed" th:href="@{/admin/{id}/demote(id=${id})}"><ion-icon name="close"></ion-icon>  Demote This Admin</a>
+            </div>
         </div>
     </div>
 

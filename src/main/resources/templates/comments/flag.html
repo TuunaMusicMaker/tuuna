@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head ('Flag a Song')" />
+<head th:replace="partials :: head ('Flag a Comment')" />
 <body class="main">
 <nav th:replace="partials :: navbar" />
 <header></header>
@@ -11,10 +11,10 @@
         </div>
         <div class="card-content">
             <h3 class="card-title">
-                Are you sure you wish to flag this song?
+                Are you sure you wish to flag this comment?
             </h3>
-            <p>Flagging a song will allow an administrator to review the song for any issues. A flagged song is not removed or deleted automatically.</p>
-            <form action="" th:action="@{/songs/{id}/flag(id=${id})}" method="post" th:object="${song}">
+            <p>Flagging a comment will allow an administrator to review the comment for any issues. A flagged comment is not removed or deleted automatically.</p>
+            <form action="" th:action="@{/comment/{id}/flag(id=${id})}" method="post" th:object="${comment}">
                 <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><ion-icon name="thumbs-up"></ion-icon>  Yes</button>
                 <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><ion-icon name="thumbs-down"></ion-icon>  No</a>
             </form>
