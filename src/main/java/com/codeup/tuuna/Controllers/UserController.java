@@ -5,8 +5,12 @@ import com.codeup.tuuna.Models.User;
 import com.codeup.tuuna.Repositories.CommentRepository;
 import com.codeup.tuuna.Repositories.SongRepository;
 import com.codeup.tuuna.Repositories.Users;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -76,15 +81,21 @@ public class UserController {
         user.setAdmin(false);
         user.setBanned(false);
         users.save(user);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User userDetails = (User) authentication.getPrincipal();
+        userDetails.setUsername(username);
+        userDetails.setPhoneNumber(phoneNumber);
+        userDetails.setEmail(email);
+        userDetails.setPassword(hash);
         return "redirect:/users/profile";
     }
 
     @GetMapping("/users/profile")
     public String getProfilePage(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Song> userSongs = songs.findAllByUserId(user.getId());
-        List<Comment> userComments = comments.findAllByUserId(user.getId());
-        model.addAttribute("user", user);
+        List<Song> userSongs = songs.findAllByUserId(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        List<Comment> userComments = comments.findAllByUserId(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("userSongs", userSongs);
         model.addAttribute("userComments", userComments);
         return "users/profile";
