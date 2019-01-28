@@ -433,8 +433,8 @@ const onKeyUp = (() => {
     const synth = new Tone.PolySynth( 10 );
     synth.toMaster();
 
-    onKeyDown( synth );
-    onKeyUp( synth );
+        onKeyDown(synth);
+        onKeyUp(synth);
 })();
 
 
@@ -1331,3 +1331,27 @@ $(document).on('click', '#saveButton', function(){
 //     }
 //         synth.triggerRelease('C3');
 // });
+
+$('#title').focusin(function() {
+    onKeyDown(null);
+    onKeyUp(null);
+});
+
+$('#title').focusout(function() {
+    const synth = new Tone.PolySynth( 10 );
+    synth.toMaster();
+
+    onKeyDown(synth);
+    onKeyUp(synth);});
+
+$('#description').focusin(function() {
+    onKeyDown(null);
+    onKeyUp(null);
+});
+
+$('#description').focusout(function() {
+    const synth = new Tone.PolySynth( 10 );
+    synth.toMaster();
+
+    onKeyDown(synth);
+    onKeyUp(synth);});
