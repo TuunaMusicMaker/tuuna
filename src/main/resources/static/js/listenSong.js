@@ -4,17 +4,22 @@ let instrumentTypes = ['triangle','sine','sawtooth'];
 let retrievedSongArrays;
 
 function playNotes(noteInstrument,noteVolume,noteValues,noteLengths,noteTimes){
-    let instrumentInstances = [];
-    for (let z = 0; z < countMaxRepeats(noteTimes); z++){
-        instrumentInstances.push(createInstrument(noteInstrument, noteVolume))
-    }
-    for (let i = 0; i < noteValues.length; ) {
-        let j = 0;
-        do {
-            playNote(instrumentInstances[j], noteValues[i], noteLengths[i], noteTimes[i]);
-            i++;
-            j++;
-        } while (noteTimes[i-1] === noteTimes[i])
+    let instrumentInstances = [['0:0:0',createInstrument(noteInstrument, noteVolume)]];
+    for (let i = 0; i < noteValues.length; i++) {
+        let startTime = noteTimes[i];
+        let finishTime = Tone.Time(Tone.Time(startTime).valueOf() + Tone.Time(noteLengths[i]).valueOf() - Tone.Time('0:0:0.1').valueOf()).toBarsBeatsSixteenths();
+        for(let j = 0 ; j <= instrumentInstances.length ; j++){
+            if(j === instrumentInstances.length){
+                instrumentInstances.push([finishTime, createInstrument(noteInstrument, noteVolume)]);
+                instrumentInstances[j][0] = finishTime;
+                playNote(instrumentInstances[j][1], noteValues[i], noteLengths[i], noteTimes[i]);
+                break;
+            } else if (startTime > instrumentInstances[j][0]){
+                instrumentInstances[j][0] = finishTime;
+                playNote(instrumentInstances[j][1], noteValues[i], noteLengths[i], noteTimes[i]);
+                break;
+            }
+        }
     }
 }
 
