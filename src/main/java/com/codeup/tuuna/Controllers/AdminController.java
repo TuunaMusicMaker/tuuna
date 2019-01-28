@@ -36,6 +36,9 @@ public class AdminController {
     public String getBanUserForm(@PathVariable long id, Model model) {
         if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (currentUser.isBanned()) {
+                return "redirect:/you-got-banned";
+            }
             if (currentUser.isAdmin()) {
                 model.addAttribute("user", userDao.findOne(id));
                 return "admin/ban-user";
@@ -62,6 +65,9 @@ public class AdminController {
     public String showPromoteUserForm(@PathVariable long id, Model model) {
         if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") || userDao.findOne(id).isAdmin()) {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (currentUser.isBanned()) {
+                return "redirect:/you-got-banned";
+            }
             if (currentUser.isAdmin()) {
                 model.addAttribute("user", userDao.findOne(id));
                 return "admin/promote-user";
@@ -88,6 +94,9 @@ public class AdminController {
     public String showDemoteUserForm(@PathVariable long id, Model model) {
         if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") || !userDao.findOne(id).isAdmin()) {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (currentUser.isBanned()) {
+                return "redirect:/you-got-banned";
+            }
             if (currentUser.isAdmin()) {
                 model.addAttribute("user", userDao.findOne(id));
                 return "admin/demote-admin";

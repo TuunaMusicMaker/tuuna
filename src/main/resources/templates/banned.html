@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('Ban a User')" />
+<body class="bad-main">
+<nav th:replace="partials :: banned-navbar" />
+<header></header>
+<main class="container">
+    <div class="card grey">
+        <div class="card-image">
+            <img src="../static/img/tuuna-bar-4.png" th:src="@{/img/tuuna-bar-4.png}" alt="greyscale bar" />
+        </div>
+        <div class="card-content darkness-font">
+            <h3 class="card-title">
+                You were banned.
+            </h3>
+            <p>Your account has been banned. You are unable to access any content on this site, please leave.</p>
+        </div>
+    </div>
+</main>
+<footer th:replace="partials :: banned-footer" />
+<script th:replace="partials :: m-script" />
+<script th:replace="partials :: j-query" />
+<script th:replace="partials :: i-icons" />
 </body>
 </html>

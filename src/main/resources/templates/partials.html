@@ -31,6 +31,21 @@
         </div>
     </nav>
 
+    <nav th:fragment="banned-navbar" class="darkness">
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="/" class="brand-logo"><img src="../static/img/anger_fish.png" th:src="@{/img/anger_fish.png}" alt="anger fish" class="anger-fish" /></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li sec:authorize="isAuthenticated()">
+                        <form th:action="@{/logout}" th:method="post" id="form1">
+                            <a class="darkness-link" onclick="document.getElementById('form1').submit();"><ion-icon name="ios-log-out"></ion-icon>  Log-Out</a>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <footer th:fragment="footer" class="page-footer colorado-e3">
         <div class="container">
             <div class="row">
@@ -50,6 +65,32 @@
         </div>
         <div class="footer-copyright indigo darken-4">
             <div class="container facebook-800-text">
+                Codeup 2019. For educational purposes only.
+            </div>
+        </div>
+    </footer>
+
+    <footer th:fragment="banned-footer" class="page-footer darkness">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="eighty-eight-ninety-six">Tuuna Music Maker</h5>
+                    <p class="eighty-eight-ninety-six">Tuuna Music Maker was made as a way to share music compositions between friends. But then you had to be a jerk and get banned!</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="eighty-eight-ninety-six">Links</h5>
+                    <ul>
+                        <li sec:authorize="isAuthenticated()">
+                            <form th:action="@{/logout}" th:method="post" id="form1">
+                                <a class="darkness-link" onclick="document.getElementById('form1').submit();"><ion-icon name="ios-log-out"></ion-icon>  Log-Out</a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright grey">
+            <div class="container darkness-font">
                 Codeup 2019. For educational purposes only.
             </div>
         </div>
