@@ -10,17 +10,18 @@ Tuuna Music Maker is a web-application that allows registered users to create so
 | ~~Register~~ | [X] | [X] | [X] |
 | ~~Login~~ | [X] | [X] | [X] |
 | ~~Edit User Profile~~ | [X] | [X] | [X] |
-| Admin Ban User | [X] | [X] | [-] |
+| ~~Ban User~~ | [X] | [X] | [-] |
 | ~~Profile~~ | [X] | [X] | [X] |
-| View Song | [X] | [X] | [X] |
+| ~~View Song~~ | [X] | [X] | [X] |
 | ~~Create Song~~ | [X] | [X] | [X] |
 | ~~Index of Songs~~ | [X] | [X] | [X] |
-| Flag Song | [X] | [X] | [X] |
-| Edit Song | [X] | [X] | [X] |
-| Delete Song | [X] | [X] | [X] |
+| ~~Flag Song~~ | [X] | [X] | [X] |
+| ~~Edit Song~~ | [X] | [X] | [X] |
+| ~~Delete Song~~ | [X] | [X] | [X] |
 | ~~Search Index~~ | [X] | [X] | [X] |
 | ~~Search Results~~ | [X] | [X] | [X] |
-| Create Comment | [X] | [X] | [X] |
+| ~~Create Comment~~ | [X] | [X] | [X] |
 | Edit Comment | [ ] | [ ] | [ ] |
 | Delete Comment | [ ] | [ ] | [ ] |
+| Flag Comment | [ ] | [ ] | [X] |
 | Admin See Flagged Items | [ ] | [ ] | [ ] |
