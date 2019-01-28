@@ -50,6 +50,21 @@ public class SongController {
         if (!(user instanceof AnonymousAuthenticationToken)) {
             currentUserName = user.getName();
         }
+        boolean isPoster = (currentUserName.equals(songDao.findOne(id).getUser().getUsername()));
+
+        List<Rating> ratings = songDao.findOne(id).getRatings();
+        boolean hasRated = false;
+            if(ratings.size() > 0) {
+                for (Rating rating : ratings) {
+                    if(rating.getUser().getUsername().equals(currentUserName)) {
+                        hasRated = true;
+                        break;
+                    }
+                }
+            }
+
+        model.addAttribute("hasRated", hasRated);
+        model.addAttribute("isPoster", isPoster);
         model.addAttribute("currentUsername", currentUserName);
         model.addAttribute("username", songDao.findOne(id).getUser().getUsername());
         model.addAttribute("song", songDao.findOne(id));
@@ -66,6 +81,10 @@ public class SongController {
     @GetMapping("/songs/create")
     public String showCreateSong(Model model) {
 
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (currentUser.isBanned()) {
+            return "redirect:/you-got-banned";
+        }
         model.addAttribute("song", new Song());
         model.addAttribute("categories", categoryDao.findAll());
         return "songs/create";
@@ -93,6 +112,10 @@ public class SongController {
 
     @GetMapping("/songs/{id}/edit")
     public String showEditSong(@PathVariable long id, Model model) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (currentUser.isBanned()) {
+            return "redirect:/you-got-banned";
+        }
         model.addAttribute("id", id);
         model.addAttribute("song", songDao.findOne(id));
         return "songs/edit";
@@ -112,6 +135,10 @@ public class SongController {
 
     @GetMapping("/songs/{id}/delete")
     public String showDeleteSong(@PathVariable long id, Model model) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (currentUser.isBanned()) {
+            return "redirect:/you-got-banned";
+        }
         model.addAttribute("id", id);
         return "songs/delete";
     }
@@ -131,6 +158,10 @@ public class SongController {
 
     @GetMapping("songs/{id}/flag")
     public String flagSongConfirm(@PathVariable long id, Model model) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (currentUser.isBanned()) {
+            return "redirect:/you-got-banned";
+        }
         model.addAttribute("song", songDao.findOne(id));
         model.addAttribute("id", id);
         return "songs/flag";
@@ -138,8 +169,10 @@ public class SongController {
 
     @PostMapping("songs/{id}/flag")
     public String flagSong(@PathVariable long id) {
-        songDao.findOne(id).setFlagged(true);
-        return "songs/flag";
+        Song flaggedSong = songDao.findOne(id);
+        flaggedSong.setFlagged(true);
+        songDao.save(flaggedSong);
+        return "redirect:/songs/{id}";
     }
 
     @PostMapping("songs/{id}/comment")
@@ -154,4 +187,6 @@ public class SongController {
         commentDao.save(comment);
         return "redirect:/songs/" + id;
     }
+
+
 }
