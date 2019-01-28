@@ -81,3 +81,14 @@ li.whitekeys:hover{
 li.blackkeys:hover{
     background-color: #323232;
 }
+
+.whitekeylabels{
+    line-height: 28;
+    text-align: center;
+}
+
+.blackkeylabels{
+    line-height: 17;
+    text-align: center;
+    color: white;
+}
