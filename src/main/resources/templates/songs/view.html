@@ -26,14 +26,14 @@
                 <a class="waves-effect waves-red btn-small facebook-800" th:href="@{/songs/{id}/edit(id=${song.id})}"><ion-icon name="construct"></ion-icon>  Edit</a>
                 <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/delete(id=${song.id})}"><ion-icon name="trash"></ion-icon>  Delete</a>
             </div>
-            <!--<div th:if="${!currentUsername == username}">-->
-                <!--<div th:if="${!hasRated}">-->
-                    <!--<form action="" th:action="@{/songs/{id}/rating(id=${song.id})}" method="post" th:object="${rating}">-->
-                        <!--<button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="heart"></ion-icon>  Like</button>-->
-                    <!--</form>-->
-                <!--</div>-->
-                <!--<a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/flag(id=${song.id})}"><ion-icon name="flag"></ion-icon>  Flag This Song</a>-->
-            <!--</div>-->
+            <div th:if="${!currentUsername == username}">
+                <div th:if="${!hasRated}">
+                    <form action="" th:action="@{/songs/{id}/rating(id=${song.id})}" method="post" th:object="${rating}">
+                        <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="heart"></ion-icon>  Like</button>
+                    </form>
+                </div>
+                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/flag(id=${song.id})}"><ion-icon name="flag"></ion-icon>  Flag This Song</a>
+            </div>
 
         </div>
     </div>
@@ -52,18 +52,18 @@
         <div class="card-image">
             <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="colorful bar" />
         </div>
-        <!--<div class="card-content">-->
-            <!--<h3 class="card-title bluer-text">Create a Comment</h3>-->
-            <!--<form action="" th:action="@{/songs/{id}/view(id=${song.id})}" method="post" th:object="${comment}">-->
-                <!--<div class="row">-->
-                    <!--<div class="input-field col s12">-->
-                        <!--<textarea id="body" name="body" class="materialize-textarea" th:field="*{body}" />-->
-                        <!--<label for="body">Comment Body</label>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="paper-plane"></ion-icon>  Submit</button>-->
-            <!--</form>-->
-        <!--</div>-->
+        <div class="card-content">
+            <h3 class="card-title bluer-text">Create a Comment</h3>
+            <form action="" th:action="@{/songs/{id}/comment(id=${id})}" method="post" th:object="${comment}">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="body" name="body" class="materialize-textarea" th:field="*{body}" />
+                        <label for="body">Comment Body</label>
+                    </div>
+                </div>
+                <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="paper-plane"></ion-icon>  Submit</button>
+            </form>
+        </div>
     </div>
 
     <div class="card bluer-back facebook-800-text">
@@ -82,7 +82,7 @@
                 <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="a smaller colorful bar" />
             </div>
             <div class="card-content">
-                <h5 th:text="${comment.user.username} says..." />
+                <h5><span th:text="${comment.user.username}" /> says...</h5>
                 <p th:text="${comment.body}" />
             </div>
             <div th:if="${#authentication.getName() == comment.user.username}">
