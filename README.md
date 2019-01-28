@@ -9,13 +9,13 @@ Tuuna Music Maker is a web-application that allows registered users to create so
 | About Us | [X] | [ ] | [X] |
 | ~~Register~~ | [X] | [X] | [X] |
 | ~~Login~~ | [X] | [X] | [X] |
-| Edit User Profile | [X] | [X] | [X] |
+| ~~Edit User Profile~~ | [X] | [X] | [X] |
 | Admin Ban User | [ ] | [ ] | [ ] |
-| Profile | [X] | [ ] | [X] |
+| ~~Profile~~ | [X] | [X] | [X] |
 | View Song | [X] | [ ] | [X] |
 | ~~Create Song~~ | [X] | [X] | [X] |
 | ~~Index of Songs~~ | [X] | [X] | [X] |
-| Flag User | [ ] | [ ] | [ ] |
+| Flag Song | [ ] | [ ] | [ ] |
 | Edit Song | [X] | [X] | [ ] |
 | Delete Song | [X] | [X] | [ ] |
 | ~~Search Index~~ | [X] | [X] | [X] |
