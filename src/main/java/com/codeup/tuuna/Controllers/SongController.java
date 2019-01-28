@@ -1,6 +1,7 @@
 package com.codeup.tuuna.Controllers;
 import com.codeup.tuuna.Models.*;
 import com.codeup.tuuna.Repositories.*;
+import com.google.common.collect.Lists;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -49,17 +50,12 @@ public class SongController {
         if (!(user instanceof AnonymousAuthenticationToken)) {
             currentUserName = user.getName();
         }
-
-//        String owner = songDao.findOne(id).getUser().getUsername();
-//        boolean isOwner = (user.equals(owner));
-//
-//
-//        model.addAttribute("isOwner", isOwner);
         model.addAttribute("currentUsername", currentUserName);
         model.addAttribute("username", songDao.findOne(id).getUser().getUsername());
         model.addAttribute("song", songDao.findOne(id));
         model.addAttribute("id", id);
         model.addAttribute("comments", songDao.findOne(id).getComments());
+        model.addAttribute("comment", new Comment());
         model.addAttribute("ratings", songDao.findOne(id).getRatings());
         model.addAttribute("categories", songDao.findOne(id).getCategories());
         model.addAttribute("songHash", songDao.findOne(id).getSongHash());
@@ -93,17 +89,6 @@ public class SongController {
             song.setSongHash(songHash);
             songDao.save(song);
         return "redirect:/users/profile";
-    }
-
-    @PostMapping("songs/{id}/view")
-    public String saveComment(@PathVariable long id, @ModelAttribute Song song,
-                              @RequestParam(value = "comment") Comment comment, Model model) {
-
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        comment.setUser(user);
-        comment.setSong(song);
-        commentDao.save(comment);
-        return "redirect:/songs/" + song.getId();
     }
 
     @GetMapping("/songs/{id}/edit")
@@ -142,5 +127,23 @@ public class SongController {
     public String likeSong(@PathVariable long id, @ModelAttribute Song song) {
 //        need to finish this method
         return "redirect:/songs";
+    }
+
+    @GetMapping("")
+    public String flagUser() {
+        return "";
+    }
+
+    @PostMapping("songs/{id}/comment")
+    public String saveComment(@PathVariable long id, @ModelAttribute Song song, Comment comment,
+                              @RequestParam(name = "body") String body) {
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        comment.setBody(body);
+        comment.setUser(user);
+        comment.setSong(songDao.findOne(id));
+        comment.setFlagged(songDao.findOne(id).isFlagged());
+        commentDao.save(comment);
+        return "redirect:/songs/" + id;
     }
 }
