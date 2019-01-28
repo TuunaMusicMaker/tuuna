@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head ('Flag a Song')" />
+<head th:replace="partials :: head ('Demote an Admin')" />
 <body class="main">
 <nav th:replace="partials :: navbar" />
 <header></header>
@@ -11,12 +11,12 @@
         </div>
         <div class="card-content">
             <h3 class="card-title">
-                Are you sure you wish to flag this song?
+                Are you sure you wish to demote this administrator?
             </h3>
-            <p>Flagging a song will allow an administrator to review the song for any issues. A flagged song is not removed or deleted automatically.</p>
-            <form action="" th:action="@{/songs/{id}/flag(id=${id})}" method="post" th:object="${song}">
+            <p>Once you demote an administrator, they will lose all admin privileges, but still will retain the ability to access Tuuna as a normal user. You can promote this user again, in the future, if you wish.</p>
+            <form action="" th:action="@{/admin/{id}/demote(id=${id})}" method="post" th:object="${user}">
                 <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><ion-icon name="thumbs-up"></ion-icon>  Yes</button>
-                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><ion-icon name="thumbs-down"></ion-icon>  No</a>
+                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/users/{id}(id=${id})}"><ion-icon name="thumbs-down"></ion-icon>  No</a>
             </form>
         </div>
     </div>

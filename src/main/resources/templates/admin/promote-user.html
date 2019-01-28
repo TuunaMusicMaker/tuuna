@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head ('Flag a Song')" />
+<head th:replace="partials :: head ('Promote a User')" />
 <body class="main">
 <nav th:replace="partials :: navbar" />
 <header></header>
@@ -11,12 +11,12 @@
         </div>
         <div class="card-content">
             <h3 class="card-title">
-                Are you sure you wish to flag this song?
+                Are you sure you wish to promote this user?
             </h3>
-            <p>Flagging a song will allow an administrator to review the song for any issues. A flagged song is not removed or deleted automatically.</p>
-            <form action="" th:action="@{/songs/{id}/flag(id=${id})}" method="post" th:object="${song}">
+            <p>Once you promote a user to administrator, they will gain the ability to flag songs, delete comments, and promote other users to administrator roles. An administrator can always be demote back to a regular user by other administrators.</p>
+            <form action="" th:action="@{/admin/{id}/promote(id=${id})}" method="post" th:object="${user}">
                 <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><ion-icon name="thumbs-up"></ion-icon>  Yes</button>
-                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><ion-icon name="thumbs-down"></ion-icon>  No</a>
+                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/users/{id}(id=${id})}"><ion-icon name="thumbs-down"></ion-icon>  No</a>
             </form>
         </div>
     </div>
