@@ -15,8 +15,8 @@
             </h3>
             <p>Once a user is banned, they can no longer access the website through their account. Once this action is done, it will not be possible to un-ban them.</p>
             <form action="" th:action="@{/users/{id}/ban(id=${id})}" method="post" th:object="${user}">
-                <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><ion-icon name="thumbs-up"></ion-icon>  Yes</button>
-                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><ion-icon name="thumbs-down"></ion-icon>  No</a>
+                <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
+                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
             </form>
         </div>
     </div>

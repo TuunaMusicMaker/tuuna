@@ -12,7 +12,9 @@
         <div class="card-content">
             <h3 class="card-title">Welcome back, <span th:text="${user.username}" /></h3>
             <p>It's so great to see you again! How have you been?</p>
-            <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/users/edit}"><ion-icon name="ios-body"></ion-icon>  Edit Profile</a>
+            <div class="better-spacing">
+                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/users/edit}"><i class="fas fa-user-edit"></i>  Edit Profile</a>
+            </div>
         </div>
     </div>
 
