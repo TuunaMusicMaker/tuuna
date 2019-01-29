@@ -1614,13 +1614,11 @@ $(document).on('click', '#playButton', function(){
     playNotes(instrumentTypes[0],.8,songInputs[0],songInputs[1],songInputs[2]);
 });
 
-// $(document).on('click', '#saveButton', function(){
-//     let packingLengthArray= msToBars(timingLengthsArray);
-//     let packingTimeStampArray = msToBars(timeStampArray);
-//     let songString = songPacking(songInputs[0],songInputs[1],songInputs[2]);
-//     console.log(songString);
-//     $("#songHash").val(songString);
-// });
+$(document).on('click', '#save-modal', function(){
+    let songString = songPacking(songInputs[0],songInputs[1],songInputs[2]);
+    console.log(songString);
+    $("#songHash").val(songString);
+});
 
 // $(document).keydown(function(e) {
 //     if (e.originalEvent.keyCode === 81 && triggeredArray[0] === false) {
