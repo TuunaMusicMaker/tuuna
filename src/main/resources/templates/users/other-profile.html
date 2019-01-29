@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head ('Viewing Profile')" />
 <body class="main">
+<script th:replace="partials :: j-query" />
 <nav th:replace="partials :: navbar" />
 <header></header>
 <main class="container">
@@ -14,11 +15,59 @@
             <p>Below you can see their posts and comments!</p>
             <br />
             <div th:if="${isAdmin}" class="row">
-                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/admin/{id}/ban-user(id=${id})}"><i class="fas fa-ban"></i>  Ban This User</a>
+                <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" href="#ban-modal"><i class="fas fa-ban"></i>  Ban This User</a>
 
-                <a th:if="${!userIsAdmin}" class="waves-effect waves-teal btn-small bluer-back" th:href="@{/admin/{id}/promote(id=${id})}"><i class="fas fa-angle-double-up"></i>  Promote This User</a>
+                <a th:if="${!userIsAdmin}" class="waves-effect waves-teal btn-small bluer-back modal-trigger" href="#promote-modal"><i class="fas fa-angle-double-up"></i>  Promote This User</a>
 
-                <a th:if="${userIsAdmin}" class="waves-effect waves-red btn-small four-41ed" th:href="@{/admin/{id}/demote(id=${id})}"><i class="fas fa-angle-double-down"></i>  Demote This Admin</a>
+                <a th:if="${userIsAdmin}" class="waves-effect waves-red btn-small four-41ed modal-trigger" href="#demote-modal"><i class="fas fa-angle-double-down"></i>  Demote This Admin</a>
+
+                <div id="ban-modal" class="modal card cyan lighten-5">
+                    <div class="card-image">
+                        <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            Are you sure you wish to ban this user?
+                        </h3>
+                        <p>Once a user is banned, they can no longer access the website through their account. Once this action is done, it will not be possible to un-ban them.</p>
+                        <form action="" th:action="@{/admin/{id}/ban-user(id=${id})}" method="post" th:object="${user}">
+                            <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
+                            <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/users/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="promote-modal" class="modal card cyan lighten-5">
+                    <div class="card-image">
+                        <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            Are you sure you wish to promote this user?
+                        </h3>
+                        <p>Once you promote a user to administrator, they will gain the ability to flag songs, delete comments, and promote other users to administrator roles. An administrator can always be demote back to a regular user by other administrators.</p>
+                        <form action="" th:action="@{/admin/{id}/promote(id=${id})}" method="post" th:object="${user}">
+                            <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
+                            <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="demote-modal" class="modal card cyan lighten-5">
+                    <div class="card-image">
+                        <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            Are you sure you wish to demote this administrator?
+                        </h3>
+                        <p>Once you demote an administrator, they will lose all admin privileges, but still will retain the ability to access Tuuna as a normal user. You can promote this user again, in the future, if you wish.</p>
+                        <form action="" th:action="@{/admin/{id}/demote(id=${id})}" method="post" th:object="${user}">
+                            <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
+                            <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -62,7 +111,11 @@
 </main>
 <footer th:replace="partials :: blue-footer" />
 <script th:replace="partials :: m-script" />
-<script th:replace="partials :: j-query" />
 <script th:replace="partials :: i-icons" />
+<script>
+    $(document).ready(function(){
+        $('.modal').modal();
+    });
+</script>
 </body>
 </html>

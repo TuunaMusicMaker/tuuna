@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head ('Viewing Profile')" />
 <body class="main">
+<script th:replace="partials :: j-query" />
 <nav th:replace="partials :: navbar" />
 <header></header>
 <main class="container">
@@ -13,7 +14,62 @@
             <h3 class="card-title">Welcome back, <span th:text="${user.username}" /></h3>
             <p>It's so great to see you again! How have you been?</p>
             <div class="better-spacing">
-                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/users/edit}"><i class="fas fa-user-edit"></i>  Edit Profile</a>
+                <a class="waves-effect waves-teal btn-small bluer-back modal-trigger" href="#editmodal"><i class="fas fa-user-edit"></i>  Edit Profile</a>
+
+                <div id="editmodal" class="modal card cyan lighten-5">
+                    <div class="card-image">
+                        <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            Edit User Details
+                        </h3>
+                        <form id="register-form" action="" th:action="@{/users/edit}" method="post" th:object="${user}">
+                            <div class="modal-content cyan lighten-5">
+                            <input id="id" name="id" type="hidden" th:field="${user.id}" />
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="username" name="username" type="text" class="validate" th:field="${user.username}" />
+                                    <label for="username">Username</label>
+                                    <span class="helper-text" data-success="Great"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" name="email" type="email" class="validate" th:field="${user.email}" />
+                                    <label for="email">Email</label>
+                                    <span class="helper-text" data-error="Please enter a valid e-mail address" data-success="Excellent"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="phoneNumber" name="phoneNumber" type="tel" pattern="[0-9]{10}" class="validate" th:field="${user.phoneNumber}" />
+                                    <label for="phoneNumber">Phone Number (No spaces or dashes. Example: 1234567890)</label>
+                                    <span class="helper-text" data-error="Please enter a valid phone number" data-success="Wonderful"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="password" name="password" type="password" class="validate" />
+                                    <label for="password">Password</label>
+                                    <span class="helper-text" data-error="Your passwords don't match!" data-success="Beautiful"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="password-confirm" name="password-confirm" type="password" class="validate" />
+                                    <label for="password-confirm">Confirm Password</label>
+                                    <span class="helper-text" data-error="Your passwords don't match!" data-success="Fantastic"></span>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="modal-footer cyan lighten-5">
+                                <button type="submit" id="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back" onClick="empty()"><i class="fas fa-smile-beam"></i>  Submit</button>
+                                <a href="#" class="modal-close waves-effect waves-yellow btn-small down-for-tonight"><i class="far fa-times-circle"></i>  Cancel Changes</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -57,7 +113,49 @@
 </main>
 <footer th:replace="partials :: blue-footer" />
 <script th:replace="partials :: m-script" />
-<script th:replace="partials :: j-query" />
 <script th:replace="partials :: i-icons" />
+<script>
+    $(document).ready(function(){
+        $('.modal').modal();
+
+        $('#register-form').submit(function() {
+            if ($.trim($("#phoneNumber").val()) === "" || $.trim($("#email").val()) === "" || $.trim($("#username").val()) === "" || $.trim($("#password").val()) === "" || $.trim($("#password-confirm").val()) === "" || $.trim($("#password-confirm").val()) !== $.trim($("#password").val())) {
+                return false;
+            }
+        });
+
+        $("#password").on("focusout", function (e) {
+            if ($(this).val() != $("#password-confirm").val()) {
+                $("#password-confirm").removeClass("valid").addClass("invalid");
+            } else {
+                $("#password-confirm").removeClass("invalid").addClass("valid");
+            }
+        });
+
+        $("#password-confirm").on("keyup", function (e) {
+            if ($("#password").val() != $(this).val()) {
+                $(this).removeClass("valid").addClass("invalid");
+            } else {
+                $(this).removeClass("invalid").addClass("valid");
+            }
+        });
+
+        $("#password-confirm").on("focusout", function (e) {
+            if ($(this).val() != $("#password").val()) {
+                $("#password").removeClass("valid").addClass("invalid");
+            } else {
+                $("#password").removeClass("invalid").addClass("valid");
+            }
+        });
+
+        $("#password").on("keyup", function (e) {
+            if ($("#password-confirm").val() != $(this).val()) {
+                $(this).removeClass("valid").addClass("invalid");
+            } else {
+                $(this).removeClass("invalid").addClass("valid");
+            }
+        });
+    });
+</script>
 </body>
 </html>
