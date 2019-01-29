@@ -185,3 +185,8 @@ a.darkness-link:hover {
     width: .35rem;
     display: inline-block;
 }
+
+.help-this {
+    position: relative;
+    bottom: 16px;
+}

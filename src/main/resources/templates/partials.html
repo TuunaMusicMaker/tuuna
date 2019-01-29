@@ -20,7 +20,7 @@
                 <a href="/" class="brand-logo dat-fish"><img src="../static/img/tuuna2.png" th:src="@{/img/tuuna2.png}" alt="Tuuna" class="big-fish" /></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/songs" class="bluer-text"><i class="fas fa-music"></i>  <span class="small-push">All Songs</span></a></li>
-                    <li><a href="/search" class="bluer-text"><i class="fas fa-search"></i>   <span class="small-push">Search</span></a></li>
+                    <li><a href="#search-modal" class="bluer-text modal-trigger"><i class="fas fa-search"></i>   <span class="small-push">Search</span></a></li>
                     <li sec:authorize="!isAuthenticated()"><a href="/login" class="bluer-text"><i class="fas fa-sign-in-alt"></i>  <span class="small-push">Log-In</span></a></li>
                     <li sec:authorize="!isAuthenticated()"><a href="/register" class="bluer-text"><i class="fas fa-user-plus"></i>  <span class="small-push">Register A New User</span></a></li>
                     <li sec:authorize="isAuthenticated()"><a href="/songs/create" class="bluer-text"><i class="fas fa-plus"></i>  <span class="small-push">Create A Song</span></a></li>
@@ -31,6 +31,36 @@
                         </form>
                     </li>
                 </ul>
+            </div>
+
+            <div id="search-modal" class="modal card cyan lighten-5">
+                <div class="card-image">
+                    <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title bluer-text">What did you want to search?</h3>
+                    <form action="" th:action="@{/search}" method="post">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <p class="bluer-text">Search Options</p>
+                                <select id="search-params" name="search-params" class="cyan lighten-5 move-it bluer-text">
+                                    <option class="bluer-text" value="4">General Search</option>
+                                    <option class="bluer-text" value="2">Song Title</option>
+                                    <option class="bluer-text" value="3">Songs by User</option>
+                                    <option class="bluer-text" value="1">Songs in Categories</option>
+                                </select>
+                            </div>
+                            <div class="small-space"></div>
+                            <div class="input-field col s12">
+                                <input id="query" name="query" type="text" class="validate" />
+                                <label for="query">Query</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer cyan lighten-5">
+                            <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><span class="help-this"><i class="fas fa-binoculars"></i>  Find</span></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </nav>
@@ -46,7 +76,7 @@
                     <h5 class="darker-blue-text">Links</h5>
                     <ul>
                         <li><a class="bluer-text" href="/songs"><i class="fas fa-user"></i>  All Songs</a></li>
-                        <li><a href="/search" class="bluer-text"><i class="fas fa-search"></i>   Search</a></li>
+                        <li><a href="#search-modal" class="bluer-text modal-trigger"><i class="fas fa-search"></i>   Search</a></li>
                         <li><a class="bluer-text" href="/about-us"><i class="fas fa-graduation-cap"></i>  Learn More About Tuuna</a></li>
                     </ul>
                 </div>
@@ -104,5 +134,11 @@
     <script th:fragment="j-query" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script th:fragment="i-icons" src="https://unpkg.com/ionicons@4.5.1/dist/ionicons.js"></script>
     <script th:fragment="tone" src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.4.10/Tone.js"></script>
+    <script th:fragment="modals-js">
+        $(document).ready(function(){
+            $('.modal').modal();
+            $('select').formSelect();
+        });
+    </script>
 </body>
 </html>

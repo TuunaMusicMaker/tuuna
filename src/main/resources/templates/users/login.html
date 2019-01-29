@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head ('Log-in')" />
 <body class="main">
+<script th:replace="partials :: j-query" />
 <nav th:replace="partials :: navbar" />
 <header></header>
 <main class="container">
@@ -40,7 +41,7 @@
 
 <footer th:replace="partials :: blue-footer" />
 <script th:replace="partials :: m-script" />
-<script th:replace="partials :: j-query" />
+<script th:replace="partials :: modals-js" />
 <script th:replace="partials :: i-icons" />
 </body>
 </html>
