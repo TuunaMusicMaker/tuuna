@@ -198,12 +198,6 @@ public class SongController {
         return "redirect:/songs/" + id;
     }
 
-    @GetMapping("songs/{id}/message")
-    public String prepareMessage(@PathVariable long id, Model model) {
-        model.addAttribute("id", id);
-        return "songs/message";
-    }
-
     @PostMapping("songs/{id}/message")
     public String sendMessage(@PathVariable long id, @RequestParam(name = "recipient") String recipient) {
 
@@ -212,7 +206,7 @@ public class SongController {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
         Message message = Message
-                .creator(new PhoneNumber(recipient), // to
+                .creator(new PhoneNumber("+1" + recipient), // to
                         new PhoneNumber(user.getPhoneNumber()), // from
                         messageBody)
                 .create();

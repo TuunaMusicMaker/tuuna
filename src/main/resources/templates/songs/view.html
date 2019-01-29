@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head ('View a Song')" />
 <body class="main">
-<nav th:replace="partials :: navbar" />
 <script th:replace="partials :: j-query" />
+<nav th:replace="partials :: navbar" />
 <script th:replace="partials :: tone" />
 <header></header>
 <main class="container">
@@ -18,7 +18,29 @@
 
             <input id="songHash" name="songHash" type="hidden" th:value="${songHash}"/>
             <button id="playbackButton" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-play"></i>  Play</button>
-
+            <span class="spacer"></span>
+            <a class="waves-effect waves-teal btn-small bluer-back modal-trigger" href="#message-modal"><i class="fas fa-paper-plane"></i>  Share</a>
+            <div id="message-modal" class="modal card cyan lighten-5">
+                <div class="card-image">
+                    <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">
+                        Want to send this song to a friend? Ok, no problem! Just stick their phone number down below and push Tuuna!
+                    </h3>
+                    <form action="" th:action="@{/songs/{id}/message(id=${id})}" method="post">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="recipient" name="recipient" type="tel" pattern="[0-9]{10}" class="validate" />
+                                <label for="recipient">Phone Number (No spaces or dashes. Example: 1234567890)</label>
+                                <span class="helper-text" data-error="Please enter a valid phone number" data-success="Wonderful"></span>
+                            </div>
+                        </div>
+                        <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-fish"></i>  Tuuna!</button>
+                        <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  Cancel</a>
+                    </form>
+                </div>
+            </div>
             <br />
 
             <div th:if="${isPoster}" class="row better-spacing">
