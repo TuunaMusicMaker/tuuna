@@ -37,6 +37,9 @@ public class SongController {
     @Value("${authTOKEN}")
     private String AUTH_TOKEN;
 
+    @Value("${twilioNum}")
+    private String TWILIO_NUM;
+
     public SongController(UserRepository userDao, SongRepository songDao, CommentRepository commentDao,
                           RatingRepository ratingDao, CategoriesRepository categoryDao) {
         this.userDao = userDao;
@@ -207,7 +210,7 @@ public class SongController {
 
         Message message = Message
                 .creator(new PhoneNumber("+1" + recipient), // to
-                        new PhoneNumber(user.getPhoneNumber()), // from
+                        new PhoneNumber(TWILIO_NUM), // from
                         messageBody)
                 .create();
 
