@@ -3,8 +3,8 @@
 <head th:replace="partials :: head ('Create a Song')" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}" />
 <body class="main">
-<nav th:replace="partials :: navbar" />
 <script th:replace="partials :: j-query" />
+<nav th:replace="partials :: navbar" />
 <script th:replace="partials :: tone" />
 <header></header>
 <main class="container">
@@ -12,7 +12,7 @@
         <div class="card-image">
             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
         </div>
-        <div class="card-content">
+        <div class="card-content" style="padding: 0px;">
             <div class="keys">
                 <ul>
                     <li id="key1" class="whitekeys">
@@ -92,64 +92,60 @@
             <div>
                 <button id="recButton"></button>
                 <button id="playButton" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-play"></i>  Play</button>
-                <!--<button id="saveButton" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-save"></i>  Save</button>-->
+                <a class="waves-effect waves-teal btn-small bluer-back modal-trigger" href="#save-modal"><i class="fas fa-save"></i>  Save</a>
             </div>
         </div>
     </div>
-    <div class="card cyan lighten-5">
-
-        <div class="card-image">
-            <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="colorful bar" />
-        </div>
-
         <div class="card-content">
 
             <h3 class="card-title bluer-text">Create a Song</h3>
-
-            <form action="/songs/create" th:action="@{/songs/create}" method="post" th:object="${song}">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="title" name="title" type="text" class="validate" th:field="*{title}"/>
-                        <label for="title">Title</label>
-                    </div>
+            <div id="save-modal" class="modal card cyan lighten-5">
+                <div class="card-image">
+                    <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="description" name="description" class="materialize-textarea" th:field="*{description}" />
-                        <label for="description">Description</label>
-                    </div>
+                <div class="card-content">
+                    <h3 class="card-title bluer-text">Save a Song</h3>
+                    <form action="/songs/create" th:action="@{/songs/create}" method="post" th:object="${song}">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="title" name="title" type="text" class="validate" th:field="*{title}"/>
+                                <label for="title">Title</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="description" name="description" class="materialize-textarea" th:field="*{description}" />
+                                <label for="description">description</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input id="songHash" name="songHash" type="hidden" th:field="*{songHash}"/>
+                        </div>
+                        <div class="row">
+                            <table>
+                                <tr class="center">
+                                    <td th:each="category : ${categories}">
+                                        <label>
+                                            <input type="checkbox" name="categories" th:value="${category.id}"/>
+                                            <span th:text="${category.category}"></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-smile-beam"></i>  Submit</button>
+                    </form>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="songHash" name="songHash" type="hidden" th:field="*{songHash}"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <table>
-                        <tr class="center">
-                            <td th:each="category : ${categories}">
-                                <label>
-                                    <input type="checkbox" name="categories" th:value="${category.id}"/>
-                                    <span th:text="${category.category}"></span>
-                                </label>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-smile-beam"></i>  Submit</button>
-            </form>
-
+            </div>
         </div>
-    </div>
 </main>
 <script type="text/javascript" th:src="@{/js/createSong.js}"></script>
 <footer th:replace="partials :: blue-footer" />
 <script th:replace="partials :: m-script" />
-<script th:replace="partials :: i-icons" />
 <script>
-
-
-
+    $(document).ready(function(){
+        $('.modal').modal();
+    });
 </script>
 </body>
 </html>
