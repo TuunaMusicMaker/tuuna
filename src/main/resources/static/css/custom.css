@@ -56,7 +56,7 @@
     border-radius: 0 0 5px 5px;
 }
 li.whitekeys:hover{
-    background-color: #eeecba;
+    background-color: #eeeacb;
 }
 
 .blackkeys{
@@ -75,11 +75,11 @@ li.whitekeys:hover{
 }
 
 .blackkeypressed{
-    background-color: #474747;
+    background-color: #494949;
 }
 
 li.blackkeys:hover{
-    background-color: #323232;
+    background-color: #65644b;
 }
 
 .whitekeylabels{
@@ -91,4 +91,12 @@ li.blackkeys:hover{
     line-height: 17;
     text-align: center;
     color: white;
+}
+
+.whiteactivekey{
+    background-color: #d8e2ee !important;
+}
+
+.blackactivekey{
+    background-color: #494949 !important;
 }

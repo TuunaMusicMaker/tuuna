@@ -677,6 +677,7 @@ $('#key1').mousedown(function() {
     synth.triggerAttack('C3');
     startMouseDownTime[0] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
             timeStampArray[0].push(getCurrentTime())
@@ -693,6 +694,7 @@ $('#key1').mouseup(function() {
         }
     }
     $('#key1').removeClass('activekey');
+    $('#key1').removeClass('whiteactivekey');
 
 });
 
@@ -705,6 +707,7 @@ $('#key1').mouseout(function() {
         }
     }
     $('#key1').removeClass('activekey');
+    $('#key1').removeClass('whiteactivekey');
 
 });
 
@@ -712,6 +715,7 @@ $('#key2').mousedown(function() {
     synth.triggerAttack('C#3');
     startMouseDownTime[1] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('blackactivekey');
 
 
     if (recording === true) {
@@ -728,6 +732,8 @@ $('#key2').mouseup(function() {
         }
     }
     $('#key2').removeClass('activekey');
+    $('#key2').removeClass('blackactivekey');
+
 
 });
 
@@ -740,6 +746,7 @@ $('#key2').mouseout(function() {
         }
     }
     $('#key2').removeClass('activekey');
+    $('#key2').removeClass('blackactivekey');
 
 });
 
@@ -747,6 +754,7 @@ $('#key3').mousedown(function() {
     synth.triggerAttack('D3');
     startMouseDownTime[2] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
             timeStampArray[2].push(getCurrentTime())
@@ -763,6 +771,8 @@ $('#key3').mouseup(function() {
         }
     }
     $('#key3').removeClass('activekey');
+    $('#key3').removeClass('whiteactivekey');
+
 });
 
 $('#key3').mouseout(function() {
@@ -774,6 +784,7 @@ $('#key3').mouseout(function() {
         }
     }
     $('#key3').removeClass('activekey');
+    $('#key3').removeClass('whiteactivekey');
 
 });
 
@@ -781,6 +792,7 @@ $('#key4').mousedown(function() {
     synth.triggerAttack('D#3');
     startMouseDownTime[3] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('blackactivekey');
 
     if (recording === true) {
         timeStampArray[3].push(getCurrentTime())
@@ -797,6 +809,7 @@ $('#key4').mouseup(function() {
         }
     }
     $('#key4').removeClass('activekey');
+    $('#key4').removeClass('blackactivekey');
 });
 
 $('#key4').mouseout(function() {
@@ -808,6 +821,7 @@ $('#key4').mouseout(function() {
         }
     }
     $('#key4').removeClass('activekey');
+    $('#key4').removeClass('blackactivekey');
 
 });
 
@@ -815,6 +829,7 @@ $('#key5').mousedown(function() {
     synth.triggerAttack('E3');
     startMouseDownTime[4] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
         timeStampArray[4].push(getCurrentTime())
@@ -831,6 +846,7 @@ $('#key5').mouseup(function() {
         }
     }
     $('#key5').removeClass('activekey');
+    $('#key5').removeClass('whiteactivekey');
 });
 
 $('#key5').mouseout(function() {
@@ -842,6 +858,7 @@ $('#key5').mouseout(function() {
         }
     }
     $('#key5').removeClass('activekey');
+    $('#key5').removeClass('whiteactivekey');
 
 });
 
@@ -849,6 +866,8 @@ $('#key6').mousedown(function() {
     synth.triggerAttack('F3');
     startMouseDownTime[5] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
+
 
     if (recording === true) {
         timeStampArray[5].push(getCurrentTime())
@@ -865,6 +884,7 @@ $('#key6').mouseup(function() {
         }
     }
     $('#key6').removeClass('activekey');
+    $('#key6').removeClass('whiteactivekey');
 });
 
 $('#key6').mouseout(function() {
@@ -876,6 +896,7 @@ $('#key6').mouseout(function() {
         }
     }
     $('#key6').removeClass('activekey');
+    $('#key6').removeClass('whiteactivekey');
 
 });
 
@@ -883,6 +904,8 @@ $('#key7').mousedown(function() {
     synth.triggerAttack('F#3');
     startMouseDownTime[6] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('blackactivekey');
+
 
     if (recording === true) {
         timeStampArray[6].push(getCurrentTime())
@@ -899,6 +922,7 @@ $('#key7').mouseup(function() {
         }
     }
     $('#key7').removeClass('activekey');
+    $('#key7').removeClass('blackactivekey');
 });
 
 $('#key7').mouseout(function() {
@@ -910,6 +934,7 @@ $('#key7').mouseout(function() {
         }
     }
     $('#key7').removeClass('activekey');
+    $('#key7').removeClass('blackactivekey');
 
 });
 
@@ -917,6 +942,7 @@ $('#key8').mousedown(function() {
     synth.triggerAttack('G3');
     startMouseDownTime[7] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
         timeStampArray[7].push(getCurrentTime())
@@ -933,6 +959,8 @@ $('#key8').mouseup(function() {
         }
     }
     $('#key8').removeClass('activekey');
+    $('#key8').removeClass('whiteactivekey');
+
 });
 
 $('#key8').mouseout(function() {
@@ -944,6 +972,7 @@ $('#key8').mouseout(function() {
         }
     }
     $('#key8').removeClass('activekey');
+    $('#key8').removeClass('whiteactivekey');
 
 });
 
@@ -951,6 +980,8 @@ $('#key9').mousedown(function() {
     synth.triggerAttack('G#3');
     startMouseDownTime[8] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('blackactivekey');
+
 
     if (recording === true) {
         timeStampArray[8].push(getCurrentTime())
@@ -967,6 +998,7 @@ $('#key9').mouseup(function() {
         }
     }
     $('#key9').removeClass('activekey');
+    $('#key9').removeClass('blackactivekey');
 });
 
 $('#key9').mouseout(function() {
@@ -978,6 +1010,7 @@ $('#key9').mouseout(function() {
         }
     }
     $('#key9').removeClass('activekey');
+    $('#key9').removeClass('blackactivekey');
 
 });
 
@@ -985,6 +1018,7 @@ $('#key10').mousedown(function() {
     synth.triggerAttack('A3');
     startMouseDownTime[9] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
         timeStampArray[9].push(getCurrentTime())
@@ -1001,6 +1035,8 @@ $('#key10').mouseup(function() {
         }
     }
     $('#key10').removeClass('activekey');
+    $('#key10').removeClass('whiteactivekey');
+
 });
 
 $('#key10').mouseout(function() {
@@ -1012,6 +1048,8 @@ $('#key10').mouseout(function() {
         }
     }
     $('#key10').removeClass('activekey');
+    $('#key10').removeClass('whiteactivekey');
+
 
 });
 
@@ -1019,6 +1057,7 @@ $('#key11').mousedown(function() {
     synth.triggerAttack('A#3');
     startMouseDownTime[10] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('blackactivekey');
 
     if (recording === true) {
         timeStampArray[10].push(getCurrentTime())
@@ -1035,6 +1074,7 @@ $('#key11').mouseup(function() {
         }
     }
     $('#key11').removeClass('activekey');
+    $('#key11').removeClass('blackactivekey');
 });
 
 $('#key11').mouseout(function() {
@@ -1046,6 +1086,8 @@ $('#key11').mouseout(function() {
         }
     }
     $('#key11').removeClass('activekey');
+    $('#key11').removeClass('blackactivekey');
+
 
 });
 
@@ -1053,6 +1095,7 @@ $('#key12').mousedown(function() {
     synth.triggerAttack('B3');
     startMouseDownTime[11] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
         timeStampArray[11].push(getCurrentTime())
@@ -1069,6 +1112,8 @@ $('#key12').mouseup(function() {
         }
     }
     $('#key12').removeClass('activekey');
+    $('#key12').removeClass('whiteactivekey');
+
 });
 
 $('#key12').mouseout(function() {
@@ -1080,6 +1125,7 @@ $('#key12').mouseout(function() {
         }
     }
     $('#key12').removeClass('activekey');
+    $('#key12').removeClass('whiteactivekey');
 
 });
 
@@ -1087,11 +1133,11 @@ $('#key13').mousedown(function() {
     synth.triggerAttack('C4');
     startMouseDownTime[12] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
         timeStampArray[12].push(getCurrentTime())
     }
-
 });
 
 $('#key13').mouseup(function() {
@@ -1103,6 +1149,8 @@ $('#key13').mouseup(function() {
         }
     }
     $('#key13').removeClass('activekey');
+    $('#key13').removeClass('whiteactivekey');
+
 });
 
 $('#key13').mouseout(function() {
@@ -1114,6 +1162,7 @@ $('#key13').mouseout(function() {
         }
     }
     $('#key13').removeClass('activekey');
+    $('#key13').removeClass('whiteactivekey');
 
 });
 
@@ -1121,6 +1170,7 @@ $('#key14').mousedown(function() {
     synth.triggerAttack('C#4');
     startMouseDownTime[13] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('blackactivekey');
 
     if (recording === true) {
         timeStampArray[13].push(getCurrentTime())
@@ -1137,6 +1187,7 @@ $('#key14').mouseup(function() {
         }
     }
     $('#key14').removeClass('activekey');
+    $('#key14').removeClass('blackactivekey');
 });
 
 $('#key14').mouseout(function() {
@@ -1148,6 +1199,8 @@ $('#key14').mouseout(function() {
         }
     }
     $('#key14').removeClass('activekey');
+    $('#key14').removeClass('blackactivekey');
+
 
 });
 
@@ -1155,11 +1208,11 @@ $('#key15').mousedown(function() {
     synth.triggerAttack('D4');
     startMouseDownTime[14] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
         timeStampArray[14].push(getCurrentTime())
     }
-
 });
 
 $('#key15').mouseup(function() {
@@ -1171,6 +1224,7 @@ $('#key15').mouseup(function() {
         }
     }
     $('#key15').removeClass('activekey');
+    $('#key15').removeClass('whiteactivekey');
 });
 
 $('#key15').mouseout(function() {
@@ -1182,6 +1236,7 @@ $('#key15').mouseout(function() {
         }
     }
     $('#key15').removeClass('activekey');
+    $('#key15').removeClass('whiteactivekey');
 
 });
 
@@ -1189,6 +1244,7 @@ $('#key16').mousedown(function() {
     synth.triggerAttack('D#4');
     startMouseDownTime[15] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('blackactivekey');
 
     if (recording === true) {
         timeStampArray[15].push(getCurrentTime())
@@ -1205,6 +1261,7 @@ $('#key16').mouseup(function() {
         }
     }
     $('#key16').removeClass('activekey');
+    $('#key16').removeClass('blackactivekey');
 });
 
 $('#key16').mouseout(function() {
@@ -1216,6 +1273,7 @@ $('#key16').mouseout(function() {
         }
     }
     $('#key16').removeClass('activekey');
+    $('#key16').removeClass('blackactivekey');
 
 });
 
@@ -1223,6 +1281,7 @@ $('#key17').mousedown(function() {
     synth.triggerAttack('E4');
     startMouseDownTime[16] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
         timeStampArray[16].push(getCurrentTime())
@@ -1239,6 +1298,7 @@ $('#key17').mouseup(function() {
         }
     }
     $('#key17').removeClass('activekey');
+    $('#key17').removeClass('whiteactivekey');
 });
 
 $('#key17').mouseout(function() {
@@ -1250,6 +1310,7 @@ $('#key17').mouseout(function() {
         }
     }
     $('#key17').removeClass('activekey');
+    $('#key17').removeClass('whiteactivekey');
 
 });
 
@@ -1257,6 +1318,7 @@ $('#key18').mousedown(function() {
     synth.triggerAttack('F4');
     startMouseDownTime[17] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
         timeStampArray[17].push(getCurrentTime())
@@ -1273,6 +1335,7 @@ $('#key18').mouseup(function() {
         }
     }
     $('#key18').removeClass('activekey');
+    $('#key18').removeClass('whiteactivekey');
 });
 
 $('#key18').mouseout(function() {
@@ -1284,6 +1347,7 @@ $('#key18').mouseout(function() {
         }
     }
     $('#key18').removeClass('activekey');
+    $('#key18').removeClass('whiteactivekey');
 
 });
 
@@ -1291,6 +1355,7 @@ $('#key19').mousedown(function() {
     synth.triggerAttack('F#4');
     startMouseDownTime[18] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('blackactivekey');
 
     if (recording === true) {
         timeStampArray[18].push(getCurrentTime())
@@ -1307,6 +1372,7 @@ $('#key19').mouseup(function() {
         }
     }
     $('#key19').removeClass('activekey');
+    $('#key19').removeClass('blackactivekey');
 });
 
 $('#key19').mouseout(function() {
@@ -1318,6 +1384,7 @@ $('#key19').mouseout(function() {
         }
     }
     $('#key19').removeClass('activekey');
+    $('#key19').removeClass('blackactivekey');
 
 });
 
@@ -1325,6 +1392,7 @@ $('#key20').mousedown(function() {
     synth.triggerAttack('G4');
     startMouseDownTime[19] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
         timeStampArray[19].push(getCurrentTime())
@@ -1341,6 +1409,7 @@ $('#key20').mouseup(function() {
         }
     }
     $('#key20').removeClass('activekey');
+    $('#key20').removeClass('whiteactivekey');
 });
 
 $('#key20').mouseout(function() {
@@ -1352,6 +1421,7 @@ $('#key20').mouseout(function() {
         }
     }
     $('#key20').removeClass('activekey');
+    $('#key20').removeClass('whiteactivekey');
 
 });
 
@@ -1359,6 +1429,7 @@ $('#key21').mousedown(function() {
     synth.triggerAttack('G#4');
     startMouseDownTime[20] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('blackactivekey');
 
     if (recording === true) {
         timeStampArray[20].push(getCurrentTime())
@@ -1375,6 +1446,7 @@ $('#key21').mouseup(function() {
         }
     }
     $('#key21').removeClass('activekey');
+    $('#key21').removeClass('blackactivekey');
 });
 
 $('#key21').mouseout(function() {
@@ -1386,6 +1458,7 @@ $('#key21').mouseout(function() {
         }
     }
     $('#key21').removeClass('activekey');
+    $('#key21').removeClass('blackactivekey');
 
 });
 
@@ -1393,6 +1466,7 @@ $('#key22').mousedown(function() {
     synth.triggerAttack('A4');
     startMouseDownTime[21] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
         timeStampArray[21].push(getCurrentTime())
@@ -1409,6 +1483,7 @@ $('#key22').mouseup(function() {
         }
     }
     $('#key22').removeClass('activekey');
+    $('#key22').removeClass('whiteactivekey');
 });
 
 $('#key22').mouseout(function() {
@@ -1420,6 +1495,7 @@ $('#key22').mouseout(function() {
         }
     }
     $('#key22').removeClass('activekey');
+    $('#key22').removeClass('whiteactivekey');
 
 });
 
@@ -1427,6 +1503,7 @@ $('#key23').mousedown(function() {
     synth.triggerAttack('A#4');
     startMouseDownTime[22] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('blackactivekey');
 
     if (recording === true) {
         timeStampArray[22].push(getCurrentTime())
@@ -1443,6 +1520,7 @@ $('#key23').mouseup(function() {
         }
     }
     $('#key23').removeClass('activekey');
+    $('#key23').removeClass('blackactivekey');
 });
 
 $('#key23').mouseout(function() {
@@ -1454,6 +1532,7 @@ $('#key23').mouseout(function() {
         }
     }
     $('#key23').removeClass('activekey');
+    $('#key23').removeClass('blackactivekey');
 
 });
 
@@ -1461,6 +1540,7 @@ $('#key24').mousedown(function() {
     synth.triggerAttack('B4');
     startMouseDownTime[23] = Date.now();
     $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
 
     if (recording === true) {
         timeStampArray[23].push(getCurrentTime())
@@ -1477,6 +1557,7 @@ $('#key24').mouseup(function() {
         }
     }
     $('#key24').removeClass('activekey');
+    $('#key24').removeClass('whiteactivekey');
 });
 
 $('#key24').mouseout(function() {
@@ -1488,6 +1569,7 @@ $('#key24').mouseout(function() {
         }
     }
     $('#key24').removeClass('activekey');
+    $('#key24').removeClass('blackactivekey');
 
 });
 
