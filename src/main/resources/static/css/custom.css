@@ -85,12 +85,14 @@ li.blackkeys:hover{
 .whitekeylabels{
     line-height: 28;
     text-align: center;
+    height: 100px !important;
 }
 
 .blackkeylabels{
     line-height: 17;
     text-align: center;
     color: white;
+    height: 100px !important;
 }
 
 .whiteactivekey{
