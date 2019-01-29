@@ -86,8 +86,7 @@ function msToBars(timingLengthArray) {                                          
 
 function getMouseDownTime(keyValue) {
     // if (startMouseDownTime[keyValue] !== null) {
-        let deltaMouse = Date.now() - startMouseDownTime[keyValue];
-        return deltaMouse + "";
+        return Date.now() - startMouseDownTime[keyValue];
     // }
 }
 
@@ -1516,20 +1515,17 @@ $('#recButton').click(function(){
         start = null;
         console.count();
         reRecording = 1;
+        songInputs = translateAA(timingLengthsArray,timeStampArray);
+        songInputs[1] = msToBars(songInputs[1]);
+        songInputs[2] = msToBars(songInputs[2]);
     }
 });
 
 
 $(document).on('click', '#playButton', function(){
-    songInputs = translateAA(timingLengthsArray,timeStampArray);
-
-    songInputs[1] = msToBars(songInputs[1]);
-    songInputs[2] = msToBars(songInputs[2]);
-
     Tone.Transport.clear();
     Tone.Transport.stop();
     Tone.Transport.start();
-    console.log(songInputs);
 
     playNotes(instrumentTypes[0],.8,songInputs[0],songInputs[1],songInputs[2]);
 });
