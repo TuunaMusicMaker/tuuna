@@ -14,11 +14,11 @@
             <p>Below you can see their posts and comments!</p>
             <br />
             <div th:if="${isAdmin}" class="row">
-                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/admin/{id}/ban-user(id=${id})}"><ion-icon name="close"></ion-icon>  Ban This User</a>
+                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/admin/{id}/ban-user(id=${id})}"><i class="fas fa-ban"></i>  Ban This User</a>
 
-                <a th:if="${!userIsAdmin}" class="waves-effect waves-teal btn-small bluer-back" th:href="@{/admin/{id}/promote(id=${id})}"><ion-icon name="close"></ion-icon>  Promote This User</a>
+                <a th:if="${!userIsAdmin}" class="waves-effect waves-teal btn-small bluer-back" th:href="@{/admin/{id}/promote(id=${id})}"><i class="fas fa-angle-double-up"></i>  Promote This User</a>
 
-                <a th:if="${userIsAdmin}" class="waves-effect waves-red btn-small four-41ed" th:href="@{/admin/{id}/demote(id=${id})}"><ion-icon name="close"></ion-icon>  Demote This Admin</a>
+                <a th:if="${userIsAdmin}" class="waves-effect waves-red btn-small four-41ed" th:href="@{/admin/{id}/demote(id=${id})}"><i class="fas fa-angle-double-down"></i>  Demote This Admin</a>
             </div>
         </div>
     </div>

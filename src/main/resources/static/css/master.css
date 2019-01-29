@@ -162,3 +162,26 @@ a.darkness-link:hover {
 .anger-fish {
     max-height: 64px;
 }
+
+.small-push {
+    position: relative;
+    bottom: 3px;
+    left: 3px;
+}
+
+.no-left-pad {
+    padding: .75rem .75rem 0 0;
+}
+
+.float-left {
+    float: left;
+}
+
+.better-spacing {
+    padding: .75rem 0 0 0;
+}
+
+.spacer {
+    width: .35rem;
+    display: inline-block;
+}

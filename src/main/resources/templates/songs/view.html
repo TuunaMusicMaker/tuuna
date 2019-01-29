@@ -12,27 +12,29 @@
             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
         </div>
         <div class="card-content">
-            <h3 class="card-title bluer-text">Log In</h3>
-            <h3 class="card-title" th:text="${song.title}" />
-            <p th:text="${song.description}" class="i-like-paragraphs" />
+            <h3 class="card-title bluer-text" th:text="${song.title}" />
+            <p th:text="${song.description}" class="i-like-paragraphs bluer-text" />
+            <p><span class="down-for-tonight-text"><i class="fas fa-heart"></i> <span th:text="${songLikes}" /> likes.</span></p>
 
             <input id="songHash" name="songHash" type="hidden" th:value="${songHash}"/>
-            <button id="playbackButton" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="play"></ion-icon>  Play</button>
+            <button id="playbackButton" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-play"></i>  Play</button>
 
             <br />
-            <p><span class="down-for-tonight-text"><ion-icon name="heart"></ion-icon> <span th:text="${songLikes}" /></span></p>
-            <br />
-            <div th:if="${isPoster}">
-                <a class="waves-effect waves-red btn-small facebook-800" th:href="@{/songs/{id}/edit(id=${song.id})}"><ion-icon name="construct"></ion-icon>  Edit</a>
-                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/delete(id=${song.id})}"><ion-icon name="trash"></ion-icon>  Delete</a>
+
+            <div th:if="${isPoster}" class="row better-spacing">
+                <a class="waves-effect waves-red btn-small facebook-800 " th:href="@{/songs/{id}/edit(id=${song.id})}"><i class="fas fa-marker"></i>  Edit</a>
+                <span class="spacer"></span>
+                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/delete(id=${song.id})}"><i class="fas fa-trash"></i>  Delete</a>
             </div>
-            <div th:if="${!isPoster}">
-                <div th:if="${!hasRated}">
+            <div th:if="${!isPoster}" class="row">
+                <div th:if="${!hasRated}" class="no-left-pad float-left">
                     <form action="" th:action="@{/songs/{id}/rating(id=${song.id})}" method="post" th:object="${rating}">
-                        <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="heart"></ion-icon>  Like</button>
+                        <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back inline"><i class="fas fa-hand-holding-heart"></i>  Like</button>
                     </form>
                 </div>
-                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/flag(id=${song.id})}"><ion-icon name="flag"></ion-icon>  Flag This Song</a>
+                <div class="no-left-pad float-left">
+                    <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/songs/{id}/flag(id=${song.id})}"><i class="fas fa-flag-checkered"></i>  Flag This Song</a>
+                </div>
             </div>
 
         </div>
@@ -61,7 +63,7 @@
                         <label for="body">Comment Body</label>
                     </div>
                 </div>
-                <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><ion-icon name="paper-plane"></ion-icon>  Submit</button>
+                <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-smile-beam"></i>  Submit</button>
             </form>
         </div>
     </div>
@@ -86,11 +88,11 @@
                 <p th:text="${comment.body}" />
             </div>
             <div th:if="${#authentication.getName() == comment.user.username}">
-                <a class="waves-effect waves-red btn-small facebook-800" th:href="@{/comments/{id}/edit(id=${comment.id})}"><ion-icon name="construct"></ion-icon>  Edit</a>
-                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/comments/{id}/delete(id=${comment.id})}"><ion-icon name="trash"></ion-icon>  Delete</a>
+                <a class="waves-effect waves-red btn-small facebook-800" th:href="@{/comments/{id}/edit(id=${comment.id})}"><i class="fas fa-marker"></i>  Edit</a>
+                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/comments/{id}/delete(id=${comment.id})}"><i class="fas fa-trash"></i>  Delete</a>
             </div>
             <div th:if="${#authentication.getName() != comment.user.username}">
-                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/comments/{id}/flag(id=${comment.id})}"><ion-icon name="flag"></ion-icon>  Flag This Comment</a>
+                <a class="waves-effect waves-yellow btn-small down-for-tonight" th:href="@{/comments/{id}/flag(id=${comment.id})}"><i class="fas fa-flag-checkered"></i>  Flag This Comment</a>
             </div>
         </div>
     </div>
