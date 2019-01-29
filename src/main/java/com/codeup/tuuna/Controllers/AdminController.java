@@ -118,4 +118,15 @@ public class AdminController {
         }
         return "redirect:/users/{id}";
     }
+
+    @GetMapping("/admin/portal")
+    public String showPortal() {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (currentUser.isAdmin()) {
+                return "admin/admin-portal";
+            }
+        }
+        return "redirect:/";
+    }
 }
