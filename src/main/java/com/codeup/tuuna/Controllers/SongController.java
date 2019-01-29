@@ -2,6 +2,10 @@ package com.codeup.tuuna.Controllers;
 import com.codeup.tuuna.Models.*;
 import com.codeup.tuuna.Repositories.*;
 import com.google.common.collect.Lists;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,6 +30,12 @@ public class SongController {
     private final RatingRepository ratingDao;
 
     private final CategoriesRepository categoryDao;
+
+    @Value("${accountSID}")
+    private String ACCOUNT_SID;
+
+    @Value("${authTOKEN}")
+    private String AUTH_TOKEN;
 
     public SongController(UserRepository userDao, SongRepository songDao, CommentRepository commentDao,
                           RatingRepository ratingDao, CategoriesRepository categoryDao) {
@@ -188,5 +198,28 @@ public class SongController {
         return "redirect:/songs/" + id;
     }
 
+    @GetMapping("songs/{id}/message")
+    public String prepareMessage(@PathVariable long id, Model model) {
+        model.addAttribute("id", id);
+        return "songs/message";
+    }
+
+    @PostMapping("songs/{id}/message")
+    public String sendMessage(@PathVariable long id, @RequestParam(name = "recipient") String recipient) {
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String messageBody = "Check out this song from Tuuna Music Maker! tuuna.co/songs/" + id;
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+        Message message = Message
+                .creator(new PhoneNumber(recipient), // to
+                        new PhoneNumber(user.getPhoneNumber()), // from
+                        messageBody)
+                .create();
+
+        System.out.println(message.getSid());
+
+        return "redirect:/songs/" + id;
+    }
 
 }
