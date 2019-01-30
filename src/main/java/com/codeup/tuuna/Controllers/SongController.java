@@ -92,7 +92,7 @@ public class SongController {
         model.addAttribute("comments", songDao.findOne(id).getComments());
         model.addAttribute("comment", new Comment());
         model.addAttribute("ratings", songDao.findOne(id).getRatings());
-        model.addAttribute("categories", songDao.findOne(id).getCategories());
+//        model.addAttribute("categories", songDao.findOne(id).getCategories());
         model.addAttribute("songHash", songDao.findOne(id).getSongHash());
         model.addAttribute("songLikes", songLikes);
 
