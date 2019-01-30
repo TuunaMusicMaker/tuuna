@@ -136,7 +136,7 @@
         </div>
         <div class="card-content">
             <h3 class="card-title bluer-text">Create a Comment</h3>
-            <form action="" th:action="@{/songs/{id}/comment(id=${id})}" method="post" th:object="${comment}">
+            <form action="" th:action="@{/songs/{id}/comment(id=${song.id})}" method="post" th:object="${comment}">
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea id="body" name="body" class="materialize-textarea" th:field="*{body}" />
@@ -168,8 +168,8 @@
                 <p th:text="${comment.body}" />
 
                 <div th:if="${#authentication.getName() != comment.user.username}">
-                    <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" href="#flag-comment-modal"><i class="fas fa-flag-checkered"></i>  Flag This Comment</a>
-                    <div id="flag-comment-modal" class="modal card cyan lighten-5">
+                    <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" th:href="'#flag-comment-modal' + ${comment.id}"><i class="fas fa-flag-checkered"></i>  Flag This Comment</a>
+                    <div th:id="'flag-comment-modal' + ${comment.id}" class="modal card cyan lighten-5">
                         <div class="card-image">
                             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
                         </div>
@@ -190,10 +190,10 @@
                 </div>
 
                 <div th:if="${#authentication.getName() == comment.user.username}">
-                    <a class="waves-effect waves-red btn-small facebook-800 modal-trigger" href="#edit-comment-modal"><i class="fas fa-marker"></i>  Edit</a>
-                    <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" href="#delete-comment-modal"><i class="fas fa-trash"></i>  Delete</a>
+                    <a class="waves-effect waves-red btn-small facebook-800 modal-trigger" th:href="'#edit-comment-modal' + ${comment.id}"><i class="fas fa-marker"></i>  Edit</a>
+                    <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" th:href="'#delete-comment-modal' + ${comment.id}"><i class="fas fa-trash"></i>  Delete</a>
 
-                    <div id="edit-comment-modal" class="modal card cyan lighten-5">
+                    <div th:id="'edit-comment-modal' + ${comment.id}" class="modal card cyan lighten-5">
                         <div class="card-image">
                             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
                         </div>
@@ -210,7 +210,7 @@
                         </div>
                     </div>
 
-                    <div id="delete-comment-modal" class="modal card cyan lighten-5">
+                    <div th:id="'delete-comment-modal' + ${comment.id}" class="modal card cyan lighten-5">
                         <div class="card-image">
                             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
                         </div>
@@ -219,7 +219,7 @@
                                 Are you sure you wish to delete this comment?
                             </h3>
                             <p>Once you delete a comment, there's no going back. This is a permanent action.</p>
-                            <form action="" th:action="@{/comments/{id}/delete(commentId=${comment.id})}" method="post" th:object="${comment}">
+                            <form action="" th:action="@{/comments/{id}/delete(id=${comment.id})}" method="post">
                                 <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
                                 <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
                             </form>
