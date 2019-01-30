@@ -53,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/songs", "/songs/{id}", "/search", "/search/results") // anyone can see the home and the ads pages
+                .antMatchers("/", "/songs", "/songs/{id}", "/search", "/search/results", "/users/{id}") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
@@ -64,7 +64,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/songs/{id}/delete",
                         "/users/edit",
                         "/users/profile",
-                        "/users/{id}",
                         "/admin/{id}/ban",
                         "/admin/{id}/promote",
                         "/admin/{id}/demote",

@@ -19,11 +19,12 @@
         <a th:href="@{'/songs/' + ${song.id}}">
             <div class="card cyan lighten-5">
                 <div class="card-image">
-                    <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                    <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="colorful bar" />
                 </div>
                 <div class="card-content preview-song">
                     <h4 class="card-title" th:text="${song.title}" />
                     <p th:text="${song.description}" />
+                    <a  th:href="@{/users/{id}(id=${song.user.id})}"><span class="right">Composed by user...<span class="down-for-tonight-text" th:text="${song.user.username}" /></span> </a>
                 </div>
                 <div class="small-space" />
             </div>
