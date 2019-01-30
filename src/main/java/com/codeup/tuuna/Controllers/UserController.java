@@ -121,6 +121,10 @@ public class UserController {
                 return "users/other-profile";
             }
         }
-        return "redirect:/";
+        model.addAttribute("isAdmin", false);
+        model.addAttribute("user", users.findOne(id));
+        model.addAttribute("userIsAdmin", users.findOne(id).isAdmin());
+        model.addAttribute("id", id);
+        return "users/other-profile";
     }
 }

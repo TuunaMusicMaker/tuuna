@@ -18,22 +18,17 @@
         </div>
     </div>
 
-    <div th:each="song : ${flaggedSongs}">
-        <a th:href="@{'/songs/' + ${song.id}}">
-            <div class="card cyan lighten-5">
-                <div class="card-image">
-                    <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="colorful bar" />
-                </div>
-                <div class="card-content">
-                    <h4 class="card-title" th:text="${song.title}" />
-                    <p th:text="${song.description}" />
-                    <a class="waves-effect waves-teal btn-small bluer-back" th:href="'#flag-song-modal' + ${song.id}"><i class="fas fa-flag-checkered"></i>  Un-Flag This Song</a>
-                    <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" th:href="'#delete-song-modal' + ${song.id}"><i class="fas fa-trash"></i>  Delete</a>
-                </div>
+    <div th:each="comment : ${flaggedComments}">
+        <div class="card cyan lighten-5">
+            <div class="card-image">
+                <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="a smaller colorful bar" />
             </div>
-        </a>
+            <div class="card-content">
+                <h5><span th:text="${comment.user.username}" /> says...</h5>
+                <p th:text="${comment.body}" />
 
-        <div th:id="'flag-song-modal' + ${song.id}" class="modal card cyan lighten-5">
+
+                <div th:id="'flag-song-modal' + ${song.id}" class="modal card cyan lighten-5">
             <div class="card-image">
                 <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
             </div>

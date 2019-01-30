@@ -1,5 +1,7 @@
 package com.codeup.tuuna.Controllers;
 
+import com.codeup.tuuna.Models.Category;
+import com.codeup.tuuna.Models.Comment;
 import com.codeup.tuuna.Models.Song;
 import com.codeup.tuuna.Models.User;
 import com.codeup.tuuna.Repositories.CommentRepository;
@@ -154,4 +156,54 @@ public class AdminController {
         }
         return "redirect:/";
     }
+
+    @PostMapping("/songs/{id}/flag/admin")
+    public String unflagSong(@PathVariable long id) {
+        Song target = songDao.findOne(id);
+        target.setFlagged(false);
+        songDao.save(target);
+        return "redirect:/admin/flagged/songs";
+    }
+
+    @PostMapping("/songs/{id}/delete/admin")
+    public String deleteSong(@PathVariable long id, @ModelAttribute Song song) {
+        List<Category> categories = songDao.findOne(id).getCategories();
+        songDao.findOne(id).getCategories().removeAll(categories);
+        songDao.delete(id);
+        return "redirect:/admin/flagged/songs";
+    }
+
+    @GetMapping("/admin/flagged/comments")
+    public String showFlaggedComments(Model model) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (currentUser.isAdmin()) {
+                List<Comment> allComments = Lists.newArrayList(commentDao.findAll());
+                List<Comment> flaggedComments = new ArrayList<>();
+                for (Comment comment : allComments) {
+                    if (comment.isFlagged()) {
+                        flaggedComments.add(comment);
+                    }
+                }
+                model.addAttribute("flaggedComments", flaggedComments);
+                return "admin/flagged-comments";
+            }
+        }
+        return "redirect:/";
+    }
+
+    @PostMapping("/comments/{id}/flag/admin")
+    public String unflagComment(@PathVariable long id) {
+        Comment target = commentDao.findOne(id);
+        target.setFlagged(false);
+        commentDao.save(target);
+        return "redirect:/admin/flagged/comments";
+    }
+
+    @PostMapping("/comments/{id}/delete/admin")
+    public String deleteComment(@PathVariable long id, @ModelAttribute Comment comment) {
+        commentDao.delete(id);
+        return "redirect:/admin/flagged/comments";
+    }
+
 }
