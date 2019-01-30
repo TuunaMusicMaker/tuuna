@@ -14,7 +14,20 @@
             <h3 class="card-title">Welcome back, <span th:text="${user.username}" /></h3>
             <p>It's so great to see you again! How have you been?</p>
             <div class="better-spacing">
+                <a th:if="${isAdmin}" class="waves-effect waves-teal btn-small bluer-back modal-trigger" href="#admin-portal-modal"><i class="fas fa-toolbox"></i>  Admin Portal</a>
                 <a class="waves-effect waves-teal btn-small bluer-back modal-trigger" href="#editmodal"><i class="fas fa-user-edit"></i>  Edit Profile</a>
+
+                <div id="admin-portal-modal" class="modal card bluer-back facebook-800-text">
+                    <div class="card-image">
+                        <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Welcome Administrator: <span th:text="${#authentication.getName()}" />!</h3>
+                        <a class="waves-effect waves-yellow btn-small down-for-tonight" href="/admin/flagged/songs"><i class="fas fa-music"></i>  Flagged Songs</a>
+                        <a class="waves-effect waves-yellow btn-small down-for-tonight" href="/admin/flagged/comments"><i class="fas fa-comments"></i>  Flagged Comments</a>
+                        <a href="#" class="modal-close waves-effect waves-yellow btn-small down-for-tonight"><i class="far fa-times-circle"></i>  Close Portal</a>
+                    </div>
+                </div>
 
                 <div id="editmodal" class="modal card cyan lighten-5">
                     <div class="card-image">

@@ -97,7 +97,7 @@ public class UserController {
         List<Song> userSongs = songs.findAllByUserId(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         List<Comment> userComments = comments.findAllByUserId(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        model.addAttribute("phoneSubstring", ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getPhoneNumber().substring(2));
+        model.addAttribute("isAdmin", ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).isAdmin());
         model.addAttribute("userSongs", userSongs);
         model.addAttribute("userComments", userComments);
         return "users/profile";
@@ -121,6 +121,10 @@ public class UserController {
                 return "users/other-profile";
             }
         }
-        return "redirect:/";
+        model.addAttribute("isAdmin", false);
+        model.addAttribute("user", users.findOne(id));
+        model.addAttribute("userIsAdmin", users.findOne(id).isAdmin());
+        model.addAttribute("id", id);
+        return "users/other-profile";
     }
 }

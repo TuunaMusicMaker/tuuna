@@ -18,7 +18,7 @@
         <div class="nav-wrapper">
             <div class="container">
                 <a href="/" class="brand-logo dat-fish"><img src="../static/img/tuuna2.png" th:src="@{/img/tuuna2.png}" alt="Tuuna" class="big-fish" /></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <ul id="nav-mobile" class="right">
                     <li><a href="/songs" class="bluer-text"><i class="fas fa-music"></i>  <span class="small-push">All Songs</span></a></li>
                     <li><a href="#search-modal" class="bluer-text modal-trigger"><i class="fas fa-search"></i>   <span class="small-push">Search</span></a></li>
                     <li sec:authorize="!isAuthenticated()"><a href="/login" class="bluer-text"><i class="fas fa-sign-in-alt"></i>  <span class="small-push">Log-In</span></a></li>
@@ -92,7 +92,7 @@
         <div class="nav-wrapper">
             <div class="container">
                 <a href="/" class="brand-logo"><img src="../static/img/anger_fish.png" th:src="@{/img/anger_fish.png}" alt="anger fish" class="anger-fish" /></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <ul id="nav-mobile" class="right">
                     <li sec:authorize="isAuthenticated()">
                         <form th:action="@{/logout}" th:method="post" id="form1">
                             <a class="darkness-link" onclick="document.getElementById('form1').submit();"><i class="fas fa-sign-out-alt"></i><span class="small-push">  Log-Out</span></a>
