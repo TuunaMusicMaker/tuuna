@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('Delete a Song')" />
+<body class="main">
+<script th:replace="partials :: j-query" />
+<nav th:replace="partials :: navbar" />
+<header></header>
+<main class="container">
+    <div class="card bluer-back facebook-800-text">
+        <div class="card-image">
+            <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">
+                Viewing flagged songs
+            </h3>
+            <p>Please review the following flagged songs before deciding to un-flag or delete them. Just because a song is flagged, doesn't mean it needs to be deleted. Please review the flagged songs for any abusive/offensive language in the title or description and also, listen to the song for any possible copyright infringement.</p>
+        </div>
+    </div>
+
+    <div th:each="song : ${flaggedSongs}">
+        <a th:href="@{'/songs/' + ${song.id}}">
+            <div class="card cyan lighten-5">
+                <div class="card-image">
+                    <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="colorful bar" />
+                </div>
+                <div class="card-content preview-song">
+                    <h4 class="card-title" th:text="${song.title}" />
+                    <p th:text="${song.description}" />
+                </div>
+                <div class="small-space" />
+            </div>
+        </a>
+    </div>
+</main>
+<footer th:replace="partials :: blue-footer" />
+<script th:replace="partials :: m-script" />
+</body>
+</html>
