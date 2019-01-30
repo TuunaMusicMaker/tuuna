@@ -1,10 +1,12 @@
 package com.codeup.tuuna.Controllers;
 
+import com.codeup.tuuna.Models.Song;
 import com.codeup.tuuna.Models.User;
 import com.codeup.tuuna.Repositories.CommentRepository;
 import com.codeup.tuuna.Repositories.RatingRepository;
 import com.codeup.tuuna.Repositories.SongRepository;
 import com.codeup.tuuna.Repositories.UserRepository;
+import com.google.common.collect.Lists;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -125,6 +131,25 @@ public class AdminController {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if (currentUser.isAdmin()) {
                 return "admin/admin-portal";
+            }
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping("/admin/flagged/songs")
+    public String showFlaggedSongs(Model model) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (currentUser.isAdmin()) {
+                List<Song> allSongs = Lists.newArrayList(songDao.findAll());
+                List<Song> flaggedSongs = new ArrayList<>();
+                for (Song song : allSongs) {
+                    if (song.isFlagged()) {
+                        flaggedSongs.add(song);
+                    }
+                }
+                model.addAttribute("flaggedSongs", flaggedSongs);
+                return "admin/flagged-songs";
             }
         }
         return "redirect:/";

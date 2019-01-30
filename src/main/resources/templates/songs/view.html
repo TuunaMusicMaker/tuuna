@@ -166,59 +166,61 @@
             <div class="card-content">
                 <h5><span th:text="${comment.user.username}" /> says...</h5>
                 <p th:text="${comment.body}" />
-            </div>
-            <div th:if="${#authentication.getName() == comment.user.username}">
-                <a class="waves-effect waves-red btn-small facebook-800 modal-trigger" href="#edit-comment-modal"><i class="fas fa-marker"></i>  Edit</a>
-                <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" href=""><i class="fas fa-trash"></i>  Delete</a>
 
-                <div id="edit-comment-modal" class="modal card cyan lighten-5">
-                    <div class="card-image">
-                        <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                <div th:if="${#authentication.getName() != comment.user.username}">
+                    <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" href="#flag-comment-modal"><i class="fas fa-flag-checkered"></i>  Flag This Comment</a>
+                    <div id="flag-comment-modal" class="modal card cyan lighten-5">
+                        <div class="card-image">
+                            <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                Are you sure you wish to flag this comment?
+                            </h3>
+                            <p>Flagging a comment will allow an administrator to review the comment for any issues. A flagged comment is not removed or deleted automatically.</p>
+                            <form action="" th:action="@{/comment/{id}/flag(id=${id})}" method="post" th:object="${comment}">
+                                <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
+                                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
+                            </form>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <form action="" th:action="@{/comments/{id}/edit(id=${comment.id})}" method="post" th:object="${comment}">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="comment-body" name="body" class="materialize-textarea" th:field="*{body}" />
-                                    <label for="body">Comment Body</label>
+                </div>
+
+                <div th:if="${#authentication.getName() == comment.user.username}">
+                    <a class="waves-effect waves-red btn-small facebook-800 modal-trigger" href="#edit-comment-modal"><i class="fas fa-marker"></i>  Edit</a>
+                    <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" href=""><i class="fas fa-trash"></i>  Delete</a>
+
+                    <div id="edit-comment-modal" class="modal card cyan lighten-5">
+                        <div class="card-image">
+                            <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                        </div>
+                        <div class="card-content">
+                            <form action="" th:action="@{/comments/{id}/edit(id=${comment.id})}" method="post" th:object="${comment}">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="comment-body" name="body" class="materialize-textarea" th:field="*{body}" />
+                                        <label for="body">Comment Body</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-smile-beam"></i>  Submit</button>
-                        </form>
+                                <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-smile-beam"></i>  Submit</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
 
-                <div id="delete-comment-modal" class="modal card cyan lighten-5">
-                    <div class="card-image">
-                        <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">
-                            Are you sure you wish to delete this comment?
-                        </h3>
-                        <p>Once you delete a comment, there's no going back. This is a permanent action.</p>
-                        <form action="" th:action="@{/comments/{id}/delete(id=${id})}" method="post" th:object="${comment}">
-                            <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
-                            <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div th:if="${#authentication.getName() != comment.user.username}">
-                <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" href="#flag-comment-modal"><i class="fas fa-flag-checkered"></i>  Flag This Comment</a>
-                <div id="flag-comment-modal" class="modal card cyan lighten-5">
-                    <div class="card-image">
-                        <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">
-                            Are you sure you wish to delete this comment?
-                        </h3>
-                        <p>Once you delete a comment, there's no going back. This is a permanent action.</p>
-                        <form action="" th:action="@{/comments/{id}/delete(id=${id})}" method="post" th:object="${comment}">
-                            <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
-                            <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
-                        </form>
+                    <div id="delete-comment-modal" class="modal card cyan lighten-5">
+                        <div class="card-image">
+                            <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                Are you sure you wish to delete this comment?
+                            </h3>
+                            <p>Once you delete a comment, there's no going back. This is a permanent action.</p>
+                            <form action="" th:action="@{/comments/{id}/delete(id=${id})}" method="post" th:object="${comment}">
+                                <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
+                                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

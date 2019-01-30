@@ -47,7 +47,6 @@ public class UserController {
             return "redirect:/register";
         }
         String hash = passwordEncoder.encode(password);
-        phoneNumber = "+1" + phoneNumber;
         user.setPassword(hash);
         user.setUsername(username);
         user.setEmail(email);
@@ -75,13 +74,10 @@ public class UserController {
             return "redirect:/users/edit";
         }
         String hash = passwordEncoder.encode(password);
-        phoneNumber = "+1" + phoneNumber;
         user.setPassword(hash);
         user.setUsername(username);
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
-        user.setAdmin(false);
-        user.setBanned(false);
         users.save(user);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userDetails = (User) authentication.getPrincipal();
@@ -101,6 +97,7 @@ public class UserController {
         List<Song> userSongs = songs.findAllByUserId(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         List<Comment> userComments = comments.findAllByUserId(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        model.addAttribute("phoneSubstring", ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getPhoneNumber().substring(2));
         model.addAttribute("userSongs", userSongs);
         model.addAttribute("userComments", userComments);
         return "users/profile";

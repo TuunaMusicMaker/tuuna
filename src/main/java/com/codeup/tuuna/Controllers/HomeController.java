@@ -124,23 +124,6 @@ public class HomeController {
     public String makeSearch(Model model,@RequestParam (name = "search-params") String params, @RequestParam (name = "query") String query) {
         List<Song> searchResults;
         switch(params) {
-            case("1"):
-                searchResults = new ArrayList<>();
-                List<Song> allSongs = Lists.newArrayList(songDao.findAll());
-                for (Song song : allSongs) {
-                    List<Category> cats =  song.getCategories();
-                    boolean addMe = false;
-                    for (Category cat : cats) {
-                        if (cat.getCategory().contains(query)) {
-                            addMe = true;
-                        }
-                    }
-                    if (addMe) {
-                        searchResults.add(song);
-                    }
-                }
-                model.addAttribute("searchResults", searchResults);
-                break;
             case("2"):
                 searchResults = songDao.findAllByTitleContaining(query);
                 for(Song result : searchResults) {
