@@ -66,6 +66,10 @@ public class SongController {
         boolean isPoster = (currentUserName.equals(songDao.findOne(id).getUser().getUsername()));
 
         List<Rating> ratings = songDao.findOne(id).getRatings();
+        Integer songLikes = songDao.findOne(id).getRatings().size();
+            if (songLikes == null) {
+                songLikes = 0;
+            }
         boolean hasRated = false;
             if(ratings.size() > 0) {
                 for (Rating rating : ratings) {
@@ -87,6 +91,7 @@ public class SongController {
         model.addAttribute("ratings", songDao.findOne(id).getRatings());
         model.addAttribute("categories", songDao.findOne(id).getCategories());
         model.addAttribute("songHash", songDao.findOne(id).getSongHash());
+        model.addAttribute("songLikes", songLikes);
 
         return "songs/view";
     }
@@ -165,8 +170,12 @@ public class SongController {
 
     @PostMapping("/songs/{id}/rating")
     public String likeSong(@PathVariable long id, @ModelAttribute Song song) {
-//        need to finish this method
-        return "redirect:/songs";
+        User ratingUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Song ratedSong = songDao.findOne(id);
+        Rating rating = new Rating(ratedSong, ratingUser);
+        ratingDao.save(rating);
+
+        return "redirect:/songs/{id}";
     }
 
     @GetMapping("songs/{id}/flag")
@@ -205,7 +214,8 @@ public class SongController {
     public String sendMessage(@PathVariable long id, @RequestParam(name = "recipient") String recipient) {
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String messageBody = "Check out this song from Tuuna Music Maker! tuuna.co/songs/" + id;
+        String username = user.getUsername();
+        String messageBody = "Check out this song on Tuuna Music Maker sent to you by Tuuna user:" + username + " tuuna.co/songs/" + id;
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
         Message message = Message
