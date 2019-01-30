@@ -83,7 +83,7 @@ public class HomeController {
                             }
                         }
                     }
-                    if (holdThis.getRatings() != null) {
+                    if (holdThis.getRatings().size() >= 1) {
                         allSongs.remove(holdThis);
                         likedSongs.add(holdThis);
                     }

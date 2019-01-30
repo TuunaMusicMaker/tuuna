@@ -168,7 +168,7 @@ public class SongController {
         List<Category> categories = songDao.findOne(id).getCategories();
         songDao.findOne(id).getCategories().removeAll(categories);
         songDao.delete(id);
-        return "redirect:/songs";
+        return "redirect:/users/profile";
     }
 
     @PostMapping("/songs/{id}/rating")
@@ -212,6 +212,34 @@ public class SongController {
         commentDao.save(comment);
         return "redirect:/songs/" + id;
     }
+    @PostMapping("comments/{id}/edit")
+    public String editComment(@PathVariable long id, @ModelAttribute Comment comment,
+                              @RequestParam(name = "body") String body) {
+
+        comment.setBody(body);
+        comment.setUser(commentDao.findOne(id).getUser());
+        comment.setSong(commentDao.findOne(id).getSong());
+        comment.setFlagged(false);
+        commentDao.save(comment);
+        return "redirect:/songs/" + commentDao.findOne(id).getSong().getId();
+    }
+
+    @PostMapping("/comment/{commentId}/flag")
+    public String flagComment(@PathVariable long commentId) {
+        Comment flaggedComment = commentDao.findOne(commentId);
+        flaggedComment.setFlagged(true);
+        commentDao.save(flaggedComment);
+        long id = commentDao.findOne(commentId).getSong().getId();
+        return "redirect:/songs/" + id;
+    }
+
+//    @PostMapping("/comment/{id}/delete")
+//    public String deleteComment(@ModelAttribute Comment comment, @PathVariable long id, @RequestParam(name = "songId") long songId) {
+//
+//        Comment flaggedComment = commentDao.findOne(id);
+//        commentDao.delete(flaggedComment);
+//        return "redirect:/songs/" + songId;
+//    }
 
     @PostMapping("songs/{id}/message")
     public String sendMessage(@PathVariable long id, @RequestParam(name = "recipient") String recipient) {
