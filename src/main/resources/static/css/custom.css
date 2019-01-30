@@ -1,24 +1,19 @@
 #recButton {
-    width: 35px;
-    height: 35px;
-    font-size: 0;
-    background-color: red;
-    border: 0;
-    border-radius: 35px;
-    margin: 18px;
-    outline: none;
 }
 
 .notRec{
-    background-color: darkred;
+    content: "  Record" !important;
+}
+.notRecColor{
+    background-color: #243179 !important;
 }
 
 .Rec{
-    background-color: red;
-    animation-name: pulse;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    content: "  Stop" !important;
+}
+
+.RecColor{
+    background-color: #df2935 !important;
 }
 
 @keyframes pulse{
