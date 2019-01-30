@@ -178,7 +178,7 @@
                                 Are you sure you wish to flag this comment?
                             </h3>
                             <p>Flagging a comment will allow an administrator to review the comment for any issues. A flagged comment is not removed or deleted automatically.</p>
-                            <form action="" th:action="@{/comment/{id}/flag(id=${id})}" method="post" th:object="${comment}">
+                            <form action="" th:action="@{/comment/{commentId}/flag(commentId=${comment.id})}" method="post" th:object="${comment}">
                                 <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
                                 <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
                             </form>

@@ -212,6 +212,14 @@ public class SongController {
         commentDao.save(comment);
         return "redirect:/songs/" + id;
     }
+    @PostMapping("/comment/{commentId}/flag")
+    public String flagComment(@PathVariable long commentId) {
+        Comment flaggedComment = commentDao.findOne(commentId);
+        flaggedComment.setFlagged(true);
+        commentDao.save(flaggedComment);
+        long id = commentDao.findOne(commentId).getSong().getId();
+        return "redirect:/songs/" + id;
+    }
 
     @PostMapping("songs/{id}/message")
     public String sendMessage(@PathVariable long id, @RequestParam(name = "recipient") String recipient) {
