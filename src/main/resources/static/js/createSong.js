@@ -1,7 +1,6 @@
 let synth = new Tone.Synth();
 let start;
 let startMouseDownTime = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
-let notesArray = [];
 let timingLengthsArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 let timeStampArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 let reRecording = 0;
@@ -43,23 +42,6 @@ function createInstrument(cInstrument, cVolume){
     return createdInstrument
 }
 
-
-function countMaxRepeats(array){
-    let currentMax = 1,
-        count;
-    for(let i = 0 ; i < array.length ; ){
-        count = 0;
-        do {
-            i++;
-            count++;
-        } while (array[i-1] === array[i]);
-        if(count > currentMax){
-            currentMax = count;
-        }
-    }
-    return currentMax;
-}
-
 function getCurrentTime() {
     if (start !== null) {
         return Date.now() - start;
@@ -85,9 +67,7 @@ function msToBars(timingLengthArray) {                                          
 
 
 function getMouseDownTime(keyValue) {
-    // if (startMouseDownTime[keyValue] !== null) {
         return Date.now() - startMouseDownTime[keyValue];
-    // }
 }
 
 function songPacking(valuesArray,lengthsArray,timesArray){
@@ -123,7 +103,6 @@ function translateAA(lengthAA,timingAA){
     return outputArray
 }
 
-// let octave = 4;
 const keys = [];
 let prevKey = 0;
 
@@ -173,19 +152,6 @@ function keyToNotes(key) {
 
 }
 
-// const keyToNote = key => {
-//     const note = NotesOnKeyboard[ key ];
-//     if ( !note ) {
-//         return;
-//     }
-//
-//     return Tone.Frequency(
-//         note
-//             .replace( 'l', octave )
-//             .replace( 'u', octave + 1 )
-//     ).toNote();
-// };
-
 const onKeyDown = (() => {
     let listener;
 
@@ -197,7 +163,6 @@ const onKeyDown = (() => {
 
             // Only trigger once per keydown event.
             if ( !keys[ key ] ) {
-                // startMouseDownTime[0] = Date.now();
                 keys[ key ] = true;
 
                 const note = keyToNotes( key );
@@ -205,7 +170,9 @@ const onKeyDown = (() => {
                     switch (note) {
                         case 'C3':
                             $(document).ready(function () {
-                                $('#key1').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key1').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[0] = Date.now();
@@ -214,7 +181,9 @@ const onKeyDown = (() => {
                             break;
                         case 'C#3':
                             $(document).ready(function () {
-                                $('#key2').addClass('blackkeypressed');
+                                if(synth !== null) {
+                                    $('#key2').addClass('blackkeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[1] = Date.now();
@@ -223,7 +192,9 @@ const onKeyDown = (() => {
                             break;
                         case 'D3':
                             $(document).ready(function () {
-                                $('#key3').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key3').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[2] = Date.now();
@@ -232,7 +203,9 @@ const onKeyDown = (() => {
                             break;
                         case 'D#3':
                             $(document).ready(function () {
-                                $('#key4').addClass('blackkeypressed');
+                                if(synth !== null) {
+                                    $('#key4').addClass('blackkeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[3] = Date.now();
@@ -241,7 +214,9 @@ const onKeyDown = (() => {
                             break;
                         case 'E3':
                             $(document).ready(function () {
-                                $('#key5').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key5').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[4] = Date.now();
@@ -250,7 +225,9 @@ const onKeyDown = (() => {
                             break;
                         case 'F3':
                             $(document).ready(function () {
-                                $('#key6').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key6').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[5] = Date.now();
@@ -259,7 +236,9 @@ const onKeyDown = (() => {
                             break;
                         case 'F#3':
                             $(document).ready(function () {
-                                $('#key7').addClass('blackkeypressed');
+                                if(synth !== null) {
+                                    $('#key7').addClass('blackkeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[6] = Date.now();
@@ -268,7 +247,9 @@ const onKeyDown = (() => {
                             break;
                         case 'G3':
                             $(document).ready(function () {
-                                $('#key8').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key8').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[7] = Date.now();
@@ -277,7 +258,9 @@ const onKeyDown = (() => {
                             break;
                         case 'G#3':
                             $(document).ready(function () {
-                                $('#key9').addClass('blackkeypressed');
+                                if(synth !== null) {
+                                    $('#key9').addClass('blackkeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[8] = Date.now();
@@ -286,7 +269,9 @@ const onKeyDown = (() => {
                             break;
                         case 'A3':
                             $(document).ready(function () {
-                                $('#key10').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key10').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[9] = Date.now();
@@ -295,7 +280,9 @@ const onKeyDown = (() => {
                             break;
                         case 'A#3':
                             $(document).ready(function () {
-                                $('#key11').addClass('blackkeypressed');
+                                if(synth !== null) {
+                                    $('#key11').addClass('blackkeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[10] = Date.now();
@@ -304,7 +291,9 @@ const onKeyDown = (() => {
                             break;
                         case 'B3':
                             $(document).ready(function () {
-                                $('#key12').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key12').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[11] = Date.now();
@@ -313,7 +302,9 @@ const onKeyDown = (() => {
                             break;
                         case 'C4':
                             $(document).ready(function () {
-                                $('#key13').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key13').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[12] = Date.now();
@@ -322,7 +313,9 @@ const onKeyDown = (() => {
                             break;
                         case 'C#4':
                             $(document).ready(function () {
-                                $('#key14').addClass('blackkeypressed');
+                                if(synth !== null) {
+                                    $('#key14').addClass('blackkeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[13] = Date.now();
@@ -331,7 +324,9 @@ const onKeyDown = (() => {
                             break;
                         case 'D4':
                             $(document).ready(function () {
-                                $('#key15').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key15').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[14] = Date.now();
@@ -340,7 +335,9 @@ const onKeyDown = (() => {
                             break;
                         case 'D#4':
                             $(document).ready(function () {
-                                $('#key16').addClass('blackkeypressed');
+                                if(synth !== null) {
+                                    $('#key16').addClass('blackkeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[15] = Date.now();
@@ -349,7 +346,9 @@ const onKeyDown = (() => {
                             break;
                         case 'E4':
                             $(document).ready(function () {
-                                $('#key17').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key17').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[16] = Date.now();
@@ -358,7 +357,9 @@ const onKeyDown = (() => {
                             break;
                         case 'F4':
                             $(document).ready(function () {
-                                $('#key18').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key18').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[17] = Date.now();
@@ -367,7 +368,9 @@ const onKeyDown = (() => {
                             break;
                         case 'F#4':
                             $(document).ready(function () {
-                                $('#key19').addClass('blackkeypressed');
+                                if(synth !== null) {
+                                    $('#key19').addClass('blackkeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[18] = Date.now();
@@ -376,7 +379,9 @@ const onKeyDown = (() => {
                             break;
                         case 'G4':
                             $(document).ready(function () {
-                                $('#key20').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key20').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[19] = Date.now();
@@ -385,7 +390,9 @@ const onKeyDown = (() => {
                             break;
                         case 'G#4':
                             $(document).ready(function () {
-                                $('#key21').addClass('blackkeypressed');
+                                if(synth !== null) {
+                                    $('#key21').addClass('blackkeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[20] = Date.now();
@@ -394,7 +401,9 @@ const onKeyDown = (() => {
                             break;
                         case 'A4':
                             $(document).ready(function () {
-                                $('#key22').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key22').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[21] = Date.now();
@@ -403,7 +412,9 @@ const onKeyDown = (() => {
                             break;
                         case 'A#4':
                             $(document).ready(function () {
-                                $('#key23').addClass('blackkeypressed');
+                                if(synth !== null) {
+                                    $('#key23').addClass('blackkeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[22] = Date.now();
@@ -412,7 +423,9 @@ const onKeyDown = (() => {
                             break;
                         case 'B4':
                             $(document).ready(function () {
-                                $('#key24').addClass('whitekeypressed');
+                                if(synth !== null) {
+                                    $('#key24').addClass('whitekeypressed');
+                                }
                             });
                             if(recording === true) {
                                 startMouseDownTime[23] = Date.now();
@@ -1620,50 +1633,15 @@ $(document).on('click', '#save-modal', function(){
     $("#songHash").val(songString);
 });
 
-// $(document).keydown(function(e) {
-//     if (e.originalEvent.keyCode === 81 && triggeredArray[0] === false) {
-//             startMouseDownTime[0] = Date.now();
-//             $('#key1').addClass('whitekeypressed');
-//             synth.triggerAttack('C3');
-//             triggeredArray[0] = true;
-//             if (recording === true) {
-//                 timeStampArray[0].push(getCurrentTime())
-//             }
-//     }
-//
-// });
-//
-// $(document).keyup(function(e) {
-//     if (e.originalEvent.keyCode === 81) {
-//         $('#key1').removeClass('whitekeypressed');
-//         if (recording === true) {
-//             timingLengthsArray[0].push(getMouseDownTime(0));
-//         }
-//         triggeredArray[0] = false;
-//     }
-//         synth.triggerRelease('C3');
-// });
-
-$('#title').focusin(function() {
+$('#save-modal').focusin(function() {
     onKeyDown(null);
     onKeyUp(null);
 });
 
-$('#title').focusout(function() {
+$('#save-modal').focusout(function() {
     const synth = new Tone.PolySynth( 10 );
     synth.toMaster();
 
     onKeyDown(synth);
-    onKeyUp(synth);});
-
-$('#description').focusin(function() {
-    onKeyDown(null);
-    onKeyUp(null);
+    onKeyUp(synth);
 });
-
-$('#description').focusout(function() {
-    const synth = new Tone.PolySynth( 10 );
-    synth.toMaster();
-
-    onKeyDown(synth);
-    onKeyUp(synth);});
