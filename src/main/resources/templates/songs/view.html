@@ -14,7 +14,7 @@
         <div class="card-content">
             <h3 class="card-title bluer-text" th:text="${song.title}" />
             <p th:text="${song.description}" class="i-like-paragraphs bluer-text" />
-            <p><span class="down-for-tonight-text"><i class="fas fa-heart"></i> <span th:text="${songLikes}" /> likes.</span></p>
+            <p><span class="down-for-tonight-text"><i class="fas fa-heart"></i> <span th:text="${songLikes}" /> like(s).</span></p>
 
             <input id="songHash" name="songHash" type="hidden" th:value="${songHash}"/>
             <button id="playbackButton" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-play"></i>  Play</button>
