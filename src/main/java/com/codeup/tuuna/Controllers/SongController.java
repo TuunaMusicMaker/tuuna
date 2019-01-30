@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -52,7 +53,9 @@ public class SongController {
     @GetMapping("/songs")
     public String getSongs(Model model) {
 
-        model.addAttribute("songs", songDao.findAll());
+        List<Song> allSongs = Lists.newArrayList(songDao.findAll());
+        Collections.reverse(allSongs);
+        model.addAttribute("songs", allSongs);
         return "songs/index";
     }
 
