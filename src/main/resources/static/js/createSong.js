@@ -1592,6 +1592,9 @@ $('#recButton').addClass("notRec");
 $('#recButton').click(function(){
 
     if($('#recButton').hasClass('notRec')){
+        $('#recButton').html($('#recButton').html().replace('  Record','  Stop'));
+        $('#recButton').removeClass("notRecColor");
+        $('#recButton').addClass("RecColor");
         $('#recButton').removeClass("notRec");
         $('#recButton').addClass("Rec");
         if (reRecording === 1) {
@@ -1604,6 +1607,9 @@ $('#recButton').click(function(){
 
     }
     else{
+        $('#recButton').html($('#recButton').html().replace('  Stop','  Record'));
+        $('#recButton').removeClass("RecColor");
+        $('#recButton').addClass("notRecColor");
         $('#recButton').removeClass("Rec");
         $('#recButton').addClass("notRec");
         recording = false;
