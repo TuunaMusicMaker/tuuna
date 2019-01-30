@@ -179,8 +179,11 @@
                             </h3>
                             <p>Flagging a comment will allow an administrator to review the comment for any issues. A flagged comment is not removed or deleted automatically.</p>
                             <form action="" th:action="@{/comment/{commentId}/flag(commentId=${comment.id})}" method="post" th:object="${comment}">
+                                <div class="row">
+                                    <input id="songId" name="songId" type="hidden" th:field="*{id}"/>
+                                </div>
                                 <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
-                                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
+                                <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${comment.id})}"><i class="fas fa-thumbs-down"></i>  No</a>
                             </form>
                         </div>
                     </div>
@@ -188,7 +191,7 @@
 
                 <div th:if="${#authentication.getName() == comment.user.username}">
                     <a class="waves-effect waves-red btn-small facebook-800 modal-trigger" href="#edit-comment-modal"><i class="fas fa-marker"></i>  Edit</a>
-                    <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" href=""><i class="fas fa-trash"></i>  Delete</a>
+                    <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" href="#delete-comment-modal"><i class="fas fa-trash"></i>  Delete</a>
 
                     <div id="edit-comment-modal" class="modal card cyan lighten-5">
                         <div class="card-image">
@@ -216,7 +219,7 @@
                                 Are you sure you wish to delete this comment?
                             </h3>
                             <p>Once you delete a comment, there's no going back. This is a permanent action.</p>
-                            <form action="" th:action="@{/comments/{id}/delete(id=${id})}" method="post" th:object="${comment}">
+                            <form action="" th:action="@{/comments/{id}/delete(commentId=${comment.id})}" method="post" th:object="${comment}">
                                 <button type="submit" value="submit" class="waves-effect waves-yellow btn-small down-for-tonight"><i class="fas fa-thumbs-up"></i>  Yes</button>
                                 <a class="waves-effect waves-teal btn-small bluer-back" th:href="@{/songs/{id}(id=${id})}"><i class="fas fa-thumbs-down"></i>  No</a>
                             </form>
