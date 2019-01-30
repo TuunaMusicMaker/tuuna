@@ -42,14 +42,14 @@
 
 .keys{
     width: 1000px;
-    height: 400px;
-    padding-top: 130px;
+    height: 17em;
+    padding: 3em;
     margin: 0 auto;
 }
 .whitekeys{
     list-style-type: none;
-    width: 64px;
-    height: 240px;
+    width: 7.14%;
+    height: 16em;
     background-color: #eef8fa;
     float: left;
     border: solid 1px #01635b;
@@ -61,12 +61,12 @@ li.whitekeys:hover{
 
 .blackkeys{
     list-style-type: none;
-    width: 40px;
-    height: 150px;
+    width: 4.45%;
+    height: 10em;
     background-color: #231f20;
     float: left;
     border-radius: 0 0 5px 5px;
-    margin: 0 -22px;
+    margin: 0 -2.45%;
     position: relative;
 }
 
