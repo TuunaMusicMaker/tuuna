@@ -8,11 +8,11 @@ VALUES ('awesome'),
 ('uplifting');
 
 INSERT INTO users (email, is_admin, is_banned, password, username, phone_number)
-VALUES ('gary@gmail.com', false, false, 'password', 'gary', '4353245678'),
-('mary@gmail.com', false, false, 'password', 'mary', '2353233678'),
-('barry@gmail.com', false, false, 'password', 'barry', '2103232678'),
-('jerry@gmail.com', false, false, 'password', 'jerry', '7543245988'),
-('terry@gmail.com', false, false, 'password', 'terry', '9834674367');
+VALUES ('gary@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'gary', '4353245678'),
+('mary@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'mary', '2353233678'),
+('barry@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'barry', '2103232678'),
+('jerry@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'jerry', '7543245988'),
+('terry@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'terry', '9834674367');
 
 INSERT INTO songs (title, description, song_hash, is_flagged, user_id)
 VALUES ('My amazing song!', 'Listen to this!', 'B2,B2,B2,B2,B2,B2,B2,B2,D2,D2,D2,D2,D2,D2,D2,D2,G2,G2,G2,G2,G2,G2,G2,G2,E2,E2,E2,E2,E2,E2,E2,E2|0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2,0:0:2|1:0:0,1:0:2,1:1:0,1:1:2,1:2:0,1:2:2,1:3:0,1:3:2,2:0:0,2:0:2,2:1:0,2:1:2,2:2:0,2:2:2,2:3:0,2:3:2,3:0:0,3:0:2,3:1:0,3:1:2,3:2:0,3:2:2,3:3:0,3:3:2,4:0:0,4:0:2,4:1:0,4:1:2,4:2:0,4:2:2,4:3:0,4:3:2', false, 1),
@@ -41,4 +41,3 @@ VALUES (1, 1),
 (3, 3),
 (4, 4),
 (5, 5);
-
