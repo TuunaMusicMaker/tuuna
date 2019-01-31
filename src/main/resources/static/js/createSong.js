@@ -1589,6 +1589,8 @@ $('#key24').mouseout(function() {
 
 $('#recButton').addClass("notRec");
 
+// $('.playOnRecord').prop('disabled', true);
+
 $('#recButton').click(function(){
 
     if($('#recButton').hasClass('notRec')){
@@ -1608,12 +1610,15 @@ $('#recButton').click(function(){
         $('#recButton').addClass("notRec");
         recording = false;
         start = null;
-        console.count();
         reRecording = 1;
         songInputs = translateAA(timingLengthsArray,timeStampArray);
         songInputs[1] = msToBars(songInputs[1]);
         songInputs[2] = msToBars(songInputs[2]);
         let songString = songPacking(songInputs[0],songInputs[1],songInputs[2]);
+        if(songString !== "||"){
+            $('.playOnRecord').prop('disabled', false);
+            $('.saveOnRecord').attr('disabled', false);
+        }
         $("#songHash").val(songString);
     }
 });
