@@ -12,7 +12,7 @@
             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
         </div>
         <div class="card-content">
-            <h3 class="card-title bluer-text" th:text="${song.title}" />
+            <h5 class="card-title bluer-text smaller-text"><span class="make-my-monster-grow" th:text="${song.title}" /> by <span class="down-for-tonight-text" th:text="${song.user.username}" /></h5>
             <p th:text="${song.description}" class="i-like-paragraphs bluer-text" />
             <p><span class="down-for-tonight-text"><i class="fas fa-heart"></i> <span th:text="${songLikes}" /> like(s).</span></p>
 
@@ -124,8 +124,8 @@
             <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="colorful bar" />
         </div>
         <div class="card-content">
-            <h3 class="card-title">Leave a Comment</h3>
-            <p>Let everyone know what you think about "<span th:text="${song.title}" />!"</p>
+            <h3 class="card-title">Viewing All Comments</h3>
+            <p>Here is what some of our users have to say about "<span th:text="${song.title}" />!" Join in on the conversation, and leave your own comment by clicking the button below!</p>
             <div class="row better-spacing">
                 <a href="#comment-modal" class="waves-effect waves-red btn-small facebook-800 modal-trigger"><i class="fas fa-comment-dots"></i>  Leave a Comment</a>
             </div>
@@ -147,16 +147,6 @@
                 </div>
                 <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-smile-beam"></i>  Submit</button>
             </form>
-        </div>
-    </div>
-
-    <div class="card bluer-back facebook-800-text">
-        <div class="card-image">
-            <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="colorful bar" />
-        </div>
-        <div class="card-content">
-            <h3 class="card-title">Viewing All Comments</h3>
-            <p>Here is what some of our users have to say about "<span th:text="${song.title}" />!"</p>
         </div>
     </div>
 
