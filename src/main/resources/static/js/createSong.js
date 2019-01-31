@@ -1620,6 +1620,10 @@ $('#recButton').click(function(){
         songInputs[1] = msToBars(songInputs[1]);
         songInputs[2] = msToBars(songInputs[2]);
         let songString = songPacking(songInputs[0],songInputs[1],songInputs[2]);
+        if(songString !== "||"){
+            $('.playOnRecord').prop('disabled', false);
+            $('.saveOnRecord').attr('disabled', false);
+        }
         $("#songHash").val(songString);
     }
 });
