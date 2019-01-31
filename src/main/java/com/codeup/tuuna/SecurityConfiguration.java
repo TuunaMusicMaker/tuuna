@@ -71,7 +71,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/comments/{id}/edit",
                         "/comments/{id}/delete",
                         "/songs/{id}/flag",
-                        "comments/{id}/flag"
+                        "/comments/{id}/flag"
                 )
                 .authenticated()
         ;
