@@ -12,10 +12,10 @@
         </div>
         <div class="card-content">
             <h3 class="card-title">You're looking at <span th:text="${user.username}" />'s profile</h3>
-            <p>Below you can see their posts and comments!</p>
+            <p>Below you can see their songs and comments!</p>
             <br />
             <div th:if="${isAdmin}" class="row">
-                <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" href="#ban-modal"><i class="fas fa-ban"></i>  Ban This User</a>
+                <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" href="#ban-modal"><i class="fas fa-user-slash"></i>  Ban This User</a>
 
                 <a th:if="${!userIsAdmin}" class="waves-effect waves-teal btn-small bluer-back modal-trigger" href="#promote-modal"><i class="fas fa-angle-double-up"></i>  Promote This User</a>
 

@@ -20,6 +20,8 @@
             <button id="playbackButton" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-play"></i>  Play</button>
             <span class="spacer"></span>
             <a class="waves-effect waves-teal btn-small bluer-back modal-trigger" href="#message-modal"><i class="fas fa-paper-plane"></i>  Share</a>
+            <span class="spacer"></span>
+            <a class="waves-effect waves-teal btn-small bluer-back modal-trigger" th:href="@{/users/{id}(id=${song.user.id})}"><i class="fas fa-user"></i>  View Composer's Profile</a>
             <div id="message-modal" class="modal card cyan lighten-5">
                 <div class="card-image">
                     <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
