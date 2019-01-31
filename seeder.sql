@@ -29,11 +29,11 @@ VALUES ('Cool song my dude!', false, 1, 1),
 ('Amazing song', false, 5, 5);
 
 INSERT INTO ratings (song_id, user_id)
-VALUES (1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5);
+VALUES (1, 2),
+(2, 3),
+(3, 4),
+(4, 5),
+(5, 1);
 
 INSERT INTO songs_categories (song_id, category_id)
 VALUES (1, 1),
