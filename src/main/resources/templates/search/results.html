@@ -23,6 +23,7 @@
                     <div class="card-content preview-song">
                         <h4 class="card-title" th:text="${song.title}" />
                         <p th:text="${song.description}" />
+                        <a  th:href="@{/users/{id}(id=${song.user.id})}"><span class="right">Composed by user...<span class="down-for-tonight-text" th:text="${song.user.username}" /></span> </a>
                     </div>
                     <div class="small-space" />
                 </div>
