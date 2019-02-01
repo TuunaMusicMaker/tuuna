@@ -5,16 +5,20 @@ import com.codeup.tuuna.Models.User;
 import com.codeup.tuuna.Repositories.CommentRepository;
 import com.codeup.tuuna.Repositories.SongRepository;
 import com.codeup.tuuna.Repositories.Users;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,6 +28,9 @@ public class UserController {
     private SongRepository songs;
     private CommentRepository comments;
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     public UserController(Users users, SongRepository songs, CommentRepository comments, PasswordEncoder passwordEncoder) {
         this.users = users;
@@ -42,7 +49,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "password-confirm") String confirm, @RequestParam(name = "phone-number") String phoneNumber) {
+    public String saveUser(@ModelAttribute User user, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "password-confirm") String confirm, @RequestParam(name = "phone-number") String phoneNumber, HttpServletRequest request) {
         if (!password.equals(confirm)) {
             return "redirect:/register";
         }
@@ -54,7 +61,14 @@ public class UserController {
         user.setAdmin(false);
         user.setBanned(false);
         users.save(user);
-        return "redirect:/login";
+
+        request.getSession();
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
+        token.setDetails(new WebAuthenticationDetails(request));
+        Authentication registeredUser = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(registeredUser);
+
+        return "redirect:/users/profile";
     }
 
     @GetMapping("/users/edit")
