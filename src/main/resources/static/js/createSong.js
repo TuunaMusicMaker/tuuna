@@ -1651,7 +1651,6 @@ $('#recButton').click(function(){
         $('#recButton').addClass("notRec");
         recording = false;
         start = null;
-        console.count();
         reRecording = 1;
         songInputs = translateAA(timingLengthsArray,timeStampArray);
         songInputs[1] = msToBars(songInputs[1]);
@@ -1660,6 +1659,9 @@ $('#recButton').click(function(){
         if(songString !== "||"){
             $('.playOnRecord').prop('disabled', false);
             $('.saveOnRecord').attr('disabled', false);
+        } else {
+            $('.playOnRecord').prop('disabled', true);
+            $('.saveOnRecord').attr('disabled', true);
         }
         $("#songHash").val(songString);
     }
@@ -1676,7 +1678,6 @@ $(document).on('click', '#playButton', function(){
 
 $(document).on('click', '#save-modal', function(){
     let songString = songPacking(songInputs[0],songInputs[1],songInputs[2]);
-    console.log(songString);
     $("#songHash").val(songString);
 });
 
@@ -1691,4 +1692,12 @@ $('#save-modal').focusout(function() {
 
     onKeyDown(synth);
     onKeyUp(synth);
+});
+
+$('input,textarea').on('keyup', function(){
+    if($('#title').val() !== '' && $('#description').val() !== ''){
+        $('.submitWhenFilled').prop('disabled', false);
+    } else {
+        $('.submitWhenFilled').prop('disabled', true);
+    }
 });
