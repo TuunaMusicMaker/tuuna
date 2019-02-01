@@ -7,7 +7,7 @@ VALUES ('gary@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1e
 ('jerry@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'jerry', '7543245988'),
 ('terri@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'terri', '9834674367'),
 ('john24@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'john', '7543245988'),
-('howard@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'howard', '9834674367'),
+('howard@gmail.com', true, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'howard', '9834674367'),
 ('eddie@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'eddie', '9834674367'),
 ('angela@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'angela', '7543245988'),
 ('oscar@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'oscar', '9834674367');
@@ -31,14 +31,19 @@ VALUES ('Cool song my dude!', false, 1, 1),
 ('Great song', false, 3, 3),
 ('I like it a lot!', false, 4, 4),
 ('Amazing song', false, 5, 5),
-('Could be better', false, 2, 2),
+('good try', false, 2, 2),
 ('Ha!! Your song sounds like a 4 year old made it!', true, 3, 3),
 ('Great effort, keep trying!', false, 4, 4),
 ('Now that is talent!', false, 5, 5),
-('wow, so terrible', true, 2, 2),
+('wow, so terrible', true, 2, 9),
 ('Love that intro!', false, 3, 3),
 ('What a masterpiece!', false, 4, 4),
-('Not a very good song.', true, 5, 5);
+('Not a very good song.', true, 5, 5),
+('how interesting!', false, 10, 8),
+('This is my favorite Tuuna song!', false, 9, 6),
+('Not sure how I feel about this song.', false, 8, 7),
+('so fun!', false, 10, 7),
+('Hmmmm...not much of a resemblance there, gary.', false, 11, 5);
 
 INSERT INTO ratings (song_id, user_id)
 VALUES (1, 1),
