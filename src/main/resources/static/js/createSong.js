@@ -1583,7 +1583,7 @@ $("#key24").on('mouseout', function () {
 
 });
 
-$("#key1").on('vmousedown', function () {
+$("#key1").on('touchstart', function () {
     synth.triggerAttack('C3');
     startMouseDownTime[0] = Date.now();
     $(this).addClass('activekey');
@@ -1595,7 +1595,7 @@ $("#key1").on('vmousedown', function () {
 
 });
 
-$("#key1").on('vmouseup', function () {
+$("#key1").on('touchend', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1604,20 +1604,7 @@ $("#key1").on('vmouseup', function () {
         }
     }
     $('#key1').removeClass('activekey');
-    $('#key1').removeClass('whiteactivekey');
-
-});
-
-$("#key1").on('vmouseout', function () {
-    synth.triggerRelease();
-
-    if($(this).hasClass('activekey')) {
-        if (recording === true) {
-            timingLengthsArray[0].push(getMouseDownTime(0));
-        }
-    }
-    $('#key1').removeClass('activekey');
-    $('#key1').removeClass('whiteactivekey');
+    $('#key1').removeClass('blackactivekey');
 
 });
 
