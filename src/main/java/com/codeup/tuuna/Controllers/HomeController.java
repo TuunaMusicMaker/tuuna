@@ -68,10 +68,10 @@ public class HomeController {
                                 holdThis = song;
                                 benchmark = holdThis.getRatings().size();
                             }
+                            allSongs.remove(song);
                         }
                     }
                     if (holdThis.getRatings().size() >= 1) {
-                        allSongs.remove(holdThis);
                         likedSongs.add(holdThis);
                     }
                 }
@@ -85,10 +85,10 @@ public class HomeController {
                             if (song.getRatings().size() >= holdThis.getRatings().size()) {
                                 holdThis = song;
                             }
+                            allSongs.remove(song);
                         }
                     }
                     if (holdThis.getRatings().size() >= 1) {
-                        allSongs.remove(holdThis);
                         likedSongs.add(holdThis);
                     }
                 }
