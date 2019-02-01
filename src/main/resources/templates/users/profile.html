@@ -6,7 +6,7 @@
 <nav th:replace="partials :: navbar" />
 <header></header>
 <main class="container">
-    <div class="card cyan lighten-5">
+    <div class="card cyan lighten-5 bluer-text">
         <div class="card-image">
             <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
         </div>
@@ -94,11 +94,13 @@
                     <img src="../static/img/tuuna-bar-3.png" th:src="@{/img/tuuna-bar-3.png}" alt="smaller colorful bar" />
                 </div>
                 <div class="card-content">
-                    <h3 class="card-title">User Songs</h3>
+                    <h3 class="card-title bluer-text">User Songs</h3>
                     <ul>
-                        <li th:each="song : ${userSongs}">
-                            <a th:href="@{'/songs/' + ${song.id}}">
-                                <span th:text="${song.title}" />
+                        <li th:each="song : ${userSongs}" class="better-spacing bluer-text">
+                            <span th:text="${song.title}" />
+                            <a th:href="@{'/songs/' + ${song.id}}" class="waves-effect waves-teal btn-small bluer-back right">
+                                <i class="fas fa-headphones-alt"></i>
+                                Listen
                             </a>
                         </li>
                     </ul>
@@ -111,10 +113,10 @@
                     <img src="../static/img/tuuna-bar-3.png" th:src="@{/img/tuuna-bar-3.png}" alt="smaller colorful bar" />
                 </div>
                 <div class="card-content">
-                    <h3 class="card-title">User Comments</h3>
+                    <h3 class="card-title bluer-text">User Comments</h3>
                     <ul>
                         <li th:each="comment : ${userComments}">
-                            <a th:href="@{'/songs/' + ${comment.song.id}}">
+                            <a th:href="@{'/songs/' + ${comment.song.id}}" class="bluer-text">
                                 You said: "<span th:text="${comment.body}" />" about <span th:text="${comment.song.title}" />.
                             </a>
                         </li>
