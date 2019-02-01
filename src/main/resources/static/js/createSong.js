@@ -1655,11 +1655,9 @@ if(isMobile === false) {
         startMouseDownTime[2] = Date.now();
         $(this).addClass('activekey');
         $(this).addClass('whiteactivekey');
-
         if (recording === true) {
             timeStampArray[2].push(getCurrentTime())
         }
-
     });
 
     $("#key3").on('touchend', function () {
@@ -1672,9 +1670,8 @@ if(isMobile === false) {
         }
         $('#key3').removeClass('activekey');
         $('#key3').removeClass('whiteactivekey');
-
     });
-
+  
     $("#key4").on('touchstart', function (e) {
         e.preventDefault();
         synth.triggerAttack('D#3');
@@ -2235,7 +2232,6 @@ $('#recButton').click(function(){
         $('#recButton').addClass("notRec");
         recording = false;
         start = null;
-        console.count();
         reRecording = 1;
         songInputs = translateAA(timingLengthsArray,timeStampArray);
         songInputs[1] = msToBars(songInputs[1]);
@@ -2244,9 +2240,9 @@ $('#recButton').click(function(){
         if(songString !== "||"){
             $('.playOnRecord').prop('disabled', false);
             $('.saveOnRecord').attr('disabled', false);
-        }
-        $("#songHash").val(songString);
-    }
+        } else {
+            $('.playOnRecord').prop('disabled', true);
+            $('.saveOnRecord').attr('disabled', true);
 });
 
 
@@ -2276,4 +2272,16 @@ $('#save-modal').focusout(function() {
     onKeyDown(synth);
     onKeyUp(synth);
 });
+      
+$(document).on('click', '#save-modal', function(){
+    let songString = songPacking(songInputs[0],songInputs[1],songInputs[2]);
+    $("#songHash").val(songString);
+});
 
+$('input,textarea').on('keyup', function(){
+    if($('#title').val() !== '' && $('#description').val() !== ''){
+        $('.submitWhenFilled').prop('disabled', false);
+    } else {
+        $('.submitWhenFilled').prop('disabled', true);
+    }
+});
