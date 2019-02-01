@@ -6,7 +6,7 @@
 <script th:replace="partials :: j-query" />
 <nav th:replace="partials :: navbar" />
 <script th:replace="partials :: tone" />
-<script type="text/javascript" th:src="@{/js/jquery.mobile.custom.min.js}"></script>
+<!--<script type="text/javascript" th:src="@{/js/jquery.mobile.custom.min.js}"></script>-->
 <header></header>
 <main class="container">
     <div class="card cyan lighten-5">
@@ -132,7 +132,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back"><i class="fas fa-smile-beam"></i>  Submit</button>
+                        <button type="submit" value="submit" class="waves-effect waves-teal btn-small bluer-back submitWhenFilled" disabled="disabled"><i class="fas fa-smile-beam"></i>  Submit</button>
                     </form>
                 </div>
             </div>
