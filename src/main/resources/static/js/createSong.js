@@ -685,8 +685,7 @@ const onKeyUp = (() => {
 
 
 
-
-$('#key1').mousedown(function() {
+$("#key1").on('mousedown', function () {
     synth.triggerAttack('C3');
     startMouseDownTime[0] = Date.now();
     $(this).addClass('activekey');
@@ -698,7 +697,7 @@ $('#key1').mousedown(function() {
 
 });
 
-$('#key1').mouseup(function() {
+$("#key1").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -711,7 +710,7 @@ $('#key1').mouseup(function() {
 
 });
 
-$('#key1').mouseout(function() {
+$("#key1").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -724,7 +723,7 @@ $('#key1').mouseout(function() {
 
 });
 
-$('#key2').mousedown(function() {
+$("#key2").on('mousedown', function () {
     synth.triggerAttack('C#3');
     startMouseDownTime[1] = Date.now();
     $(this).addClass('activekey');
@@ -736,7 +735,7 @@ $('#key2').mousedown(function() {
         }
 });
 
-$('#key2').mouseup(function() {
+$("#key2").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -750,7 +749,7 @@ $('#key2').mouseup(function() {
 
 });
 
-$('#key2').mouseout(function() {
+$("#key2").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -763,7 +762,7 @@ $('#key2').mouseout(function() {
 
 });
 
-$('#key3').mousedown(function() {
+$("#key3").on('mousedown', function () {
     synth.triggerAttack('D3');
     startMouseDownTime[2] = Date.now();
     $(this).addClass('activekey');
@@ -775,7 +774,7 @@ $('#key3').mousedown(function() {
 
 });
 
-$('#key3').mouseup(function() {
+$("#key3").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -788,7 +787,7 @@ $('#key3').mouseup(function() {
 
 });
 
-$('#key3').mouseout(function() {
+$("#key3").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -801,7 +800,7 @@ $('#key3').mouseout(function() {
 
 });
 
-$('#key4').mousedown(function() {
+$("#key4").on('mousedown', function () {
     synth.triggerAttack('D#3');
     startMouseDownTime[3] = Date.now();
     $(this).addClass('activekey');
@@ -813,7 +812,7 @@ $('#key4').mousedown(function() {
 
 });
 
-$('#key4').mouseup(function() {
+$("#key4").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -825,7 +824,7 @@ $('#key4').mouseup(function() {
     $('#key4').removeClass('blackactivekey');
 });
 
-$('#key4').mouseout(function() {
+$("#key4").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -838,7 +837,7 @@ $('#key4').mouseout(function() {
 
 });
 
-$('#key5').mousedown(function() {
+$("#key5").on('mousedown', function () {
     synth.triggerAttack('E3');
     startMouseDownTime[4] = Date.now();
     $(this).addClass('activekey');
@@ -850,7 +849,7 @@ $('#key5').mousedown(function() {
 
 });
 
-$('#key5').mouseup(function() {
+$("#key5").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -862,7 +861,7 @@ $('#key5').mouseup(function() {
     $('#key5').removeClass('whiteactivekey');
 });
 
-$('#key5').mouseout(function() {
+$("#key5").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -875,7 +874,7 @@ $('#key5').mouseout(function() {
 
 });
 
-$('#key6').mousedown(function() {
+$("#key6").on('mousedown', function () {
     synth.triggerAttack('F3');
     startMouseDownTime[5] = Date.now();
     $(this).addClass('activekey');
@@ -888,7 +887,7 @@ $('#key6').mousedown(function() {
 
 });
 
-$('#key6').mouseup(function() {
+$("#key6").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -900,7 +899,7 @@ $('#key6').mouseup(function() {
     $('#key6').removeClass('whiteactivekey');
 });
 
-$('#key6').mouseout(function() {
+$("#key6").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -913,7 +912,7 @@ $('#key6').mouseout(function() {
 
 });
 
-$('#key7').mousedown(function() {
+$("#key7").on('mousedown', function () {
     synth.triggerAttack('F#3');
     startMouseDownTime[6] = Date.now();
     $(this).addClass('activekey');
@@ -926,7 +925,7 @@ $('#key7').mousedown(function() {
 
 });
 
-$('#key7').mouseup(function() {
+$("#key7").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -938,7 +937,7 @@ $('#key7').mouseup(function() {
     $('#key7').removeClass('blackactivekey');
 });
 
-$('#key7').mouseout(function() {
+$("#key7").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -951,7 +950,7 @@ $('#key7').mouseout(function() {
 
 });
 
-$('#key8').mousedown(function() {
+$("#key8").on('mousedown', function () {
     synth.triggerAttack('G3');
     startMouseDownTime[7] = Date.now();
     $(this).addClass('activekey');
@@ -963,7 +962,7 @@ $('#key8').mousedown(function() {
 
 });
 
-$('#key8').mouseup(function() {
+$("#key8").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -976,7 +975,7 @@ $('#key8').mouseup(function() {
 
 });
 
-$('#key8').mouseout(function() {
+$("#key8").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -989,7 +988,7 @@ $('#key8').mouseout(function() {
 
 });
 
-$('#key9').mousedown(function() {
+$("#key9").on('mousedown', function () {
     synth.triggerAttack('G#3');
     startMouseDownTime[8] = Date.now();
     $(this).addClass('activekey');
@@ -1002,7 +1001,7 @@ $('#key9').mousedown(function() {
 
 });
 
-$('#key9').mouseup(function() {
+$("#key9").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1014,7 +1013,7 @@ $('#key9').mouseup(function() {
     $('#key9').removeClass('blackactivekey');
 });
 
-$('#key9').mouseout(function() {
+$("#key9").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1027,7 +1026,7 @@ $('#key9').mouseout(function() {
 
 });
 
-$('#key10').mousedown(function() {
+$("#key10").on('mousedown', function () {
     synth.triggerAttack('A3');
     startMouseDownTime[9] = Date.now();
     $(this).addClass('activekey');
@@ -1039,7 +1038,7 @@ $('#key10').mousedown(function() {
 
 });
 
-$('#key10').mouseup(function() {
+$("#key10").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1052,7 +1051,7 @@ $('#key10').mouseup(function() {
 
 });
 
-$('#key10').mouseout(function() {
+$("#key10").on('mouseout', function () {
     synth.triggerRelease();
 
     if ($(this).hasClass('activekey')) {
@@ -1066,7 +1065,7 @@ $('#key10').mouseout(function() {
 
 });
 
-$('#key11').mousedown(function() {
+$("#key11").on('mousedown', function () {
     synth.triggerAttack('A#3');
     startMouseDownTime[10] = Date.now();
     $(this).addClass('activekey');
@@ -1078,7 +1077,7 @@ $('#key11').mousedown(function() {
 
 });
 
-$('#key11').mouseup(function() {
+$("#key11").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1090,7 +1089,7 @@ $('#key11').mouseup(function() {
     $('#key11').removeClass('blackactivekey');
 });
 
-$('#key11').mouseout(function() {
+$("#key11").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1104,7 +1103,7 @@ $('#key11').mouseout(function() {
 
 });
 
-$('#key12').mousedown(function() {
+$("#key12").on('mousedown', function () {
     synth.triggerAttack('B3');
     startMouseDownTime[11] = Date.now();
     $(this).addClass('activekey');
@@ -1116,7 +1115,7 @@ $('#key12').mousedown(function() {
 
 });
 
-$('#key12').mouseup(function() {
+$("#key12").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1129,7 +1128,7 @@ $('#key12').mouseup(function() {
 
 });
 
-$('#key12').mouseout(function() {
+$("#key12").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1142,7 +1141,7 @@ $('#key12').mouseout(function() {
 
 });
 
-$('#key13').mousedown(function() {
+$("#key13").on('mousedown', function () {
     synth.triggerAttack('C4');
     startMouseDownTime[12] = Date.now();
     $(this).addClass('activekey');
@@ -1153,7 +1152,7 @@ $('#key13').mousedown(function() {
     }
 });
 
-$('#key13').mouseup(function() {
+$("#key13").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1166,7 +1165,7 @@ $('#key13').mouseup(function() {
 
 });
 
-$('#key13').mouseout(function() {
+$("#key13").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1179,7 +1178,7 @@ $('#key13').mouseout(function() {
 
 });
 
-$('#key14').mousedown(function() {
+$("#key14").on('mousedown', function () {
     synth.triggerAttack('C#4');
     startMouseDownTime[13] = Date.now();
     $(this).addClass('activekey');
@@ -1191,7 +1190,7 @@ $('#key14').mousedown(function() {
 
 });
 
-$('#key14').mouseup(function() {
+$("#key14").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1203,7 +1202,7 @@ $('#key14').mouseup(function() {
     $('#key14').removeClass('blackactivekey');
 });
 
-$('#key14').mouseout(function() {
+$("#key14").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1217,7 +1216,7 @@ $('#key14').mouseout(function() {
 
 });
 
-$('#key15').mousedown(function() {
+$("#key15").on('mousedown', function () {
     synth.triggerAttack('D4');
     startMouseDownTime[14] = Date.now();
     $(this).addClass('activekey');
@@ -1228,7 +1227,7 @@ $('#key15').mousedown(function() {
     }
 });
 
-$('#key15').mouseup(function() {
+$("#key15").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1240,7 +1239,7 @@ $('#key15').mouseup(function() {
     $('#key15').removeClass('whiteactivekey');
 });
 
-$('#key15').mouseout(function() {
+$("#key15").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1253,7 +1252,7 @@ $('#key15').mouseout(function() {
 
 });
 
-$('#key16').mousedown(function() {
+$("#key16").on('mousedown', function () {
     synth.triggerAttack('D#4');
     startMouseDownTime[15] = Date.now();
     $(this).addClass('activekey');
@@ -1265,7 +1264,7 @@ $('#key16').mousedown(function() {
 
 });
 
-$('#key16').mouseup(function() {
+$("#key16").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1277,7 +1276,7 @@ $('#key16').mouseup(function() {
     $('#key16').removeClass('blackactivekey');
 });
 
-$('#key16').mouseout(function() {
+$("#key16").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1290,7 +1289,7 @@ $('#key16').mouseout(function() {
 
 });
 
-$('#key17').mousedown(function() {
+$("#key17").on('mousedown', function () {
     synth.triggerAttack('E4');
     startMouseDownTime[16] = Date.now();
     $(this).addClass('activekey');
@@ -1302,7 +1301,7 @@ $('#key17').mousedown(function() {
 
 });
 
-$('#key17').mouseup(function() {
+$("#key17").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1314,7 +1313,7 @@ $('#key17').mouseup(function() {
     $('#key17').removeClass('whiteactivekey');
 });
 
-$('#key17').mouseout(function() {
+$("#key17").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1327,7 +1326,7 @@ $('#key17').mouseout(function() {
 
 });
 
-$('#key18').mousedown(function() {
+$("#key18").on('mousedown', function () {
     synth.triggerAttack('F4');
     startMouseDownTime[17] = Date.now();
     $(this).addClass('activekey');
@@ -1339,7 +1338,7 @@ $('#key18').mousedown(function() {
 
 });
 
-$('#key18').mouseup(function() {
+$("#key18").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1351,7 +1350,7 @@ $('#key18').mouseup(function() {
     $('#key18').removeClass('whiteactivekey');
 });
 
-$('#key18').mouseout(function() {
+$("#key18").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1364,7 +1363,7 @@ $('#key18').mouseout(function() {
 
 });
 
-$('#key19').mousedown(function() {
+$("#key19").on('mousedown', function () {
     synth.triggerAttack('F#4');
     startMouseDownTime[18] = Date.now();
     $(this).addClass('activekey');
@@ -1376,7 +1375,7 @@ $('#key19').mousedown(function() {
 
 });
 
-$('#key19').mouseup(function() {
+$("#key19").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1388,7 +1387,7 @@ $('#key19').mouseup(function() {
     $('#key19').removeClass('blackactivekey');
 });
 
-$('#key19').mouseout(function() {
+$("#key19").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1401,7 +1400,7 @@ $('#key19').mouseout(function() {
 
 });
 
-$('#key20').mousedown(function() {
+$("#key20").on('mousedown', function () {
     synth.triggerAttack('G4');
     startMouseDownTime[19] = Date.now();
     $(this).addClass('activekey');
@@ -1413,7 +1412,7 @@ $('#key20').mousedown(function() {
 
 });
 
-$('#key20').mouseup(function() {
+$("#key20").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1425,7 +1424,7 @@ $('#key20').mouseup(function() {
     $('#key20').removeClass('whiteactivekey');
 });
 
-$('#key20').mouseout(function() {
+$("#key20").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1438,7 +1437,7 @@ $('#key20').mouseout(function() {
 
 });
 
-$('#key21').mousedown(function() {
+$("#key21").on('mousedown', function () {
     synth.triggerAttack('G#4');
     startMouseDownTime[20] = Date.now();
     $(this).addClass('activekey');
@@ -1450,7 +1449,7 @@ $('#key21').mousedown(function() {
 
 });
 
-$('#key21').mouseup(function() {
+$("#key21").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1462,7 +1461,7 @@ $('#key21').mouseup(function() {
     $('#key21').removeClass('blackactivekey');
 });
 
-$('#key21').mouseout(function() {
+$("#key21").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1475,7 +1474,7 @@ $('#key21').mouseout(function() {
 
 });
 
-$('#key22').mousedown(function() {
+$("#key22").on('mousedown', function () {
     synth.triggerAttack('A4');
     startMouseDownTime[21] = Date.now();
     $(this).addClass('activekey');
@@ -1487,7 +1486,7 @@ $('#key22').mousedown(function() {
 
 });
 
-$('#key22').mouseup(function() {
+$("#key22").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1499,7 +1498,7 @@ $('#key22').mouseup(function() {
     $('#key22').removeClass('whiteactivekey');
 });
 
-$('#key22').mouseout(function() {
+$("#key22").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1512,7 +1511,7 @@ $('#key22').mouseout(function() {
 
 });
 
-$('#key23').mousedown(function() {
+$("#key23").on('mousedown', function () {
     synth.triggerAttack('A#4');
     startMouseDownTime[22] = Date.now();
     $(this).addClass('activekey');
@@ -1524,7 +1523,7 @@ $('#key23').mousedown(function() {
 
 });
 
-$('#key23').mouseup(function() {
+$("#key23").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1536,7 +1535,7 @@ $('#key23').mouseup(function() {
     $('#key23').removeClass('blackactivekey');
 });
 
-$('#key23').mouseout(function() {
+$("#key23").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1549,7 +1548,7 @@ $('#key23').mouseout(function() {
 
 });
 
-$('#key24').mousedown(function() {
+$("#key24").on('mousedown', function () {
     synth.triggerAttack('B4');
     startMouseDownTime[23] = Date.now();
     $(this).addClass('activekey');
@@ -1561,7 +1560,7 @@ $('#key24').mousedown(function() {
 
 });
 
-$('#key24').mouseup(function() {
+$("#key24").on('mouseup', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
@@ -1573,7 +1572,7 @@ $('#key24').mouseup(function() {
     $('#key24').removeClass('whiteactivekey');
 });
 
-$('#key24').mouseout(function() {
+$("#key24").on('mouseout', function () {
     synth.triggerRelease();
 
     if($(this).hasClass('activekey')) {
