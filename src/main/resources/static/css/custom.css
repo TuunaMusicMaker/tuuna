@@ -97,3 +97,17 @@ li.blackkeys:hover{
 .blackactivekey{
     background-color: #494949 !important;
 }
+
+
+/* horizontal phone landscape view
+@media screen and (orientation:landscape) {*/
+
+    /*#container {*/
+        /*-ms-transform: rotate(-90deg); !* IE 9 *!*/
+        /*-webkit-transform: rotate(-90deg); !* Chrome, Safari, Opera *!*/
+        /*transform: rotate(-90deg);*/
+        /*width: !* screen width *! ;*/
+        /*height: !* screen height *! ;*/
+        /*overflow: scroll;*/
+    /*}*/
+/*}*/
