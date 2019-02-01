@@ -2224,8 +2224,8 @@ $('#recButton').click(function(){
         start = Date.now();
 
     }
-    else{
-        $('#recButton').html($('#recButton').html().replace('  Stop','  Record'));
+    else {
+        $('#recButton').html($('#recButton').html().replace('  Stop', '  Record'));
         $('#recButton').removeClass("RecColor");
         $('#recButton').addClass("notRecColor");
         $('#recButton').removeClass("Rec");
@@ -2233,16 +2233,18 @@ $('#recButton').click(function(){
         recording = false;
         start = null;
         reRecording = 1;
-        songInputs = translateAA(timingLengthsArray,timeStampArray);
+        songInputs = translateAA(timingLengthsArray, timeStampArray);
         songInputs[1] = msToBars(songInputs[1]);
         songInputs[2] = msToBars(songInputs[2]);
-        let songString = songPacking(songInputs[0],songInputs[1],songInputs[2]);
-        if(songString !== "||"){
+        let songString = songPacking(songInputs[0], songInputs[1], songInputs[2]);
+        if (songString !== "||") {
             $('.playOnRecord').prop('disabled', false);
             $('.saveOnRecord').attr('disabled', false);
         } else {
             $('.playOnRecord').prop('disabled', true);
             $('.saveOnRecord').attr('disabled', true);
+        }
+    }
 });
 
 
