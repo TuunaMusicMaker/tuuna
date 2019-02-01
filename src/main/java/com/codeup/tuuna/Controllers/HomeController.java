@@ -1,4 +1,5 @@
 package com.codeup.tuuna.Controllers;
+
 import com.codeup.tuuna.Models.Category;
 import com.codeup.tuuna.Models.Song;
 import com.codeup.tuuna.Models.User;
@@ -54,51 +55,8 @@ public class HomeController {
             }
             model.addAttribute("recentSongs", recentSongs);
         }
-
-        List<Song> allSongs = Lists.newArrayList(songDao.findAll());
-        List<Song> likedSongs = new ArrayList<>();
-        if (allSongs.size() > 0) {
-            int benchmark = 0;
-            if (allSongs.size() >= 5) {
-                for (int i = 1; i <= 5; i += 1) {
-                    Song holdThis = allSongs.get(0);
-                    for (Song song : allSongs) {
-                        if (song.getRatings() != null) {
-                            if (song.getRatings().size() >= benchmark) {
-                                holdThis = song;
-                                benchmark = holdThis.getRatings().size();
-                            }
-                            allSongs.remove(song);
-                        }
-                    }
-                    if (holdThis.getRatings().size() >= 1) {
-                        likedSongs.add(holdThis);
-                    }
-                }
-            } else {
-                int goTil = allSongs.size();
-                for (int i = 1; i <= goTil; i += 1) {
-                    Song holdThis = allSongs.get(0);
-                    for (Song song : allSongs) {
-                        if (song.getRatings() != null) {
-                            System.err.println(song.getRatings().size());
-                            if (song.getRatings().size() >= holdThis.getRatings().size()) {
-                                holdThis = song;
-                            }
-                            allSongs.remove(song);
-                        }
-                    }
-                    if (holdThis.getRatings().size() >= 1) {
-                        likedSongs.add(holdThis);
-                    }
-                }
-            }
-        }
-
-        if (likedSongs.size() > 0) {
-            model.addAttribute("likedSongs", likedSongs);
-        }
-
+        List<Song> likedSongs = songDao.sortRatingsBest5();
+        model.addAttribute("likedSongs", likedSongs);
         return "home";
     }
 
@@ -127,15 +85,15 @@ public class HomeController {
     @PostMapping("/search")
     public String makeSearch(Model model,@RequestParam (name = "search-params") String params, @RequestParam (name = "query") String query) {
         List<Song> searchResults;
-        switch(params) {
-            case("2"):
+        switch (params) {
+            case ("2"):
                 searchResults = songDao.findAllByTitleContaining(query);
-                for(Song result : searchResults) {
+                for (Song result : searchResults) {
                     System.err.println(result.getTitle());
                 }
                 model.addAttribute("searchResults", searchResults);
                 break;
-            case("3"):
+            case ("3"):
                 searchResults = new ArrayList<>();
                 List<User> users = userDao.findAllByUsernameContaining(query);
                 for (User user : users) {
@@ -151,7 +109,7 @@ public class HomeController {
                 }
                 List<Song> allSongsAllSearch = Lists.newArrayList(songDao.findAll());
                 for (Song song : allSongsAllSearch) {
-                    List<Category> cats =  song.getCategories();
+                    List<Category> cats = song.getCategories();
                     boolean addMe = false;
                     for (Category cat : cats) {
                         if (cat.getCategory().contains(query)) {
