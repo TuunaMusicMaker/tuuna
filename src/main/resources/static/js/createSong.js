@@ -683,8 +683,6 @@ const onKeyUp = (() => {
         onKeyUp(synth);
 })();
 
-
-
 $("#key1").on('mousedown', function () {
     synth.triggerAttack('C3');
     startMouseDownTime[0] = Date.now();
@@ -1585,6 +1583,43 @@ $("#key24").on('mouseout', function () {
 
 });
 
+$("#key1").on('vmousedown', function () {
+    synth.triggerAttack('C3');
+    startMouseDownTime[0] = Date.now();
+    $(this).addClass('activekey');
+    $(this).addClass('whiteactivekey');
+
+    if (recording === true) {
+        timeStampArray[0].push(getCurrentTime())
+    }
+
+});
+
+$("#key1").on('vmouseup', function () {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[0].push(getMouseDownTime(0));
+        }
+    }
+    $('#key1').removeClass('activekey');
+    $('#key1').removeClass('whiteactivekey');
+
+});
+
+$("#key1").on('vmouseout', function () {
+    synth.triggerRelease();
+
+    if($(this).hasClass('activekey')) {
+        if (recording === true) {
+            timingLengthsArray[0].push(getMouseDownTime(0));
+        }
+    }
+    $('#key1').removeClass('activekey');
+    $('#key1').removeClass('whiteactivekey');
+
+});
 
 $('#recButton').addClass("notRec");
 
@@ -1600,6 +1635,8 @@ $('#recButton').click(function(){
             timingLengthsArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
             timeStampArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
         }
+
+
         recording = true;
 
         start = Date.now();
