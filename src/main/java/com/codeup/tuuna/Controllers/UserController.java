@@ -105,6 +105,8 @@ public class UserController {
 
     @GetMapping("/users/{id}")
     public String getOtherProfiles(@PathVariable long id, Model model) {
+        List<Song> userSongs = songs.findAllByUserId(id);
+        List<Comment> userComments = comments.findAllByUserId(id);
         if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if (currentUser.isBanned()) {
@@ -118,6 +120,8 @@ public class UserController {
                 model.addAttribute("user", users.findOne(id));
                 model.addAttribute("userIsAdmin", users.findOne(id).isAdmin());
                 model.addAttribute("id", id);
+                model.addAttribute("userSongs", userSongs);
+                model.addAttribute("userComments", userComments);
                 return "users/other-profile";
             }
         }
@@ -125,6 +129,8 @@ public class UserController {
         model.addAttribute("user", users.findOne(id));
         model.addAttribute("userIsAdmin", users.findOne(id).isAdmin());
         model.addAttribute("id", id);
+        model.addAttribute("userSongs", userSongs);
+        model.addAttribute("userComments", userComments);
         return "users/other-profile";
     }
 }
