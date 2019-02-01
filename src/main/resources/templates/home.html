@@ -35,9 +35,11 @@
                     <div class="card-content">
                         <h3 class="card-title">Most Liked Songs!</h3>
                         <ul>
-                            <li th:each="song : ${likedSongs}">
-                                <a th:href="@{'/songs/' + ${song.id}}">
-                                    <span th:text="${song.title}" />
+                            <li th:each="song : ${likedSongs}" class="better-spacing">
+                                <span th:text="${song.title}" />
+                                <a th:href="@{'/songs/' + ${song.id}}" class="waves-effect waves-teal btn-small bluer-back right">
+                                    <i class="fas fa-headphones-alt"></i>
+                                    Listen
                                 </a>
                             </li>
                         </ul>
@@ -52,9 +54,11 @@
                     <div class="card-content">
                         <h3 class="card-title">Most Recent Songs!</h3>
                         <ul>
-                            <li th:each="song : ${recentSongs}">
-                                <a th:href="@{'/songs/' + ${song.id}}">
-                                    <span th:text="${song.title}" />
+                            <li th:each="song : ${recentSongs}" class="better-spacing">
+                                <span th:text="${song.title}" />
+                                <a th:href="@{'/songs/' + ${song.id}}" class="waves-effect waves-teal btn-small bluer-back right">
+                                    <i class="fas fa-headphones-alt"></i>
+                                    Listen
                                 </a>
                             </li>
                         </ul>

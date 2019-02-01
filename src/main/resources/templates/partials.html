@@ -17,7 +17,7 @@
     <nav th:fragment="navbar" class="colorado-e3">
         <div class="nav-wrapper">
             <div class="container">
-                <a href="/" class="brand-logo dat-fish"><img src="../static/img/tuuna2.png" th:src="@{~/img/tuuna2.png}" alt="Tuuna" class="big-fish" /></a>
+                <a href="/" class="dat-fish"><img src="../static/img/tuuna2.png" th:src="@{~/img/tuuna2.png}" alt="Tuuna" class="big-fish" /></a>
                 <ul id="nav-mobile" class="right">
                     <li><a href="/songs" class="bluer-text"><i class="fas fa-music"></i>  <span class="small-push">All Songs</span></a></li>
                     <li><a href="#search-modal" class="bluer-text modal-trigger"><i class="fas fa-search"></i>   <span class="small-push">Search</span></a></li>
@@ -67,7 +67,7 @@
     <nav th:fragment="navbar-goof" class="colorado-e3">
         <div class="nav-wrapper">
             <div class="container">
-                <a href="/" class="brand-logo dat-fish"><img src="../static/img/tuuna3.png" th:src="@{~/img/tuuna3.png}" alt="Tuuna" class="big-fish" /></a>
+                <a href="/" class="dat-fish"><img src="../static/img/tuuna3.png" th:src="@{~/img/tuuna3.png}" alt="Tuuna" class="big-fish" /></a>
                 <ul id="nav-mobile" class="right">
                     <li><a href="/songs" class="bluer-text"><i class="fas fa-music"></i>  <span class="small-push">All Songs</span></a></li>
                     <li><a href="#search-modal" class="bluer-text modal-trigger"><i class="fas fa-search"></i>   <span class="small-push">Search</span></a></li>
@@ -141,7 +141,7 @@
     <nav th:fragment="banned-navbar" class="darkness">
         <div class="nav-wrapper">
             <div class="container">
-                <a href="/" class="brand-logo"><img src="../static/img/anger_fish.png" th:src="@{~/img/anger_fish.png}" alt="anger fish" class="anger-fish" /></a>
+                <a href="/"><img src="../static/img/anger_fish.png" th:src="@{~/img/anger_fish.png}" alt="anger fish" class="anger-fish" /></a>
                 <ul id="nav-mobile" class="right">
                     <li sec:authorize="isAuthenticated()">
                         <form th:action="@{/logout}" th:method="post" id="form1">

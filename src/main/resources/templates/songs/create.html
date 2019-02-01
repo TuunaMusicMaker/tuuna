@@ -6,6 +6,7 @@
 <script th:replace="partials :: j-query" />
 <nav th:replace="partials :: navbar" />
 <script th:replace="partials :: tone" />
+<script type="text/javascript" th:src="@{/js/jquery.mobile.custom.min.js}"></script>
 <header></header>
 <main class="container">
     <div class="card cyan lighten-5">
@@ -97,8 +98,6 @@
         </div>
     </div>
         <div class="card-content">
-
-            <h3 class="card-title bluer-text">Create a Song</h3>
             <div id="save-modal" class="modal card cyan lighten-5">
                 <div class="card-image">
                     <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
