@@ -14,6 +14,7 @@
         <div class="card-content">
             <h5 class="card-title bluer-text smaller-text"><span class="make-my-monster-grow" th:text="${song.title}" /> by <span class="down-for-tonight-text" th:text="${song.user.username}" /></h5>
             <p th:text="${song.description}" class="i-like-paragraphs bluer-text" />
+
             <p><span class="down-for-tonight-text"><i class="fas fa-heart"></i> <span th:text="${songLikes}" /> like(s).</span></p>
 
             <input id="songHash" name="songHash" type="hidden" th:value="${songHash}"/>
