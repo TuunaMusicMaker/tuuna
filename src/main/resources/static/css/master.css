@@ -234,13 +234,17 @@ a.darkness-link:hover {
     }
 
     .about-us .bigger-on-small {
-        font-size: 4vh;
+        font-size: 3vh;
         position: relative;
-        bottom: 15px;
+        bottom: 16px;
     }
 
     .about-us .btn-small {
         padding: 24px 34px;
+    }
+
+    .about-us .better-spacing {
+        padding: 2.75rem 0 0 0;
     }
 }
 
