@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('How Tuuna Works')" />
+<body class="main">
+<nav th:replace="partials :: navbar" />
+<header></header>
+<main class="container">
+    <div class="card cyan lighten-5">
+        <div class="card-image">
+            <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">
+                How does Tuuna Music Maker Make Music?
+            </h3>
+            <p>
+                Tuuna is built using the Tone.js API, which helps generate the music!
+            </p>
+        </div>
+    </div>
+</main>
+<footer th:replace="partials :: blue-footer" />
+<script th:replace="partials :: m-script" />
+<script th:replace="partials :: j-query" />
+<script th:replace="partials :: i-icons" />
+</body>
+</html>
