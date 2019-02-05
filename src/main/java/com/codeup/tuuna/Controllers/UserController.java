@@ -4,7 +4,9 @@ import com.codeup.tuuna.Models.Song;
 import com.codeup.tuuna.Models.User;
 import com.codeup.tuuna.Repositories.CommentRepository;
 import com.codeup.tuuna.Repositories.SongRepository;
+import com.codeup.tuuna.Repositories.UserRepository;
 import com.codeup.tuuna.Repositories.Users;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -115,6 +118,16 @@ public class UserController {
         model.addAttribute("userSongs", userSongs);
         model.addAttribute("userComments", userComments);
         return "users/profile";
+    }
+
+    @GetMapping("/users")
+    public String showAllUsers(Model model){
+
+        List<User> allUsers = Lists.newArrayList(users.findAll());
+        Collections.reverse(allUsers);
+        model.addAttribute("users", allUsers);
+
+        return "users/index";
     }
 
     @GetMapping("/users/{id}")
