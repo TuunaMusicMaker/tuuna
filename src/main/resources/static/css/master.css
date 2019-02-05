@@ -230,9 +230,18 @@ a.darkness-link:hover {
 
     .about-us .card-title {
         font-size: 6vh;
-        margin-bottom: 24px;
+        margin-bottom: 48px;
     }
 
+    .about-us .bigger-on-small {
+        font-size: 4vh;
+        position: relative;
+        bottom: 15px;
+    }
+
+    .about-us .btn-small {
+        padding: 24px 34px;
+    }
 }
 
 .clear-line {

@@ -23,9 +23,12 @@
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Welcome Administrator: <span th:text="${#authentication.getName()}" />!</h3>
-                        <a class="waves-effect waves-yellow btn-small down-for-tonight" href="/admin/flagged/songs"><i class="fas fa-music"></i>  Flagged Songs</a>
-                        <a class="waves-effect waves-yellow btn-small down-for-tonight" href="/admin/flagged/comments"><i class="fas fa-comments"></i>  Flagged Comments</a>
-                        <a href="#" class="modal-close waves-effect waves-yellow btn-small down-for-tonight"><i class="far fa-times-circle"></i>  Close Portal</a>
+                        <p>The buttons below will access lists of content that need to be reviewed. Click one of the buttons to begin the review process for the flagged content. Please review any content seriously and ethically.</p>
+                        <div class="better-spacing">
+                            <a class="waves-effect waves-orange btn-small facebook-800" href="/admin/flagged/songs"><i class="fas fa-music"></i>  Flagged Songs</a>
+                            <a class="waves-effect waves-orange btn-small facebook-800" href="/admin/flagged/comments"><i class="fas fa-comments"></i>  Flagged Comments</a>
+                            <a href="#" class="modal-close waves-effect waves-yellow btn-small down-for-tonight"><i class="far fa-times-circle"></i>  Close</a>
+                        </div>
                     </div>
                 </div>
 
