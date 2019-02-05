@@ -251,3 +251,37 @@ a.darkness-link:hover {
 .clear-line {
     margin-top: 12px;
 }
+
+.code-block {
+    width: 100%;
+    height: auto;
+    background-color: rgb(0, 21, 41);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px 0;
+    margin-bottom: 20px;
+
+}
+.inner-code-block {
+    padding: 0 10px 0 10px;
+    margin: 0;
+    line-height: 25px;
+}
+.code-line {
+    color: rgb(73, 74, 85);
+}
+.declaration {
+    color: rgb(203, 205, 210);
+}
+.equals {
+    color: rgb(255, 0, 38);
+}
+.value {
+    color: rgb(0, 185, 222);
+}
+.function {
+    color: rgb(0, 209, 85);
+}
+.function-name {
+    color: rgb(230, 214, 53);
+}

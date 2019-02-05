@@ -69,11 +69,108 @@
                 </div>
                 <div class="card-content bluer-text">
                     <h3 class="card-title">
-                        How does Tuuna Music Maker Make Music?
+                        How does Tuuna Music Maker make music?
                     </h3>
-                    <p>
-                        Tuuna is built using the Tone.js API, which helps generate the music!
-                    </p>
+                    <p class="inner-code-block">First, we temporarily store the key notes, note lengths, and note timing into arrays as the user plays the piano keys.</p>
+                    <div class="code-block" >
+                        <div class="inner-code-block">
+                            <span class="code-line">1     |</span>
+                            <span class="declaration">let noteValues</span>
+                            <span class="equals">=</span>
+                            <span class="declaration">[</span>
+                            <span class="value">'C3'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> 'D3'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> 'C3'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> 'D3'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> 'C3'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> 'E3'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'E3'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> 'G3'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> 'C3'</span>
+                            <span class="declaration">] ;</span>
+                        </div>
+
+                        <div class="inner-code-block">
+                            <span class="code-line">2     |</span>
+                            <span class="declaration">let noteLengths</span>
+                            <span class="equals">=</span>
+                            <span class="declaration">[</span>
+                            <span class="value">'0:0:2'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '0:0:2'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '0:0:3'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '0:0:1'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '0:1:0'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '0:1:0'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'0:0:3'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '0:0:1'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '0:0:2'</span>
+                            <span class="declaration">] ;</span>
+                        </div>
+
+                        <div class="inner-code-block">
+                            <span class="code-line">3     |</span>
+                            <span class="declaration">let noteTimimg</span>
+                            <span class="equals">=</span>
+                            <span class="declaration">[</span>
+                            <span class="value">'1:0:0'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '1:0:2'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '1:1:0'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '1:1:3'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '1:2:0'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '1:2:0'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'1:3:0'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '1:3:1'</span>
+                            <span class="declaration">,</span>
+                            <span class="value"> '1:3:2'</span>
+                            <span class="declaration">] ;</span>
+                        </div>
+
+                    </div>
+
+                    <div class="code-block">
+
+                        <div class="inner-code-block">
+                            <span class="code-line">5   |</span>
+                            <span class="function">function </span>
+                            <span class="function-name">playNote</span>
+                            <span class="declaration">(instantiatedInstrument,noteValue,noteLength,noteTime) {</span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                    </div>
                     <a href="#" class="modal-close waves-effect waves-yellow btn-small down-for-tonight right help-this"><span class="help-this"><i class="far fa-times-circle"></i>  Close</span></a>
                 </div>
             </div>
