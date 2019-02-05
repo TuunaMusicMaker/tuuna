@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('Viewing All Users')" />
+<body class="main">
+<script th:replace="partials :: j-query" />
+<nav th:replace="partials :: navbar" />
+<header></header>
+<main class="container">
+    <div class="card bluer-back facebook-800-text">
+        <div class="card-image">
+            <img src="../static/img/tuuna-bar.png" th:src="@{/img/tuuna-bar.png}" alt="colorful bar" />
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">Viewing All Users</h3>
+            <p>Click any user to view their profile.</p>
+        </div>
+    </div>
+    <div th:each="user : ${users}">
+        <a th:href="@{'/users/' + ${user.id}}">
+            <div class="card cyan lighten-5">
+                <div class="card-image">
+                    <img src="../static/img/tuuna-bar-2.png" th:src="@{/img/tuuna-bar-2.png}" alt="colorful bar" />
+                </div>
+                <div class="card-content preview-song">
+                    <h4 class="card-title">
+
+                    <span th:text="${user.username}" /><span class="spacer"></span><span th:if="${user.isAdmin()}" ><i class="fas fa-star facebook-800-text"></i></span>
+                    </h4>
+                    <p><span class="four-41ed-text"><i class="fas fa-music"></i> <span th:text="${user.getSongs().size()}" /> song(s).</span></p>
+                    <a th:href="@{'/users/' + ${user.id}}" class="waves-effect waves-teal btn-small bluer-back right">
+                        <i class="fas fa-user"></i>
+                        View Profile
+                    </a>
+                </div>
+            </div>
+        </a>
+    </div>
+</main>
+<footer th:replace="partials :: blue-footer" />
+<script th:replace="partials :: m-script" />
+<script th:replace="partials :: modals-js" />
+</body>
+</html>
