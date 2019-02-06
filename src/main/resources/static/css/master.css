@@ -270,6 +270,9 @@ a.darkness-link:hover {
 .code-line {
     color: rgb(73, 74, 85);
 }
+.hidden-code-line {
+    color: rgb(0, 21, 41);
+}
 .declaration {
     color: rgb(203, 205, 210);
 }
@@ -284,4 +287,7 @@ a.darkness-link:hover {
 }
 .function-name {
     color: rgb(230, 214, 53);
+}
+.loop-variable {
+    color: rgb(255, 93, 53);
 }

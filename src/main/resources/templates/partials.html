@@ -264,6 +264,166 @@
                             <span class="declaration"> }</span>
                         </div>
                     </div>
+                    <div class="code-block">
+                        <div class="inner-code-block">
+                            <span class="code-line">48    |</span>
+                            <span class="declaration">savedSong</span>
+                            <span class="equals">=</span>
+                            <span class="value">"C3,D3,C3,D3,C3,E3,E3,G3,C3|0:0:2,0:0:2,0:0:3,0:0:1,0:1:0,0:1:0,0:0:3,0:0:1,0:0:2|1:0:0,</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="hidden-code-line">48    </span>
+                            <span class="code-line">|</span>
+                            <span class="value">1:0:2,1:1:0,1:1:3,1:2:0,1:2:0,1:3:0,1:3:1,1:3:2"</span>
+                            <span class="declaration">;</span>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="inner-code-block">
+                            <span class="code-line">50    |</span>
+                            <span class="function">function</span>
+                            <span class="function-name">songUnpacking</span>
+                            <span class="declaration">(databaseString)  {</span>
+                        </div>
+                         <div class="inner-code-block">
+                            <span class="code-line">51    |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">let unpackingArrays</span>
+                            <span class="equals">=</span>
+                            <span class="declaration">databaseString.</span>
+                            <span class="function-name">split</span>
+                            <span class="declaration">(</span>
+                            <span class="value">' | '</span>
+                            <span class="declaration">) ;</span>
+                         </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">52    |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">let unpackedArrays</span>
+                            <span class="equals">=</span>
+                            <span class="declaration">[ ] ;</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">53    |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="function">for</span>
+                            <span class="declaration">( let i </span>
+                            <span class="equals">=</span>
+                            <span class="loop-variable">0</span>
+                            <span class="declaration">; <span class="spacer"></span> i</span>
+                            <span class="equals">&lt;</span>
+                            <span class="declaration">unpackingArrays.length ; <span class="spacer"></span> i</span>
+                            <span class="equals">++</span>
+                            <span class="declaration">)  <span class="spacer"></span> {</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">54    |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">unpackedArrays.</span>
+                            <span class="function-name">push</span>
+                            <span class="declaration">(unpackingArrays[i].</span>
+                            <span class="function-name">split</span>
+                            <span class="declaration">(</span>
+                            <span class="value">' , '</span>
+                            <span class="declaration">) )</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">55    |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">}</span>
+                            <span></span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">56    |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="function">return</span>
+                            <span class="declaration">unpackedArrays ;</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">57    |</span>
+                            <span class="declaration">}</span>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="inner-code-block">
+                            <span class="code-line">59    |</span>
+                            <span class="declaration">publicSong</span>
+                            <span class="equals">=</span>
+                            <span class="declaration">[ [</span>
+                            <span class="value">'C3'</span>
+                            <span class="declaration">,</span>
+                            <span class="value">'D3'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'C3'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'D3'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'C3'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'E3'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'E3'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'G3'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'C3'</span>
+                            <span class="declaration">] , [</span>
+                            <span class="value">'0:0:2'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'0:0:2'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'0:0:3'</span>
+                            <span class="declaration">, </span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="hidden-code-line">59    </span>
+                            <span class="code-line">|</span>
+                            <span class="value">'0:0:1'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'0:1:0'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'0:1:0'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'0:0:3'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'0:0:1'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'0:0:2'</span>
+                            <span class="declaration">] , [</span>
+                            <span class="value">'1:0:0'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'1:0:2'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'1:1:0'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'1:1:3'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'1:2:0'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'1:2:0'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'1:3:0'</span>
+                            <span class="declaration">, </span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="hidden-code-line">59    </span>
+                            <span class="code-line">|</span>
+                            <span class="value">'1:3:1'</span>
+                            <span class="declaration">, </span>
+                            <span class="value">'1:3:2'</span>
+                            <span class="declaration">] ];</span>
+                        </div>
+
+
+                    </div>
                     <a href="#" class="modal-close waves-effect waves-yellow btn-small down-for-tonight right help-this"><span class="help-this"><i class="far fa-times-circle"></i>  Close</span></a>
                 </div>
             </div>
