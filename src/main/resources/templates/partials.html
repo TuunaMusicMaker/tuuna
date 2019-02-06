@@ -155,22 +155,42 @@
                             <span class="code-line">5   |</span>
                             <span class="function">function </span>
                             <span class="function-name">playNote</span>
-                            <span class="declaration">(instantiatedInstrument,noteValue,noteLength,noteTime) {</span>
-                            <span class="equals">Tone</span>
-                            <span class="declaration">.Transport.</span>
+                            <span class="declaration">(instantiatedInstrument,noteValue,noteLength,noteTime)</span>
+                            <span class="spacer"></span>
+                            <span class="declaration">{</span>
                         </div>
                         <div class="inner-code-block">
                             <span class="code-line">6   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="equals">Tone</span>
+                            <span class="declaration">.Transport.</span>
                             <span class="function-name">schedule</span>
                             <span class="declaration">(</span>
                             <span class="function">function</span>
-                            <span class="declaration">(time) {instantiatedInstrument.</span>
-                            <span class="function-name">triggerAttackRelease</span>
-                            <span class="declaration">(noteValue,</span>
+                            <span class="declaration">(time)</span>
+                            <span class="spacer"></span>
+                            <span class="declaration">{</span>
                         </div>
                         <div class="inner-code-block">
-                            <span class="code-line">7     |</span>
-                            <span class="declaration"> noteLength, time)}, noteTime) ;}</span>
+                            <span class="code-line">7   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">instantiatedInstrument.</span>
+                            <span class="function-name">triggerAttackRelease</span>
+                            <span class="declaration">(noteValue, noteLength, time)}, noteTime) ;</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">8   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">}, noteTime) ;</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">9     |</span>
+                            <span class="declaration">}</span>
                         </div>
                     </div>
                     <div class="code-block">
@@ -178,15 +198,70 @@
                             <span class="code-line">40   |</span>
                             <span class="function">function </span>
                             <span class="function-name">songPacking</span>
-                            <span class="declaration">(valuesArray,lengthsArray,timesArray){</span>
+                            <span class="declaration">(valuesArray,lengthsArray,timesArray) {</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">41   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
                             <span class="declaration">let outputString</span>
                             <span class="equals">=</span>
                             <span class="value">' '</span>
                             <span class="declaration">;</span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">42   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">outputString</span>
+                            <span class="equals">+=</span>
+                            <span class="declaration">valuesArray.</span>
+                            <span class="function-name">join</span>
+                            <span class="declaration">(</span>
+                            <span class="value">' , '</span>
+                            <span class="declaration">)</span>
+                            <span class="equals">+</span>
+                            <span class="value">' | '</span>
+                            <span class="declaration">;</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">43   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">outputString</span>
+                            <span class="equals">+=</span>
+                            <span class="declaration">lengthsArray.</span>
+                            <span class="function-name">join</span>
+                            <span class="declaration">(</span>
+                            <span class="value">' , '</span>
+                            <span class="declaration">)</span>
+                            <span class="equals">+</span>
+                            <span class="value">' | '</span>
+                            <span class="declaration">;</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">44   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">outputString</span>
+                            <span class="equals">+=</span>
+                            <span class="declaration">timesArray.</span>
+                            <span class="function-name">join</span>
+                            <span class="declaration">(</span>
+                            <span class="value">' , '</span>
+                            <span class="declaration">)</span>
+                            <span class="declaration">;</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">45   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="function">return</span>
+                            <span class="declaration">outputString ;</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">46    |</span>
+                            <span class="declaration"> }</span>
                         </div>
                     </div>
                     <a href="#" class="modal-close waves-effect waves-yellow btn-small down-for-tonight right help-this"><span class="help-this"><i class="far fa-times-circle"></i>  Close</span></a>
