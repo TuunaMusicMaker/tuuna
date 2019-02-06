@@ -151,25 +151,43 @@
                     </div>
 
                     <div class="code-block">
-
                         <div class="inner-code-block">
                             <span class="code-line">5   |</span>
                             <span class="function">function </span>
                             <span class="function-name">playNote</span>
                             <span class="declaration">(instantiatedInstrument,noteValue,noteLength,noteTime) {</span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                            <span class="equals">Tone</span>
+                            <span class="declaration">.Transport.</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">6   |</span>
+                            <span class="function-name">schedule</span>
+                            <span class="declaration">(</span>
+                            <span class="function">function</span>
+                            <span class="declaration">(time) {instantiatedInstrument.</span>
+                            <span class="function-name">triggerAttackRelease</span>
+                            <span class="declaration">(noteValue,</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">7     |</span>
+                            <span class="declaration"> noteLength, time)}, noteTime) ;}</span>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="inner-code-block">
+                            <span class="code-line">40   |</span>
+                            <span class="function">function </span>
+                            <span class="function-name">songPacking</span>
+                            <span class="declaration">(valuesArray,lengthsArray,timesArray){</span>
+                            <span class="declaration">let outputString</span>
+                            <span class="equals">=</span>
+                            <span class="value">' '</span>
+                            <span class="declaration">;</span>
                             <span></span>
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
-
                     </div>
                     <a href="#" class="modal-close waves-effect waves-yellow btn-small down-for-tonight right help-this"><span class="help-this"><i class="far fa-times-circle"></i>  Close</span></a>
                 </div>
