@@ -21,7 +21,6 @@
                 <ul id="nav-mobile" class="right">
                     <li><a href="/songs" class="bluer-text"><i class="fas fa-music"></i>  <span class="small-push">All Songs</span></a></li>
                     <li><a href="#search-modal" class="bluer-text modal-trigger"><i class="fas fa-search"></i>   <span class="small-push">Search</span></a></li>
-                    <li><a href="#how-modal" class="bluer-text modal-trigger"><i class="fas fa-question"></i>   <span class="small-push">How It Works</span></a></li>
                     <li sec:authorize="!isAuthenticated()"><a href="/login" class="bluer-text"><i class="fas fa-sign-in-alt"></i>  <span class="small-push">Log-In</span></a></li>
                     <li sec:authorize="!isAuthenticated()"><a href="/register" class="bluer-text"><i class="fas fa-user-plus"></i>  <span class="small-push">Register A New User</span></a></li>
                     <li sec:authorize="isAuthenticated()"><a href="/songs/create" class="bluer-text"><i class="fas fa-plus"></i>  <span class="small-push">Create A Song</span></a></li>
@@ -605,6 +604,7 @@
                         <li><a class="bluer-text" href="/users"><i class="fas fa-users"></i>  All Users</a></li>
                         <li><a href="#search-modal" class="bluer-text modal-trigger"><i class="fas fa-search"></i>   Search</a></li>
                         <li><a class="bluer-text" href="/about-us"><i class="fas fa-graduation-cap"></i>  Learn More About Tuuna</a></li>
+                        <li><a href="#how-modal" class="bluer-text modal-trigger"><i class="fas fa-question"></i>   How It Works</a></li>
                     </ul>
                 </div>
             </div>
