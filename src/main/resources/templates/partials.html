@@ -193,6 +193,107 @@
                             <span class="declaration">}</span>
                         </div>
                     </div>
+                    <div class="lined-icons container">
+                        <div>
+                            <h4 class="concerns">Concerns handled during song rendering</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col s6 m3 xl2">
+                                <div class="row icon-row">
+                                    <img class="note-icons" src="../static/img/value.png" th:src="@{~/img/value.png}" />
+                                </div>
+                                <div class="row">
+                                    <p class="icon-text">Note Value</p>
+                                </div>
+                            </div>
+                            <div class="col s6 m3 xl2">
+                                <div class="row icon-row">
+                                    <img class="note-icons" src="../static/img/rythm.png" th:src="@{~/img/rythm.png}" />
+                                </div>
+                                <div class="row">
+                                    <p class="icon-text">Note Length</p>
+                                </div>
+                            </div>
+                            <div class="col s6 m3 xl2">
+                                <div class="row icon-row">
+                                    <img class="note-icons" src="../static/img/chords.png" th:src="@{~/img/chords.png}" />
+                                </div>
+                                <div class="row">
+                                    <p class="icon-text">Multiple Notes</p>
+                                </div>
+                            </div>
+                            <div class="col s6 m3 xl2">
+                                <div class="row icon-row">
+                                    <img class="note-icons" src="../static/img/async.png" th:src="@{~/img/async.png}" />
+                                </div>
+                                <div class="row">
+                                    <p class="icon-text">Async Notes</p>
+                                </div>
+                            </div>
+                            <div class="col hide-on-med-and-down xl2">
+                                <div class="row">
+                                    <img class="note-icons" src="../static/img/arrow_right.png" th:src="@{~/img/arrow_right.png}" />
+                                </div>
+                            </div>
+                            <div class="col offset-s3 s6 offset-m5 m4 hide-on-extra-large-only">
+                                <div class="row arrow">
+                                    <img class="note-icons" src="../static/img/arrow_down.png" th:src="@{~/img/arrow_down.png}" />
+                                </div>
+                            </div>
+                            <div class="col offset-s3 s6 offset-m5 m4 offset-l4 l4 xl2">
+                                <div class="row icon-row">
+                                    <img class="note-icons" src="../static/img/custom-song-icon.png" th:src="@{~/img/custom-song-icon.png}" />
+                                </div>
+                                <div class="row">
+                                    <p class="icon-text">Create Song</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="inner-code-block">
+                            <span class="code-line">10   |</span>
+                            <span class="function">function </span>
+                            <span class="function-name">playNotes</span>
+                            <span class="declaration">(instrumentType,instrumentVolume,noteValues,noteLengths,noteTimes)</span>
+                            <span class="spacer"></span>
+                            <span class="declaration">{</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">11   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">let instrumentInstance = </span>
+                            <span class="function-name">createInstrument</span>
+                            <span class="declaration">(noteInstrument, noteVolume)</span>
+                            <span class="spacer"></span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">12   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">for(let i = 0 ; i &gt; noteValues.length; i++) {</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">13   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="function-name">playNote</span>
+                            <span class="declaration">(instrumentInstance, noteValues[i], noteLengths[i], noteTimes[i]);</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">14   |</span>
+                            <span class="spacer"></span>
+                            <span class="spacer"></span>
+                            <span class="declaration">}</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="code-line">15     |</span>
+                            <span class="declaration">}</span>
+                        </div>
+                    </div>
                     <div class="code-block">
                         <div class="inner-code-block">
                             <span class="code-line">40   |</span>
