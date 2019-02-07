@@ -291,3 +291,29 @@ a.darkness-link:hover {
 .loop-variable {
     color: rgb(255, 93, 53);
 }
+.lined-icons{
+    width: 100%;
+    padding-top: .5em;
+}
+.note-icons{
+    width: 5.8em;
+    margin: 0 .5em 0;
+}
+.icon-text{
+    line-height: 0;
+    padding-left: 0.5em
+}
+.icon-row{
+    height: 6.25em;
+    padding: 0;
+}
+.concerns{
+    font-size: 1.6rem;
+    margin-top: 0.3em;
+    padding-left: .5em;
+}
+.arrow{
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+}
