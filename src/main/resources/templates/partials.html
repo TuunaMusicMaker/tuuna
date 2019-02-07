@@ -72,7 +72,7 @@
                         How does Tuuna Music Maker make music?
                     </h3>
                     <p class="inner-code-block">First, we temporarily store the key notes, note lengths, and note timing into arrays as the user plays the piano keys.</p>
-                    <div class="code-block" >
+                    <div class="code-block push-this">
                         <div class="inner-code-block">
                             <span class="code-line">1     |</span>
                             <span class="declaration">let noteValues</span>
@@ -125,7 +125,7 @@
 
                         <div class="inner-code-block">
                             <span class="code-line">3     |</span>
-                            <span class="declaration">let noteTimimg</span>
+                            <span class="declaration">let noteTiming</span>
                             <span class="equals">=</span>
                             <span class="declaration">[</span>
                             <span class="value">'1:0:0'</span>
@@ -180,7 +180,7 @@
                             <span class="spacer"></span>
                             <span class="declaration">instantiatedInstrument.</span>
                             <span class="function-name">triggerAttackRelease</span>
-                            <span class="declaration">(noteValue, noteLength, time)}, noteTime) ;</span>
+                            <span class="declaration">(noteValue, noteLength, time)</span>
                         </div>
                         <div class="inner-code-block">
                             <span class="code-line">8   |</span>
@@ -255,9 +255,12 @@
                             <span class="code-line">10   |</span>
                             <span class="function">function </span>
                             <span class="function-name">playNotes</span>
-                            <span class="declaration">(instrumentType,instrumentVolume,noteValues,noteLengths,noteTimes)</span>
-                            <span class="spacer"></span>
-                            <span class="declaration">{</span>
+                            <span class="declaration">(instrumentType,instrumentVolume,noteValues,noteLengths,</span>
+                        </div>
+                        <div class="inner-code-block">
+                            <span class="hidden-code-line">10   </span>
+                            <span class="code-line">|</span>
+                            <span class="declaration">noteTimes) {</span>
                         </div>
                         <div class="inner-code-block">
                             <span class="code-line">11   |</span>
@@ -272,7 +275,16 @@
                             <span class="code-line">12   |</span>
                             <span class="spacer"></span>
                             <span class="spacer"></span>
-                            <span class="declaration">for(let i = 0 ; i &gt; noteValues.length; i++) {</span>
+                            <span class="function">for</span>
+                            <span class="declaration">(let i</span>
+                            <span class="equals">=</span>
+                            <span class="loop-variable">0</span>
+                            <span class="declaration">; <span class="spacer"></span></span>
+                            <span class="declaration">i</span>
+                            <span class="equals">&gt;</span>
+                            <span class="declaration">noteValues.length; <span class="spacer"></span> i</span>
+                            <span class="equals">++</span>
+                            <span class="declaration">) {</span>
                         </div>
                         <div class="inner-code-block">
                             <span class="code-line">13   |</span>
@@ -370,12 +382,12 @@
                             <span class="code-line">48    |</span>
                             <span class="declaration">savedSong</span>
                             <span class="equals">=</span>
-                            <span class="value">"C3,D3,C3,D3,C3,E3,E3,G3,C3|0:0:2,0:0:2,0:0:3,0:0:1,0:1:0,0:1:0,0:0:3,0:0:1,0:0:2|1:0:0,</span>
+                            <span class="value">"C3,D3,C3,D3,C3,E3,E3,G3,C3|0:0:2,0:0:2,0:0:3,0:0:1,0:1:0,0:1:0,0:0:3,0:0:1,</span>
                         </div>
                         <div class="inner-code-block">
                             <span class="hidden-code-line">48    </span>
                             <span class="code-line">|</span>
-                            <span class="value">1:0:2,1:1:0,1:1:3,1:2:0,1:2:0,1:3:0,1:3:1,1:3:2"</span>
+                            <span class="value">0:0:2|1:0:0,1:0:2,1:1:0,1:1:3,1:2:0,1:2:0,1:3:0,1:3:1,1:3:2"</span>
                             <span class="declaration">;</span>
                         </div>
                     </div>
@@ -511,21 +523,19 @@
                             <span class="declaration">, </span>
                             <span class="value">'1:2:0'</span>
                             <span class="declaration">, </span>
-                            <span class="value">'1:3:0'</span>
-                            <span class="declaration">, </span>
                         </div>
                         <div class="inner-code-block">
                             <span class="hidden-code-line">59    </span>
                             <span class="code-line">|</span>
+                            <span class="value">'1:3:0'</span>
+                            <span class="declaration">, </span>
                             <span class="value">'1:3:1'</span>
                             <span class="declaration">, </span>
                             <span class="value">'1:3:2'</span>
                             <span class="declaration">] ];</span>
                         </div>
-
-
                     </div>
-                    <a href="#" class="modal-close waves-effect waves-yellow btn-small down-for-tonight right help-this"><span class="help-this"><i class="far fa-times-circle"></i>  Close</span></a>
+                    <a href="#" class="modal-close waves-effect waves-yellow btn-small down-for-tonight right push-this help-this"><span class="help-this"><i class="far fa-times-circle"></i>  Close</span></a>
                 </div>
             </div>
         </div>
