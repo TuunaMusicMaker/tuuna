@@ -11,11 +11,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -66,10 +63,10 @@ public class SongController {
         if (!(user instanceof AnonymousAuthenticationToken)) {
             currentUserName = user.getName();
         }
-        boolean isPoster = (currentUserName.equals(songDao.findOne(id).getUser().getUsername()));
+        boolean isPoster = (currentUserName.equals(songDao.findById(id).getUser().getUsername()));
 
-        List<Rating> ratings = songDao.findOne(id).getRatings();
-        Integer songLikes = songDao.findOne(id).getRatings().size();
+        List<Rating> ratings = songDao.findById(id).getRatings();
+        Integer songLikes = songDao.findById(id).getRatings().size();
             if (songLikes == null) {
                 songLikes = 0;
             }
@@ -82,19 +79,19 @@ public class SongController {
                     }
                 }
             }
-        List<Comment> comments = Lists.newArrayList(songDao.findOne(id).getComments());
+        List<Comment> comments = Lists.newArrayList(songDao.findById(id).getComments());
         Collections.reverse(comments);
         model.addAttribute("hasRated", hasRated);
         model.addAttribute("isPoster", isPoster);
         model.addAttribute("currentUsername", currentUserName);
-        model.addAttribute("username", songDao.findOne(id).getUser().getUsername());
-        model.addAttribute("song", songDao.findOne(id));
+        model.addAttribute("username", songDao.findById(id).getUser().getUsername());
+        model.addAttribute("song", songDao.findById(id));
         model.addAttribute("id", id);
         model.addAttribute("comments", comments);
         model.addAttribute("comment", new Comment());
-        model.addAttribute("ratings", songDao.findOne(id).getRatings());
+        model.addAttribute("ratings", songDao.findById(id).getRatings());
 //        model.addAttribute("categories", songDao.findOne(id).getCategories());
-        model.addAttribute("songHash", songDao.findOne(id).getSongHash());
+        model.addAttribute("songHash", songDao.findById(id).getSongHash());
         model.addAttribute("songLikes", songLikes);
 
         return "songs/view";
@@ -139,7 +136,7 @@ public class SongController {
             return "redirect:/you-got-banned";
         }
         model.addAttribute("id", id);
-        model.addAttribute("song", songDao.findOne(id));
+        model.addAttribute("song", songDao.findById(id));
         return "songs/edit";
     }
 
@@ -147,10 +144,10 @@ public class SongController {
     public String editSong(@PathVariable long id, @ModelAttribute Song song, @RequestParam(name = "title") String title,
                            @RequestParam(name = "description") String description) {
 
-        song.setUser(songDao.findOne(id).getUser());
+        song.setUser(songDao.findById(id).getUser());
         song.setTitle(title);
         song.setDescription(description);
-        song.setSongHash(songDao.findOne(id).getSongHash());
+        song.setSongHash(songDao.findById(id).getSongHash());
         songDao.save(song);
         return "redirect:/songs/" + id;
     }
@@ -166,16 +163,16 @@ public class SongController {
     }
     @PostMapping("/songs/{id}/delete")
     public String deleteSong(@PathVariable long id, @ModelAttribute Song song) {
-        List<Category> categories = songDao.findOne(id).getCategories();
-        songDao.findOne(id).getCategories().removeAll(categories);
-        songDao.delete(id);
+        List<Category> categories = songDao.findById(id).getCategories();
+        songDao.findById(id).getCategories().removeAll(categories);
+        songDao.delete(songDao.findById(id));
         return "redirect:/users/profile";
     }
 
     @PostMapping("/songs/{id}/rating")
     public String likeSong(@PathVariable long id, @ModelAttribute Song song) {
         User ratingUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Song ratedSong = songDao.findOne(id);
+        Song ratedSong = songDao.findById(id);
         Rating rating = new Rating(ratedSong, ratingUser);
         ratingDao.save(rating);
 
@@ -188,14 +185,14 @@ public class SongController {
         if (currentUser.isBanned()) {
             return "redirect:/you-got-banned";
         }
-        model.addAttribute("song", songDao.findOne(id));
+        model.addAttribute("song", songDao.findById(id));
         model.addAttribute("id", id);
         return "songs/flag";
     }
 
     @PostMapping("songs/{id}/flag")
     public String flagSong(@PathVariable long id) {
-        Song flaggedSong = songDao.findOne(id);
+        Song flaggedSong = songDao.findById(id);
         flaggedSong.setFlagged(true);
         songDao.save(flaggedSong);
         return "redirect:/songs/{id}";
@@ -208,7 +205,7 @@ public class SongController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         comment.setBody(body);
         comment.setUser(user);
-        comment.setSong(songDao.findOne(id));
+        comment.setSong(songDao.findById(id));
         comment.setFlagged(false);
         commentDao.save(comment);
         return "redirect:/songs/" + id;
@@ -216,28 +213,28 @@ public class SongController {
     @PostMapping("comments/{id}/edit")
     public String editComment(@PathVariable long id,
                               @RequestParam(name = "body") String body) {
-        Comment comment = commentDao.findOne(id);
+        Comment comment = commentDao.findById(id);
         comment.setBody(body);
-        comment.setUser(commentDao.findOne(id).getUser());
-        comment.setSong(commentDao.findOne(id).getSong());
+        comment.setUser(commentDao.findById(id).getUser());
+        comment.setSong(commentDao.findById(id).getSong());
         comment.setFlagged(false);
         commentDao.save(comment);
-        return "redirect:/songs/" + commentDao.findOne(id).getSong().getId();
+        return "redirect:/songs/" + commentDao.findById(id).getSong().getId();
     }
 
     @PostMapping("/comment/{commentId}/flag")
     public String flagComment(@PathVariable long commentId) {
-        Comment flaggedComment = commentDao.findOne(commentId);
+        Comment flaggedComment = commentDao.findById(commentId);
         flaggedComment.setFlagged(true);
         commentDao.save(flaggedComment);
-        long id = commentDao.findOne(commentId).getSong().getId();
+        long id = commentDao.findById(commentId).getSong().getId();
         return "redirect:/songs/" + id;
     }
 
     @PostMapping("/comments/{id}/delete")
     public String deleteComment(@PathVariable long id) {
 
-        Comment comment = commentDao.findOne(id);
+        Comment comment = commentDao.findById(id);
         int redirect = (int) comment.getSong().getId();
         commentDao.delete(comment);
         return "redirect:/songs/" + redirect;

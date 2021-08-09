@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials :: head ('View a Song')" />
 <body class="main">
 <script th:replace="partials :: j-query" />
@@ -160,7 +160,7 @@
                 <h5><span th:text="${comment.user.username}" /> says...</h5>
                 <p th:text="${comment.body}" />
 
-                <div th:if="${#authentication.getName() != comment.user.username}">
+                <div th:if="${isPoster}">
                     <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" th:href="'#flag-comment-modal' + ${comment.id}"><i class="fas fa-flag-checkered"></i>  Flag This Comment</a>
                     <div th:id="'flag-comment-modal' + ${comment.id}" class="modal card cyan lighten-5">
                         <div class="card-image">
@@ -182,7 +182,7 @@
                     </div>
                 </div>
 
-                <div th:if="${#authentication.getName() == comment.user.username}">
+                <div th:if="${isPoster}">
                     <a class="waves-effect waves-red btn-small facebook-800 modal-trigger" th:href="'#edit-comment-modal' + ${comment.id}"><i class="fas fa-marker"></i>  Edit</a>
                     <a class="waves-effect waves-yellow btn-small down-for-tonight modal-trigger" th:href="'#delete-comment-modal' + ${comment.id}"><i class="fas fa-trash"></i>  Delete</a>
 

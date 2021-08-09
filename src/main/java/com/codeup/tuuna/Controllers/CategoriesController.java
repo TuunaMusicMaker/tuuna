@@ -13,7 +13,7 @@ public class CategoriesController {
 
     @GetMapping("categories/{id}")
     public String showSongsByCategory(@PathVariable long id, Model model) {
-        Category category = categoriesRepository.findOne(id);
+        Category category = categoriesRepository.findById(id);
         model.addAttribute("songs", category.getSongs());
         return "songs/index";
     }

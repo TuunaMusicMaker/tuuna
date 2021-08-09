@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -48,7 +47,7 @@ public class AdminController {
                 return "redirect:/you-got-banned";
             }
             if (currentUser.isAdmin()) {
-                model.addAttribute("user", userDao.findOne(id));
+                model.addAttribute("user", userDao.findById(id));
                 return "admin/ban-user";
             }
         }
@@ -60,7 +59,7 @@ public class AdminController {
         if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if (currentUser.isAdmin()) {
-                User bannedUser = userDao.findOne(id);
+                User bannedUser = userDao.findById(id);
                 bannedUser.setBanned(true);
                 userDao.save(bannedUser);
                 return "redirect:/";
@@ -71,13 +70,13 @@ public class AdminController {
 
     @GetMapping("/admin/{id}/promote")
     public String showPromoteUserForm(@PathVariable long id, Model model) {
-        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") || userDao.findOne(id).isAdmin()) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") || userDao.findById(id).isAdmin()) {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if (currentUser.isBanned()) {
                 return "redirect:/you-got-banned";
             }
             if (currentUser.isAdmin()) {
-                model.addAttribute("user", userDao.findOne(id));
+                model.addAttribute("user", userDao.findById(id));
                 return "admin/promote-user";
             }
         }
@@ -86,10 +85,10 @@ public class AdminController {
 
     @PostMapping("/admin/{id}/promote")
     public String promoteUser(@PathVariable long id) {
-        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") || userDao.findOne(id).isAdmin()) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") || userDao.findById(id).isAdmin()) {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if (currentUser.isAdmin()) {
-                User newAdmin = userDao.findOne(id);
+                User newAdmin = userDao.findById(id);
                 newAdmin.setAdmin(true);
                 userDao.save(newAdmin);
                 return "redirect:/users/{id}";
@@ -100,13 +99,13 @@ public class AdminController {
 
     @GetMapping("/admin/{id}/demote")
     public String showDemoteUserForm(@PathVariable long id, Model model) {
-        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") || !userDao.findOne(id).isAdmin()) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") || !userDao.findById(id).isAdmin()) {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if (currentUser.isBanned()) {
                 return "redirect:/you-got-banned";
             }
             if (currentUser.isAdmin()) {
-                model.addAttribute("user", userDao.findOne(id));
+                model.addAttribute("user", userDao.findById(id));
                 return "admin/demote-admin";
             }
         }
@@ -115,10 +114,10 @@ public class AdminController {
 
     @PostMapping("/admin/{id}/demote")
     public String demoteUser(@PathVariable long id) {
-        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") || !userDao.findOne(id).isAdmin()) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") || !userDao.findById(id).isAdmin()) {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if (currentUser.isAdmin()) {
-                User demotedAdmin = userDao.findOne(id);
+                User demotedAdmin = userDao.findById(id);
                 demotedAdmin.setAdmin(false);
                 userDao.save(demotedAdmin);
                 return "redirect:/users/{id}";
@@ -159,7 +158,7 @@ public class AdminController {
 
     @PostMapping("/songs/{id}/flag/admin")
     public String unflagSong(@PathVariable long id) {
-        Song target = songDao.findOne(id);
+        Song target = songDao.findById(id);
         target.setFlagged(false);
         songDao.save(target);
         return "redirect:/admin/flagged/songs";
@@ -167,9 +166,9 @@ public class AdminController {
 
     @PostMapping("/songs/{id}/delete/admin")
     public String deleteSong(@PathVariable long id, @ModelAttribute Song song) {
-        List<Category> categories = songDao.findOne(id).getCategories();
-        songDao.findOne(id).getCategories().removeAll(categories);
-        songDao.delete(id);
+        List<Category> categories = songDao.findById(id).getCategories();
+        songDao.findById(id).getCategories().removeAll(categories);
+        songDao.delete(songDao.findById(id));
         return "redirect:/admin/flagged/songs";
     }
 
@@ -194,7 +193,7 @@ public class AdminController {
 
     @PostMapping("/comments/{id}/flag/admin")
     public String unflagComment(@PathVariable long id) {
-        Comment target = commentDao.findOne(id);
+        Comment target = commentDao.findById(id);
         target.setFlagged(false);
         commentDao.save(target);
         return "redirect:/admin/flagged/comments";
@@ -202,7 +201,7 @@ public class AdminController {
 
     @PostMapping("/comments/{id}/delete/admin")
     public String deleteComment(@PathVariable long id, @ModelAttribute Comment comment) {
-        commentDao.delete(id);
+        commentDao.delete(commentDao.findById(id));
         return "redirect:/admin/flagged/comments";
     }
 
