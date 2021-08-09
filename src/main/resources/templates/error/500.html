@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials :: head ('ERR: You may have goofed it...')" />
+<body class="main bluer-text">
+<script th:replace="partials :: j-query" />
+<nav th:replace="partials :: navbar-goof" />
+<header></header>
+<main class="container">
+    <div class="card cyan lighten-5">
+        <div class="card-image">
+            <img th:src="@{~/img/tuuna-bar-5.png}" alt="colorful bar" />
+        </div>
+        <div class="card-content">
+            <h1 class="bluer-text">Oops..</h1>
+            <p>Usually you can fix errors by just logging in. Thank you for your patience.</p>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="partials :: blue-footer" />
+<script th:replace="partials :: m-script" />
+<script th:replace="partials :: modals-js" />
+</body>
+</html>
