@@ -9,7 +9,7 @@ import java.util.List;
 public class Song {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false, length = 120)

@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Rating {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne @JoinColumn (name = "song_id")
