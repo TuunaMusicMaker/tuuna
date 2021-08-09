@@ -1,4 +1,4 @@
-USE DATABASE tuuna_db;
+USE tuuna_db;
 
 INSERT INTO users (email, is_admin, is_banned, password, username, phone_number)
 VALUES ('gary@gmail.com', false, false, '$2a$10$0NK0/b7WK8RziM33gc07EuHl5zpeOD1eaFnLp3Gft8jRbC2taZoLO', 'gary', '4353245678'),

@@ -248,7 +248,7 @@ public class SongController {
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = user.getUsername();
-        String messageBody = "Check out this song on Tuuna Music Maker sent to you by Tuuna user:" + username + " tuuna.co/songs/" + id;
+        String messageBody = "Check out this song on Tuuna Music Maker sent to you by Tuuna user:" + username + " tuuna.one/songs/" + id;
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
         Message message = Message
